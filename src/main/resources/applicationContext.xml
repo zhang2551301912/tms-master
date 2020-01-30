@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd" default-autowire="byName">
+
+    <!-- 注解驱动配置  -->
+    <context:annotation-config />
+
+    <!--扫描注解-->
+    <context:component-scan base-package="com.service"/>
+    <!--加载属性文件-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <!--数据源-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+
+    <!--配置SqlSessionFactory对象-->
+    <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 注入数据库连接池 -->
+        <property name="dataSource" ref="dataSource"></property>
+        <!-- 扫描po包 使用别名 -->
+        <property name="typeAliasesPackage" value="com.po"></property>
+        <!-- 扫描sql配置文件:mapper需要的xml文件 -->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+    </bean>
+
+    <!--配置扫描mapper接口包，动态实现mapper接口，注入到spring容器中-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 注入sqlSessionFactory -->
+        <property name="sqlSessionFactoryBeanName" value="factory"></property>
+        <!-- 给出需要扫描mapper包-->
+        <property name="basePackage" value="com.mapper"></property>
+    </bean>
+
+
+    <!--事务管理器-->
+    <bean id="txManage" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!--声明式事务-->
+    <tx:advice id="txAdvice" transaction-manager="txManage">
+        <tx:attributes>
+            <tx:method name="ins*"/>
+            <tx:method name="del*"/>
+            <tx:method name="upd*"/>
+            <tx:method name="*" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+    <!--配置aop-->
+    <aop:config>
+        <aop:pointcut id="myPoint" expression="execution(* com.service.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="myPoint"></aop:advisor>
+    </aop:config>
+</beans>
