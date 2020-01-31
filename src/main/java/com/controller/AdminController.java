@@ -19,6 +19,13 @@ public class AdminController {
 
     @Autowired
     AdminService adminService;
+
+    //欢迎页面
+    @RequestMapping("welcome")
+    public ModelAndView welcome() {
+        ModelAndView mv=new ModelAndView("welcome");
+        return mv;
+    }
     //菜单主页
     @RequestMapping("index")
     public ModelAndView index(){

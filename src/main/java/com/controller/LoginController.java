@@ -39,7 +39,7 @@ public class LoginController {
         boolean isLogin=loginService.Login(user);//是否登录成功验证
         if(isLogin){
             User u=loginService.getUserByIdAndRole(user);
-            session.setAttribute("user",user);
+            session.setAttribute("user",u);
             rs=new ResultMsg(Flag.SUCCESS,"登录成功");
         }else {
             rs=new ResultMsg(Flag.FAIL,"登录失败");
