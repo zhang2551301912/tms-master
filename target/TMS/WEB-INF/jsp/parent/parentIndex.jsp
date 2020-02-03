@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/xadmin.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/lib/layui/layui.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
 </head>
 <body class="index">
     <!-- 顶部开始 -->
@@ -44,34 +43,34 @@
     </div>
     <!-- 顶部结束 -->
 
-    <!-- 左侧菜单开始 -->
-    <div class="left-nav">
-        <div id="side-nav">
-            <ul id="nav">
-                <c:forEach items="${menuRole}" var="menuRole">
-                    <li>
-                        <a href="javascript:;">
-                            <i class="iconfont left-nav-li"lay-tips="66"></i>
-                            <cite>${menuRole.menu.title}</cite>
-                            <i class="iconfont nav_right">&#xe697;</i>
-                        </a>
-                        <c:forEach items="${menu}" var="menu">
-                            <c:if test="${menu.p_id==menuRole.menu_id}">
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a onclick="xadmin.add_tab('${menu.title}','${menu.url}')">
-                                            <i class="iconfont">&#xe6a7;</i>
-                                            <cite>${menu.title }</cite>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </c:if>
-                        </c:forEach>
-                    </li>
-                </c:forEach>
-            </ul>
-        </div>
-    </div>
+<%--    <!-- 左侧菜单开始 -->--%>
+<%--    <div class="left-nav">--%>
+<%--        <div id="side-nav">--%>
+<%--            <ul id="nav">--%>
+<%--                <c:forEach items="${menuRole}" var="menuRole">--%>
+<%--                    <li>--%>
+<%--                        <a href="javascript:;">--%>
+<%--                            <i class="iconfont left-nav-li"lay-tips="66"></i>--%>
+<%--                            <cite>${menuRole.menu.title}</cite>--%>
+<%--                            <i class="iconfont nav_right">&#xe697;</i>--%>
+<%--                        </a>--%>
+<%--                        <c:forEach items="${menu}" var="menu">--%>
+<%--                            <c:if test="${menu.pId==menuRole.menuId}">--%>
+<%--                                <ul class="sub-menu">--%>
+<%--                                    <li>--%>
+<%--                                        <a onclick="xadmin.add_tab('${menu.title}','${menu.url}')">--%>
+<%--                                            <i class="iconfont">&#xe6a7;</i>--%>
+<%--                                            <cite>${menu.title }</cite>--%>
+<%--                                        </a>--%>
+<%--                                    </li>--%>
+<%--                                </ul>--%>
+<%--                            </c:if>--%>
+<%--                        </c:forEach>--%>
+<%--                    </li>--%>
+<%--                </c:forEach>--%>
+<%--            </ul>--%>
+<%--        </div>--%>
+<%--    </div>--%>
     <!-- <div class="x-slide_left"></div> -->
     <!-- 左侧菜单结束 -->
 

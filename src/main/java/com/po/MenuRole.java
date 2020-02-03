@@ -1,35 +1,35 @@
 package com.po;
 
 public class MenuRole {
-    private Integer mrId;
-    private Integer menuId;
-    private Integer roleId;
+    private Integer mr_id;
+    private Integer menu_id;
+    private Integer role_id;
 
     private Role role;
     private Menu menu;
 
-    public Integer getMrId() {
-        return mrId;
+    public Integer getMr_id() {
+        return mr_id;
     }
 
-    public void setMrId(Integer mrId) {
-        this.mrId = mrId;
+    public void setMr_id(Integer mr_id) {
+        this.mr_id = mr_id;
     }
 
-    public Integer getMenuId() {
-        return menuId;
+    public Integer getMenu_id() {
+        return menu_id;
     }
 
-    public void setMenuId(Integer menuId) {
-        this.menuId = menuId;
+    public void setMenu_id(Integer menu_id) {
+        this.menu_id = menu_id;
     }
 
-    public Integer getRoleId() {
-        return roleId;
+    public Integer getRole_id() {
+        return role_id;
     }
 
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
+    public void setRole_id(Integer role_id) {
+        this.role_id = role_id;
     }
 
     public Role getRole() {

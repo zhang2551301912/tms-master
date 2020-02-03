@@ -1,15 +1,15 @@
 package com.po;
 
 public class Role {
-    private Integer roleId;
+    private Integer role_id;
     private String name;
 
-    public Integer getRoleId() {
-        return roleId;
+    public Integer getRole_id() {
+        return role_id;
     }
 
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
+    public void setRole_id(Integer role_id) {
+        this.role_id = role_id;
     }
 
     public String getName() {

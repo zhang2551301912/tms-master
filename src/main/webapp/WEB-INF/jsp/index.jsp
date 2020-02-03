@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/xadmin.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/lib/layui/layui.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
 </head>
 <body class="index">
     <!-- 顶部开始 -->
@@ -31,8 +32,14 @@
                 <a href="javascript:;">
                     欢迎&nbsp;<%=u.getName() %>&nbsp;！
                 </a>
+                <dl class="layui-nav-child">
+                    <!-- 二级菜单 -->
+                    <dd>
+                        <a href="../login">退出</a>
+                    </dd>
+                </dl>
             </li>
-             <li class="layui-nav-item to-index"><a href="${pageContext.request.contextPath}/login">切换用户</a></li>
+<%--             <li class="layui-nav-item to-index"><a href="${pageContext.request.contextPath}/login">切换用户</a></li>--%>
         </ul>
     </div>
     <!-- 顶部结束 -->
@@ -49,7 +56,7 @@
                             <i class="iconfont nav_right">&#xe697;</i>
                         </a>
                         <c:forEach items="${menu}" var="menu">
-                            <c:if test="${menu.pId==menuRole.menuId}">
+                            <c:if test="${menu.p_id==menuRole.menu_id}">
                                 <ul class="sub-menu">
                                     <li>
                                         <a onclick="xadmin.add_tab('${menu.title}','${menu.url}')">
@@ -67,6 +74,9 @@
     </div>
     <!-- <div class="x-slide_left"></div> -->
     <!-- 左侧菜单结束 -->
+
+
+
 
     <!-- 右侧主体开始 -->
     <div class="page-content">

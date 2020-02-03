@@ -4,25 +4,25 @@
   <!--根据ID和role查询用户-->
   <select id="getUserByIdAndRole" resultType="com.po.User" parameterType="com.po.User">
 	select * from user
-	where user_Id=#{userId,jdbcType=INTEGER} and pwd=#{pwd,jdbcType=VARCHAR} and role_id=#{roleId,jdbcType=INTEGER};
+	where user_Id=#{user_id,jdbcType=INTEGER} and pwd=#{pwd,jdbcType=VARCHAR} and role_id=#{role_id,jdbcType=INTEGER};
   </select>
 
   <!-- 菜单角色-->
   <resultMap id="MenuAndRole" type="com.po.MenuRole">
-    <id column="mr_id" jdbcType="INTEGER" property="mrId" />
-    <result column="menu_id" jdbcType="INTEGER" property="menuId"/>
-    <result column="role_id" jdbcType="INTEGER" property="roleId"/>
+    <id column="mr_id" jdbcType="INTEGER" property="mr_id" />
+    <result column="menu_id" jdbcType="INTEGER" property="menu_id"/>
+    <result column="role_id" jdbcType="INTEGER" property="role_id"/>
     <association property="menu" javaType="com.po.Menu">
-      <id column="menu_id" jdbcType="INTEGER" property="menuId" />
+      <id column="menu_id" jdbcType="INTEGER" property="menu_id" />
       <result column="title" jdbcType="VARCHAR" property="title"/>
       <result column="url" jdbcType="VARCHAR" property="url"/>
-      <result column="p_id" jdbcType="INTEGER" property="pId"/>
+      <result column="p_id" jdbcType="INTEGER" property="p_id"/>
       <result column="sort" jdbcType="INTEGER" property="sort"/>
       <result column="grade" jdbcType="INTEGER" property="grade"/>
       <result column="remark" jdbcType="VARCHAR" property="remark"/>
     </association>
     <association property="role" javaType="com.po.Role">
-      <id column="role_id" jdbcType="INTEGER" property="roleId" />
+      <id column="role_id" jdbcType="INTEGER" property="role_id" />
       <result column="name" jdbcType="VARCHAR" property="name"/>
     </association>
   </resultMap>
@@ -47,7 +47,7 @@
 
   <!-- 根据父级菜单查找子菜单 -->
   <select id="getMenuByPid" resultType="com.po.Menu" parameterType="int">
-		select * from menu where p_id=#{pId,jdbcType=INTEGER} ORDER BY sort;
+		select * from menu where p_id=#{p_id,jdbcType=INTEGER} ORDER BY sort;
   </select>
 
 </mapper>

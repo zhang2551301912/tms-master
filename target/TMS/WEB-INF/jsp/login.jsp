@@ -39,22 +39,22 @@
 <script type="text/javascript">
     layui.use('layer',function () {
         $("#submit").on('click',function () {
-            var userId=$("#username").val();
+            var user_id=$("#username").val();
             var pwd=$("#pwd").val();
-            var role=$('option[name="role"]:checked').val();
-            if(userId==''||pwd==''){
+            var role_id=$('option[name="role"]:checked').val();
+            if(user_id==''||pwd==''){
                 layer.msg('账号或密码不能为空');
             }else {
-                var param={userId:userId,pwd:pwd,role:role};
+                var param={user_id:user_id,pwd:pwd,role_id:role_id};
                 var url="${pageContext.request.contextPath}/loginSubmit";
                 $.get(url,param, function (data) {
                         if(data.flag==1){
                             layer.msg("登录成功");
-                            if(role==1){
+                            if(role_id==1){
                                 location.href="${pageContext.request.contextPath}/admin/index";
-                            }else if(role==2){
+                            }else if(role_id==2){
                                 location.href="${pageContext.request.contextPath}/teacher/index";
-                            }else if(role==3){
+                            }else if(role_id==3){
                                 location.href="${pageContext.request.contextPath}/parent/index";
                             }
                         }else {

@@ -52,8 +52,8 @@ public class LoginServiceImpl implements LoginService {
 
     //根据父级ID获取子菜单
     @Override
-    public List<Menu> getMenuByPid(Integer pId) {
-        return loginMapper.getMenuByPid(pId);
+    public List<Menu> getMenuByPid(Integer p_id) {
+        return loginMapper.getMenuByPid(p_id);
     }
 
 }

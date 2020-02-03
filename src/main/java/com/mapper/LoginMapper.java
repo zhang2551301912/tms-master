@@ -1,6 +1,5 @@
 package com.mapper;
 
-
 import com.po.Menu;
 import com.po.MenuRole;
 import com.po.User;
@@ -22,5 +21,5 @@ public interface LoginMapper {
     List<MenuRole> getParentByMenuAndRole();
 
     //根据父级ID获取子菜单
-    List<Menu> getMenuByPid(Integer pId);
+    List<Menu> getMenuByPid(Integer p_id);
 }

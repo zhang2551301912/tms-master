@@ -29,12 +29,12 @@ public class LoginController {
     //登录验证
     @RequestMapping(value = "loginSubmit",method = RequestMethod.GET)
     @ResponseBody
-    public ResultMsg LoginSubmit(Integer userId,String pwd,Integer role, HttpSession session){
-        System.out.println(userId+" "+pwd+" "+role);
+    public ResultMsg LoginSubmit(Integer user_id,String pwd,Integer role_id, HttpSession session){
+        System.out.println(user_id+" "+pwd+" "+role_id);
         User user=new User();
-        user.setUserId(userId);
+        user.setUser_id(user_id);
         user.setPwd(pwd);
-        user.setRoleId(role);
+        user.setRole_id(role_id);
         ResultMsg rs=null;
         boolean isLogin=loginService.Login(user);//是否登录成功验证
         if(isLogin){
