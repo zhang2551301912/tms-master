@@ -7,39 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fec41df-1ab9-45c6-9e49-7e9202deb78e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/LoginMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapper/LoginMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/po/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/po/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/po/MenuRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/po/MenuRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/po/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/po/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/po/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/po/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/impl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/impl/LoginServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/AdminMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/AdminMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/LoginMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/LoginMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/po/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/po/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/po/MenuRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/po/MenuRole.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/po/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/po/Role.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/po/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/po/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/service/impl/LoginServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/service/impl/LoginServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/mapper/AdminMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/mapper/AdminMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/mapper/LoginMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/mapper/LoginMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/po/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/po/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/po/MenuRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/po/MenuRole.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/po/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/po/Role.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/po/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/po/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/service/impl/LoginServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/impl/LoginServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/AdminMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/AdminMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/LoginMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/LoginMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,17 +198,12 @@
     <option name="viewStates">
       <list>
         <serviceView>
-          <option name="contentProportion" value="0.15505464" />
+          <option name="contentProportion" value="0.18579236" />
           <treeState>
             <expand>
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
@@ -284,6 +247,7 @@
       <workItem from="1580612206155" duration="5094000" />
       <workItem from="1580625108556" duration="1063000" />
       <workItem from="1580695548454" duration="2354000" />
+      <workItem from="1580701424150" duration="83000" />
     </task>
     <servers />
   </component>
