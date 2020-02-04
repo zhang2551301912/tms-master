@@ -1,7 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mapper.AdminMapper">
+    <!-- 查询二级菜单-->
     <select id="getMenu" resultType="com.po.Menu">
         select * from menu where grade=2 order by sort
     </select>
+    <!-- 查询教师信息-->
+    <select id="getTeacher" resultType="com.po.User">
+        select * from user where role_id=2
+    </select>
+    <!-- 查询家长信息-->
+    <select id="getParent" resultType="com.po.User">
+        select * from user where role_id=3
+    </select>
+    <!-- 查询学生信息-->
+    <select id="getStudent" resultType="com.po.User">
+        select * from user where role_id=4
+    </select>
+    <!-- 查询所有角色-->
+    <select id="getRole" resultType="com.po.Role">
+        select * from role
+    </select>
+    <!-- 添加用户-->
+    <insert id="addUserSubmit" parameterType="com.po.User">
+        insert into user(user_id,name,pwd,phone_no,role_id)
+        values(#{user_id},#{name},#{pwd},#{phone_no},#{role_id})
+    </insert>
+    <!-- 修改用户-->
+    <update id="updateUser" parameterType="com.po.User">
+        update user set pwd=#{pwd},phone_no=#{phone_no},role_id=#{role_id} where user_id=#{user_id}
+    </update>
+    <!-- 查询用户-->
+    <select id="getUser" resultType="com.po.User" parameterType="com.po.User">
+        select * from user
+    </select>
+    <!--删除用户-->
+    <delete id="deleteUser" parameterType="int">
+        delete from user where user_Id=#{user_id}
+    </delete>
+    <!--重置密码-->
+    <update id="updatePwd" parameterType="com.po.User">
+        update user set pwd=123 where user_id=#{user_id}
+    </update>
 </mapper>
