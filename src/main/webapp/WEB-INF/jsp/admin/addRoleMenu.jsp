@@ -3,65 +3,48 @@
 <html class="x-admin-sm">
     <head>
         <meta charset="UTF-8">
-        <title>添加用户</title>
-        <meta name="renderer" content="webkit|ie-comp|ie-stand">
+        <title>添加角色菜单</title>
+        <meta name="renderer" content="webkit">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta http-equiv="Cache-Control" content="no-siteapp"/>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/xadmin.css">
-        <script type="text/javascript" src="${pageContext.request.contextPath}/lib/layui/layui.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js" ></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
     </head>
     <body>
         <div class="layui-fluid">
             <div class="layui-row">
                 <form class="layui-form" id="form">
+
                     <div class="layui-form-item">
                         <label for="L_email" class="layui-form-label">
-                            <span class="x-red">*</span>账号</label>
+                            <span class="x-red">*</span>角色名</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="user_id" name="user_id" required="" lay-verify="" autocomplete="off" class="layui-input"></div>
+                        	<select name="role_id" id="select1" name="select">
+	                            	<c:forEach items="${roles}" var="role">
+	                            		<option value="${role.role_id}">${role.name }
+	                            	</c:forEach>
+	                        </select>    
+                        </div>
                     </div>
-
+                    
                     <div class="layui-form-item">
                         <label for="L_username" class="layui-form-label">
-                            <span class="x-red">*</span>姓名</label>
+                            <span class="x-red">*</span>菜单名</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="name" name="name" required="" lay-verify="nikename" autocomplete="off" class="layui-input">
+                        	<select name="menu_id" id="select2" name="select">
+	                            	<c:forEach items="${menus}" var="menu">
+	                            		<option value="${menu.menu_id}">${menu.title }
+	                            	</c:forEach>
+	                        </select>
                         </div>
                     </div>
-
-                    <div class="layui-form-item">
-                        <label for="L_username" class="layui-form-label">
-                            <span class="x-red">*</span>密码</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="pwd" name="pwd" required="" lay-verify="nikename" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-
-                     <div class="layui-form-item">
-                        <label for="L_username" class="layui-form-label">
-                            <span class="x-red">*</span>电话号码</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="phone_no" name="phone_no" required="" lay-verify="nikename" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-
-                    <div class="layui-form-item">
-                        <label for="L_username" class="layui-form-label">
-                            <span class="x-red">*</span>角色</label>
-                        <div class="layui-input-inline">
-                            <select name="role_id">
-                                <c:forEach items="${roles}" var="role">
-                                    <option value="${role.role_id}">${role.name}
-                                </c:forEach>
-                            </select>
-                        </div>
-                    </div>
-
+                    
                     <div class="layui-form-item">
                         <label for="L_repass" class="layui-form-label"></label>
-                        <button class="layui-btn" type="button" lay-filter="add" lay-submit="" >增加</button></div>
+                        <button class="layui-btn" type="button" lay-filter="add" lay-submit="" >增加</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -72,13 +55,12 @@
                 $ = layui.jquery;
                 var form = layui.form,
                 layer = layui.layer;
-
+                
                 //自定义验证规则
                 //监听提交
-
-               	url= "${pageContext.request.contextPath}/admin/addUserSubmit";
+              	
+               	url= "${pageContext.request.contextPath}/admin/addRoleMenuSubmit";
                	form.on('submit(add)',function(sub){
-
                		var param = $("#form").serialize();
                		$.post(url,param,function(data){
                			if(data.flag==1){
@@ -90,7 +72,7 @@
                				  	xadmin.close();//关闭当前frame
                				  	xadmin.father_reload();//刷新父窗口
                				});
-
+               				
                			}else{
                				layer.alert("添加失败",{
            						icon:5
@@ -99,9 +81,9 @@
            						window.location.reload();
            					});
                			}
-
+						
                		});
-
+               		
                	})
             });
         </script>

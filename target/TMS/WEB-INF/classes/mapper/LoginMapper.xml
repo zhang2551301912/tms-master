@@ -27,27 +27,22 @@
     </association>
   </resultMap>
 
-<!--  获取管理员菜单-->
+  <!--获取管理员菜单-->
   <select id="getAdminByMenuAndRole" resultMap="MenuAndRole">
     select * from menu_role,menu,role
-    where menu_role.menu_id=menu.menu_id and menu_role.role_id=role.role_id and menu_role.role_id=1;
+    where menu_role.menu_id=menu.menu_id and menu_role.role_id=role.role_id and menu_role.role_id=1 order by menu_role.menu_id;
   </select>
 
   <!--  获取教师菜单-->
   <select id="getTeacherByMenuAndRole" resultMap="MenuAndRole">
     select * from menu_role,menu,role
-    where menu_role.menu_id=menu.menu_id and menu_role.role_id=role.role_id and menu_role.role_id=2;
+    where menu_role.menu_id=menu.menu_id and menu_role.role_id=role.role_id and menu_role.role_id=2 order by menu_role.menu_id;
   </select>
 
   <!--  获取家长菜单-->
   <select id="getParentByMenuAndRole" resultMap="MenuAndRole">
     select * from menu_role,menu,role
-    where menu_role.menu_id=menu.menu_id and menu_role.role_id=role.role_id and menu_role.role_id=3;
-  </select>
-
-  <!-- 根据父级菜单查找子菜单 -->
-  <select id="getMenuByPid" resultType="com.po.Menu" parameterType="int">
-		select * from menu where p_id=#{p_id,jdbcType=INTEGER} ORDER BY sort;
+    where menu_role.menu_id=menu.menu_id and menu_role.role_id=role.role_id and menu_role.role_id=3 order by menu_role.menu_id;
   </select>
 
 </mapper>

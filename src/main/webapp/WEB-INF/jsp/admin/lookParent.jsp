@@ -3,7 +3,7 @@
 <html class="x-admin-sm">
 <head>
 <meta charset="UTF-8">
-<title>在线学习后台管理系统</title>
+<title>查看家长</title>
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta http-equiv="Cache-Control" content="no-siteapp" />

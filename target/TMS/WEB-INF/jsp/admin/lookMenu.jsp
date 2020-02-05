@@ -3,22 +3,26 @@
 <html class="x-admin-sm">
 <head>
 <meta charset="UTF-8">
-<title>查看学生</title>
+<title>查看菜单</title>
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/xadmin.css">
-    <script type="text/javascript" src="${pageContext.request.contextPath}/lib/layui/layui.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/xadmin.css">
+<script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
+<script>
+            // 是否开启刷新记忆tab功能
+            // var is_remember = false;
+        </script>
 </head>
 <body>
         <div class="x-nav">
           <span class="layui-breadcrumb">
             <a href="">首页</a>
-            <a href="">用户管理</a>
+            <a href="">菜单管理</a>
             <a>
-              <cite>查看学生</cite></a>
+              <cite>查看菜单</cite></a>
           </span>
           <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
             <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
@@ -29,7 +33,7 @@
                     <div class="layui-card">
                         <div class="layui-card-header">
                             <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-                            <button class="layui-btn" onclick="xadmin.open('添加用户','addUser',600,400)"><i class="layui-icon"></i>添加</button>
+                            <button class="layui-btn" onclick="xadmin.open('添加菜单','addMenu',600,400)"><i class="layui-icon"></i>添加</button>
                         </div>
                         <div class="layui-card-body layui-table-body layui-table-main">
                             <table class="layui-table layui-form">
@@ -39,28 +43,32 @@
                                       <input type="checkbox" lay-filter="checkall" name="" lay-skin="primary">
                                     </th>
                                     <th>ID</th>
-                                    <th>姓名</th>
-                                    <th>密码</th>
-                                    <th>电话号码</th>
+                                    <th>菜单名</th>              
+                                    <th>地址</th>
+                                    <th>菜单等级</th>
+                                    <th>父级菜单ID</th>
+                                    <th>排序编号</th>
+                                    <th>备注</th>
                                     <th>操作</th>
                                   </tr>
                                 </thead>
                                 <tbody>
-                     				<c:forEach items="${students}" var="s">
+                     				<c:forEach items="${menu}" var="m">
                      					<tr>
-                     						<td> <input type="checkbox" value="${s.user_id}" lay-filter="check" name="" lay-skin="primary"></td>
-                     						<td>${s.user_id}</td>
-	                     					<td>${s.name}</td>
-                                            <td>${s.pwd}</td>
-	                     					<td>${s.phone_no}</td>
+                     						<td> <input type="checkbox" value="${m.menu_id}" lay-filter="check" name="" lay-skin="primary"></td>
+                     						<td>${m.menu_id}</td>
+	                     					<td>${m.title}</td>
+	                     					<td>${m.url}</td>
+	                     					<td>${m.grade}</td>
+	                     					<td>${m.p_id}</td>
+	                     					<td>${m.sort}</td>
+	                     					<td>${m.remark}</td>
+	                     					
 	                     					<td class="td-manage">
-	                     					  <a title="编辑"  onclick="xadmin.open('编辑','updateStudent?id=${s.user_id}',600,400)" href="javascript:;">
+		                                      <a title="编辑"  onclick="xadmin.open('编辑','updateMenu?menu_id=${m.menu_id}',600,400)" href="javascript:;">
 		                                        <i class="layui-icon">&#xe642;</i>
 		                                      </a>
-		                                      <a onclick="rePass(${s.user_id})" title="重置密码" href="javascript:;">
-			                                     <i class="layui-icon">&#xe631;</i>
-			                                  </a>
-		                                      <a title="删除" onclick="member_del(this,'${s.user_id}')" href="javascript:;">
+		                                      <a title="删除" onclick="member_del(this,'${m.menu_id}')" href="javascript:;">
 		                                        <i class="layui-icon">&#xe640;</i>
 		                                      </a>
 	                                    	</td>
@@ -111,8 +119,8 @@
       function member_del(obj,id){
     	  layer.confirm('确认要删除吗？',function(index){
               //发异步删除数据
-             parm={user_id:id}
-         	 url= "${pageContext.request.contextPath}/admin/deleteUser";
+             parm={menu_id:id}
+         	 url= "${pageContext.request.contextPath}/admin/deleteMenu";
          	 $.post(url,parm,function(data){
          		 if(data.flag==1){
          			$(obj).parents("tr").remove();
@@ -128,18 +136,18 @@
 
       //批量删除
       function delAll (argument) {
-    	  var user_ids = [];
+    	  var menu_ids = [];
           // 获取选中的id 
           $('tbody input').each(function(index, el) {
               if($(this).prop('checked')){
-                  user_ids.push($(this).val())
+                  menu_ids.push($(this).val())
               }
           });
-          layer.confirm('确认要删除吗？'+user_ids.toString(),function(index){
+          layer.confirm('确认要删除吗？'+menu_ids.toString(),function(index){
               //捉到所有被选中的，发异步进行删除
                $.ajax({
-              	url:"${pageContext.request.contextPath}/admin/batchDeleteUser",
-   			    data:{user_ids:user_ids},
+              	url:"${pageContext.request.contextPath}/admin/batchDeleteMenu",
+   			    data:{menu_ids:menu_ids},
    			    type:"Post",
    			    dataType: "json",
    			  	traditional:true,
@@ -161,31 +169,5 @@
                })      
           });
         }
-
-      /*用户-重置密码*/
-      function rePass(user_id){
-          layer.confirm('确认要重置该用户的密码吗？',function(index){
-              //发异步修改数据
-              parm={user_id:user_id}
-              url= "${pageContext.request.contextPath}/admin/updatePwd";
-              $.post(url,parm,function(data){
-                  if(data.flag==1){
-                      layer.msg('重置成功!',{icon:1,time:1000}, function(){
-                              xadmin.close()//关闭当前frame
-                              xadmin.father_reload();//刷新父窗口
-                          }
-                      );
-                  }else{
-                      layer.msg("重置失败",{
-                              icon:5
-                          },
-                          function(){
-                              xadmin.close();//关闭当前frame
-                              xadmin.father_reload();//刷新父窗口
-                          });
-                  }
-              })
-          });
-      }
     </script>
 </html>

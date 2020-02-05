@@ -3,7 +3,7 @@
 <html class="x-admin-sm">
 <head>
 <meta charset="UTF-8">
-<title>在线学习后台管理系统</title>
+<title>查看教师</title>
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -57,7 +57,7 @@
                                             <td>${t.pwd}</td>
 	                     					<td>${t.phone_no}</td>
 	                     					<td class="td-manage">
-	                     					  <a title="编辑"  onclick="xadmin.open('编辑','updateTeacher?id=${t.user_id}',600,400)" href="javascript:;">
+	                     					  <a title="编辑"  onclick="xadmin.open('编辑','updateTeacher?user_id=${t.user_id}',600,400)" href="javascript:;">
 		                                        <i class="layui-icon">&#xe642;</i>
 		                                      </a>
 		                                      <a onclick="rePass(${t.user_id})" title="重置密码" href="javascript:;">

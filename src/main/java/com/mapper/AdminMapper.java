@@ -1,6 +1,7 @@
 package com.mapper;
 
 import com.po.Menu;
+import com.po.MenuRole;
 import com.po.Role;
 import com.po.User;
 
@@ -27,4 +28,26 @@ public interface AdminMapper {
     int deleteUser(Integer user_id);
     //重置密码
     Integer updatePwd(Integer user_id);
+    //查询父级菜单
+    List<Menu> getMenusParent();
+    //添加菜单
+    int addMenuSubmit(Menu menu);
+    //删除菜单
+    int deleteMenu(Integer menu_id);
+    //更新菜单
+    int updateMenu(Menu menu);
+    //查询二级菜单
+    List<Menu> getSonMenu();
+    //关联新增角色菜单
+    int addRoleMenu(MenuRole mr);
+    //删除角色菜单
+    int deleteRoleMenu(Integer mr_id);
+    //查询角色菜单
+    List<MenuRole> getRoleMenu();
+    //添加角色
+    int addRoleSubmit(Role role);
+    //删除角色
+    int deleteRole(Integer role_id);
+    //更新角色
+    int updateRole(Role role);
 }

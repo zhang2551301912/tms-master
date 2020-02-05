@@ -13,7 +13,7 @@
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
-    <title>教师管理系统</title>
+    <title>基于SSM框架的教师管理系统</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>

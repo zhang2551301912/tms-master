@@ -192,4 +192,261 @@ public class AdminController {
         }
         return rs;
     }
+    //查看菜单
+    @RequestMapping("lookMenu")
+    public ModelAndView lookMenu() {
+        List<Menu> menus=adminService.getMenu();
+        for(Menu m:menus) {
+            System.out.println(m.getTitle()+" "+m.getP_id()+" "+m.getMenu_id());
+        }
+        ModelAndView mv=new ModelAndView("admin/lookMenu");
+        mv.addObject("menu", menus);
+        return mv;
+    }
+    //添加菜单页面
+    @RequestMapping("addMenu")
+    public ModelAndView addMenu() {
+        List<Menu> m=adminService.getMenusParent();
+        ModelAndView mv=new ModelAndView("admin/addMenu");
+        mv.addObject("parent", m);
+        return mv;
+    }
+    //添加菜单
+    @RequestMapping("addMenuSubmit")
+    @ResponseBody
+    public ResultMsg addMenuSubmit(String title,String url,Integer grade,Integer p_id,Integer sort,String remark) {
+        Menu menu=new Menu();
+        menu.setTitle(title);
+        menu.setUrl(url);
+        menu.setGrade(grade);
+        menu.setP_id(p_id);
+        menu.setSort(sort);
+        menu.setRemark(remark);
+        int i=adminService.addMenuSubmit(menu);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "添加成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "添加失败");
+        }
+        return rs;
+    }
+    //删除菜单
+    @RequestMapping(value = "deleteMenu")
+    @ResponseBody
+    public ResultMsg deleteMenu(Integer menu_id) {
+        int i=adminService.deleteMenu(menu_id);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+    //批量删除菜单
+    @RequestMapping(value = "batchDeleteMenu")
+    @ResponseBody
+    public ResultMsg batchDeleteMenu(Integer[] menu_ids) {
+        boolean isDelete=false;
+        for(int menu_id:menu_ids) {
+            int i=adminService.deleteMenu(menu_id);
+            if(i>0) {
+                isDelete=true;
+            }else {
+                isDelete=false;
+            }
+        }
+        ResultMsg rs=null;
+        if(isDelete) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+    //修改菜单页面
+    @RequestMapping("updateMenu")
+    public ModelAndView updateMenu(Integer menu_id) {
+        System.out.println(menu_id);
+        List<Menu> menus=adminService.getMenu();
+        Menu menu=null;
+        for(Menu m:menus) {
+            if(m.getMenu_id()==menu_id){
+                menu=m;
+            }
+        }
+        List<Menu> p=adminService.getMenusParent();
+        ModelAndView mv=new ModelAndView("admin/updateMenu");
+        mv.addObject("menu", menu);
+        mv.addObject("parent", p);
+        return mv;
+    }
+    //修改菜单信息
+    @RequestMapping("updateMenuSubmit")
+    @ResponseBody
+    public ResultMsg updateMenu(Integer menu_id,String title,String url,Integer grade,Integer p_id,Integer sort,String remark) {
+        ResultMsg rs=null;
+        Menu menu=new Menu();
+        menu.setMenu_id(menu_id);
+        menu.setTitle(title);
+        menu.setUrl(url);
+        menu.setGrade(grade);
+        menu.setP_id(p_id);
+        menu.setSort(sort);
+        menu.setRemark(remark);
+        System.out.println(title+" "+url);
+        int i=adminService.updateMenu(menu);
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "修改成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "修改失败");
+        }
+        return rs;
+    }
+    //关联菜单页面
+    @RequestMapping("lookRoleMenu")
+    public ModelAndView lookRoleMenu() {
+        List<MenuRole> adminMenu=loginService.getAdminByMenuAndRole();//管理员的菜单表
+        List<MenuRole> teacherMenu=loginService.getTeacherByMenuAndRole();//教师的菜单表
+        List<MenuRole> parentMenu=loginService.getParentByMenuAndRole();//家长的菜单表
+        ModelAndView mv=new ModelAndView("admin/lookRoleMenu");
+        mv.addObject("admin", adminMenu);
+        mv.addObject("teacher", teacherMenu);
+        mv.addObject("parent", parentMenu);
+        return mv;
+    }
+    //添加关联菜单页面
+    @RequestMapping("addRoleMenu")
+    public ModelAndView addRoleMenu() {
+        List<Role> roles=adminService.getRole();
+        List<Menu> menus=adminService.getMenusParent();
+        ModelAndView mv=new ModelAndView("admin/addRoleMenu");
+        mv.addObject("roles", roles);
+        mv.addObject("menus", menus);
+        return mv;
+    }
+    //添加角色菜单到数据库
+    @RequestMapping("addRoleMenuSubmit")
+    @ResponseBody
+    public ResultMsg addRoleMenuSubmit(Integer role_id,Integer menu_id) {
+        MenuRole rm=new MenuRole();
+        rm.setRole_id(role_id);
+        rm.setMenu_id(menu_id);
+        int i=adminService.addRoleMenu(rm);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "添加成功");
+       }else {
+            rs=new ResultMsg(Flag.FAIL, "添加失败");
+       }
+        return rs;
+    }
+    //删除角色菜单
+    @RequestMapping("deleteRoleMenu")
+    @ResponseBody
+    public ResultMsg delRoleMenu(Integer mr_id) {
+        int i=adminService.deleteRoleMenu(mr_id);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+    //查看角色页面
+    @RequestMapping("/lookRole")
+    public ModelAndView lookRoles() {
+        List<Role> roles=adminService.getRole();
+        ModelAndView mv=new ModelAndView("admin/lookRole");
+        mv.addObject("roles", roles);
+        return mv;
+    }
+    //添加角色页面
+    @RequestMapping("/addRole")
+    public ModelAndView addRole() {
+        ModelAndView mv=new ModelAndView("admin/addRole");
+        return mv;
+    }
+    //添加角色
+    @RequestMapping("addRoleSubmit")
+    @ResponseBody
+    public ResultMsg addRoleSubmit(Integer role_id,String name) {
+        Role role=new Role();
+        role.setRole_id(role_id);
+        role.setName(name);
+        int i=adminService.addRoleSubmit(role);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "添加成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "添加失败");
+        }
+        return rs;
+    }
+    //删除角色
+    @RequestMapping("deleteRole")
+    @ResponseBody
+    public ResultMsg delRole(Integer role_id) {
+        int i=adminService.deleteRole(role_id);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+    //批量删除角色
+    @RequestMapping(value = "batchDeleteRole")
+    @ResponseBody
+    public ResultMsg batchDeleteRole(Integer[] role_ids) {
+        System.out.println(role_ids);
+        boolean isDelete=false;
+        for(int role_id:role_ids) {
+            int i=adminService.deleteRole(role_id);
+            if(i>0) {
+                isDelete=true;
+            }else {
+                isDelete=false;
+            }
+        }
+        ResultMsg rs=null;
+        if(isDelete) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+    //更新角色名页面
+    @RequestMapping("updateRole")
+    public ModelAndView updateRole(Integer role_id) {
+        System.out.println(role_id);
+        List<Role> roles=adminService.getRole();
+        Role role=null;
+        for(Role r:roles){
+            role=r;
+        }
+        ModelAndView mv=new ModelAndView("admin/updateRole");
+        mv.addObject("role", role);
+        return mv;
+    }
+    //修改菜单信息
+    @RequestMapping("updateRoleSubmit")
+    @ResponseBody
+    public ResultMsg updateMenu(Integer role_id,String name) {
+        ResultMsg rs=null;
+        Role role=new Role();
+        role.setRole_id(role_id);
+        role.setName(name);
+        int i=adminService.updateRole(role);
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "修改成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "修改失败");
+        }
+        return rs;
+    }
 }

@@ -3,7 +3,7 @@
 <html class="x-admin-sm">
     <head>
         <meta charset="UTF-8">
-        <title>修改用户信息</title>
+        <title>修改教师信息</title>
         <meta name="renderer" content="webkit|ie-comp|ie-stand">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta http-equiv="Cache-Control" content="no-siteapp" />

@@ -47,7 +47,7 @@
                 
             </div>
             <div class="t_mid_main">
-                <h1>教师管理系统</h1>
+                <h1>基于SSM框架的教师管理系统</h1>
             </div>
         </div>
         </div>

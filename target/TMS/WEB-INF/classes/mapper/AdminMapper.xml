@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mapper.AdminMapper">
-    <!-- 查询二级菜单-->
+    <!-- 查询所有菜单-->
     <select id="getMenu" resultType="com.po.Menu">
-        select * from menu where grade=2 order by sort
+        select * from menu
+    </select>
+    <!-- 查询二级菜单-->
+    <select id="getSonMenu" resultType="com.po.Menu">
+        select * from menu where grade=1
     </select>
     <!-- 查询教师信息-->
     <select id="getTeacher" resultType="com.po.User">
@@ -41,5 +45,48 @@
     <!--重置密码-->
     <update id="updatePwd" parameterType="com.po.User">
         update user set pwd=123 where user_id=#{user_id}
+    </update>
+    <!-- 查询出所有的父级菜单 -->
+    <select id="getMenusParent" resultType="com.po.Menu">
+		select * from menu where grade=1
+	</select>
+    <!-- 添加菜单-->
+    <insert id="addMenuSubmit" parameterType="com.po.Menu">
+        insert into menu(title,url,grade,p_id,sort,remark)
+        values(#{title},#{url},#{grade},#{p_id},#{sort},#{remark})
+    </insert>
+    <!--删除菜单-->
+    <delete id="deleteMenu" parameterType="int">
+        delete from menu where menu_Id=#{menu_id}
+    </delete>
+    <!-- 更新菜单-->
+    <update id="updateMenu" parameterType="com.po.Menu">
+        update menu set title=#{title},url=#{url},grade=#{grade},p_id=#{p_id},sort=#{sort},remark=#{remark}
+        where menu_id=#{menu_id}
+    </update>
+    <!--关联新增角色菜单 -->
+    <insert id="addRoleMenu" parameterType="com.po.MenuRole">
+		insert into menu_role(role_id,menu_id) values(#{role_id},#{menu_id})
+	</insert>
+    <!-- 删除角色菜单 -->
+    <delete id="deleteRoleMenu" parameterType="int">
+		delete from menu_role where mr_id=#{mr_id}
+	</delete>
+    <!-- 查询角色菜单 -->
+    <select id="getRoleMenu" resultType="com.po.MenuRole">
+		select * from menu_role order by menu_id
+	</select>
+    <!-- 添加角色-->
+    <insert id="addRoleSubmit" parameterType="com.po.Role">
+        insert into role(role_id,name) values(#{role_id},#{name})
+    </insert>
+    <!-- 删除角色-->
+    <delete id="deleteRole" parameterType="int">
+		delete from role where role_id=#{role_id}
+	</delete>
+    <!-- 更新角色-->
+    <update id="updateRole" parameterType="com.po.Role">
+        update role set name=#{name}
+        where role_id=#{role_id}
     </update>
 </mapper>
