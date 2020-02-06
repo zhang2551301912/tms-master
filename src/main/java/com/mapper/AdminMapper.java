@@ -1,9 +1,6 @@
 package com.mapper;
 
-import com.po.Menu;
-import com.po.MenuRole;
-import com.po.Role;
-import com.po.User;
+import com.po.*;
 
 import java.util.List;
 
@@ -50,4 +47,21 @@ public interface AdminMapper {
     int deleteRole(Integer role_id);
     //更新角色
     int updateRole(Role role);
+    //查询课程
+    List<Course> getCourse();
+    //添加课程
+    int addCourse(Course course);
+    //删除课程
+    int deleteCourse(Integer course_id);
+    //更新课程
+    int updateCourse(Course course);
+    //查询绩效
+    List<Achievement> getAchievement();
+    //添加绩效
+    int addAchievement(Achievement achievement);
+    //删除绩效
+    int deleteAchievement(Integer achi_id);
+    //更新绩效
+    int updateAchievement(Achievement achievement);
+
 }

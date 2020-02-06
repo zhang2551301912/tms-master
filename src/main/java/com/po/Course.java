@@ -3,31 +3,59 @@ package com.po;
 import java.math.BigDecimal;
 
 public class Course {
-    private Integer courseId;
-    private String courseName;
-    private BigDecimal coursePrice;
+    private Integer course_id;
+    private String name;
+    private BigDecimal price;
+    private String unit;
+    private String url;
+    private Integer sort;
 
-    public Integer getCourseId() {
-        return courseId;
+    public Integer getCourse_id() {
+        return course_id;
     }
 
-    public void setCourseId(Integer courseId) {
-        this.courseId = courseId;
+    public void setCourse_id(Integer course_id) {
+        this.course_id = course_id;
     }
 
-    public String getCourseName() {
-        return courseName;
+    public String getName() {
+        return name;
     }
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public BigDecimal getCoursePrice() {
-        return coursePrice;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setCoursePrice(BigDecimal coursePrice) {
-        this.coursePrice = coursePrice;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
 }

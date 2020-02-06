@@ -89,4 +89,77 @@
         update role set name=#{name}
         where role_id=#{role_id}
     </update>
+    <!-- 查询课程-->
+    <select id="getCourse" resultType="com.po.Course">
+		select * from course order by course_id
+	</select>
+    <!-- 添加课程-->
+    <insert id="addCourse" parameterType="com.po.Course">
+        insert into course(course_id,name,price,unit,url,sort) values(#{course_id},#{name},#{price},#{unit},#{url},#{sort})
+    </insert>
+    <!-- 删除课程-->
+    <delete id="deleteCourse" parameterType="int">
+		delete from course where course_id=#{course_id}
+	</delete>
+    <!-- 更新课程-->
+    <update id="updateCourse" parameterType="com.po.Course">
+        update course set name=#{name},price=#{price},unit=#{unit},sort=#{sort}
+        where course_id=#{course_id}
+    </update>
+    <!-- 用户绩效-->
+    <resultMap id="UserAchievement" type="com.po.Achievement">
+            <id column="achi_id" jdbcType="INTEGER" property="achi_id" />
+            <result column="achi_content" jdbcType="VARCHAR" property="achi_content"/>
+            <result column="achi_grade" jdbcType="VARCHAR" property="achi_grade"/>
+            <result column="user_id" jdbcType="INTEGER" property="user_id"/>
+        <association property="user" javaType="com.po.User">
+            <id column="user_id" jdbcType="INTEGER" property="user_id" />
+            <result column="name" jdbcType="VARCHAR" property="name"/>
+            <result column="pwd" jdbcType="VARCHAR" property="pwd"/>
+            <result column="phone_no" jdbcType="VARCHAR" property="phone_no"/>
+            <result column="role_id" jdbcType="INTEGER" property="role_id"/>
+        </association>
+    </resultMap>
+    <!-- 查询绩效-->
+    <select id="getAchievement" resultMap="UserAchievement">
+		select a.achi_id,a.achi_content,a.achi_grade,u.user_id,u.name,u.phone_no from user u,achievement a where a.user_id=u.user_id and u.role_id=2;
+	</select>
+    <!-- 添加绩效-->
+    <insert id="addAchievement" parameterType="com.po.Achievement" useGeneratedKeys="true" keyProperty="Achievement.achi_id">
+        insert into achievement(achi_id,achi_content,achi_grade,user_id) values(#{achi_id},#{achi_content},#{achi_grade},#{user_id})
+    </insert>
+    <!-- 删除绩效-->
+    <delete id="deleteAchievement" parameterType="int">
+		delete from achievement where achi_id=#{achi_id}
+	</delete>
+
+    <!-- 更新绩效-->
+    <update id="updateAchievement" parameterType="com.po.Achievement">
+        update achievement set achi_content=#{achi_content},achi_grade=#{achi_grade}
+        where achi_id=#{achi_id}
+    </update>
+<!--    &lt;!&ndash; 用户出勤联合&ndash;&gt;-->
+<!--    <resultMap id="UserAndAttendance" type="com.po.UserAttendance">-->
+<!--        <id column="useratten_id" jdbcType="INTEGER" property="useratten_id" />-->
+<!--        <result column="user_id" jdbcType="INTEGER" property="user_id"/>-->
+<!--        <result column="atten_id" jdbcType="INTEGER" property="atten_id"/>-->
+<!--        <association property="user" javaType="com.po.User">-->
+<!--            <id column="user_id" jdbcType="INTEGER" property="user_id" />-->
+<!--            <result column="name" jdbcType="VARCHAR" property="name"/>-->
+<!--            <result column="pwd" jdbcType="VARCHAR" property="pwd"/>-->
+<!--            <result column="phone_no" jdbcType="VARCHAR" property="phone_no"/>-->
+<!--            <result column="role_id" jdbcType="INTEGER" property="role_id"/>-->
+<!--        </association>-->
+<!--        <association property="attendance" javaType="com.po.Attendance">-->
+<!--            <id column="atten_id" jdbcType="INTEGER" property="atten_id" />-->
+<!--            <result column="atten_times" jdbcType="INTEGER" property="atten_times"/>-->
+<!--            <result column="atten_unit" jdbcType="VARCHAR" property="atten_unit"/>-->
+<!--            <result column="user_id" jdbcType="INTEGER" property="user_id"/>-->
+<!--        </association>-->
+<!--    </resultMap>-->
+<!--    &lt;!&ndash; 查询出勤&ndash;&gt;-->
+<!--    <select id="getAttendance" resultMap="UserAndAttendance">-->
+<!--		select * from attendance a,user u,user_attendance ua where ua.atten_id=a.atten_id and ua.user_id=u.user_id and u.role_id=2-->
+<!--	</select>-->
+
 </mapper>

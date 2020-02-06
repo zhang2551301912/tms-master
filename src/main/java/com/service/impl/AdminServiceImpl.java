@@ -1,10 +1,7 @@
 package com.service.impl;
 
 import com.mapper.AdminMapper;
-import com.po.Menu;
-import com.po.MenuRole;
-import com.po.Role;
-import com.po.User;
+import com.po.*;
 import com.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -120,4 +117,45 @@ public class AdminServiceImpl implements AdminService {
     public int updateRole(Role role) {
         return adminMapper.updateRole(role);
     }
+    //查询课程
+    @Override
+    public List<Course> getCourse() {
+        return adminMapper.getCourse();
+    }
+    //添加课程
+    @Override
+    public int addCourse(Course course) {
+        return adminMapper.addCourse(course);
+    }
+    //删除课程
+    @Override
+    public int deleteCourse(Integer course_id) {
+        return adminMapper.deleteCourse(course_id);
+    }
+    //更新课程
+    @Override
+    public int updateCourse(Course course) {
+        return adminMapper.updateCourse(course);
+    }
+    //查询绩效
+    @Override
+    public List<Achievement> getAchievement() {
+        return adminMapper.getAchievement();
+    }
+    //添加绩效
+    @Override
+    public int addAchievement(Achievement achievement) {
+        return adminMapper.addAchievement(achievement);
+    }
+    //删除绩效
+    @Override
+    public int deleteAchievement(Integer achi_id) {
+        return adminMapper.deleteAchievement(achi_id);
+    }
+    //更新绩效
+    @Override
+    public int updateAchievement(Achievement achievement) {
+        return adminMapper.updateAchievement(achievement);
+    }
+
 }

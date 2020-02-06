@@ -1,15 +1,19 @@
 package com.controller;
 
-import com.po.*;
 import com.service.AdminService;
 import com.service.LoginService;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.po.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -442,6 +446,224 @@ public class AdminController {
         role.setRole_id(role_id);
         role.setName(name);
         int i=adminService.updateRole(role);
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "修改成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "修改失败");
+        }
+        return rs;
+    }
+    //查看课程
+    @RequestMapping("lookCourse")
+    public ModelAndView lookCourse() {
+        List<Course> course=adminService.getCourse();
+        for(Course c:course) {
+            System.out.println(c.getCourse_id()+" "+c.getName()+" "+c.getPrice()+""+c.getUnit());
+        }
+        ModelAndView mv=new ModelAndView("admin/lookCourse");
+        mv.addObject("course", course);
+        return mv;
+    }
+    //添加课程页面
+    @RequestMapping("/addCourse")
+    public ModelAndView addCourse() {
+        ModelAndView mv=new ModelAndView("admin/addCourse");
+        return mv;
+    }
+    //添加课程
+    @RequestMapping("addCourseSubmit")
+    @ResponseBody
+    public ResultMsg addCourseSubmit(Integer course_id, String name, BigDecimal price,String unit,String url,Integer sort) {
+        Course course=new Course();
+        course.setCourse_id(course_id);
+        course.setName(name);
+        course.setPrice(price);
+        course.setUnit(unit);
+        course.setUrl(url);
+        course.setSort(sort);
+        int i=adminService.addCourse(course);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "添加成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "添加失败");
+        }
+        return rs;
+    }
+    //删除课程
+    @RequestMapping("deleteCourse")
+    @ResponseBody
+    public ResultMsg deleteCourse(Integer course_id) {
+        int i=adminService.deleteCourse(course_id);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+    //批量删除角色
+    @RequestMapping(value = "batchDeleteCourse")
+    @ResponseBody
+    public ResultMsg batchDeleteCourse(Integer[] course_ids) {
+        System.out.println(course_ids);
+        boolean isDelete=false;
+        for(int course_id:course_ids) {
+            int i=adminService.deleteCourse(course_id);
+            if(i>0) {
+                isDelete=true;
+            }else {
+                isDelete=false;
+            }
+        }
+        ResultMsg rs=null;
+        if(isDelete) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+    //修改课程页面
+    @RequestMapping(value = "updateCourse")
+    public ModelAndView updateCourse() {
+        List<Course> courses=adminService.getCourse();
+        Course course=null;
+        for(Course c:courses){
+            course=c;
+        }
+        ModelAndView mv=new ModelAndView("admin/updateCourse");
+        mv.addObject("course", course);
+        return mv;
+    }
+    //修改课程地址
+    @RequestMapping(value = "updateCourseSubmit")
+    @ResponseBody
+    public ResultMsg updateSubjectSectionSubmit(Integer course_id, String name, BigDecimal price,String unit,Integer sort){
+//            System.out.println(course_id+"  ");
+//            //上传到服务器
+//            //1.获取文件所在的物理路径（项目服务器的物理地址/upload/文件）
+//            String realPath=request.getServletContext().getRealPath("/");
+//            System.out.println(realPath);
+//            String filename=file.getOriginalFilename();//文件名+后缀
+//            System.out.println(filename);
+//            String path=realPath+"/upload/"+filename;
+//            System.out.println(path);
+//            //通过给定路径来创建一个File实例
+//            File file1=new File(path);
+//            //将上传的文件传输到File中
+//            if(file1.getParentFile().exists()) {
+//                file1.getParentFile().mkdirs();
+//            }
+//            file.transferTo(file1);
+//            System.out.println(file1);
+            Course course=new Course();
+            course.setCourse_id(course_id);
+            course.setName(name);
+            course.setPrice(price);
+            course.setUnit(unit);
+            course.setSort(sort);
+            ResultMsg rs=null;
+            int i=adminService.updateCourse(course);
+            if(i>0) {
+                rs=new ResultMsg(Flag.SUCCESS, "修改成功");
+            }else {
+                rs=new ResultMsg(Flag.FAIL, "修改失败");
+            }
+            return rs;
+    }
+    //查看绩效页面
+    @RequestMapping("lookAchievement")
+    public ModelAndView lookAchievement(){
+        List<Achievement> achievement=adminService.getAchievement();
+        ModelAndView mv =new ModelAndView("admin/lookAchievement");
+        mv.addObject("achievement",achievement);
+        return mv;
+    }
+    //添加绩效页面
+    @RequestMapping("/addAchievement")
+    public ModelAndView addAchievement() {
+        List<User> teacher=adminService.getTeacher();
+        ModelAndView mv=new ModelAndView("admin/addAchievement");
+        mv.addObject("teacher",teacher);
+        return mv;
+    }
+    //添加绩效
+    @RequestMapping("addAchievementSubmit")
+    @ResponseBody
+    public ResultMsg addAchievementSubmit(Integer achi_id,String achi_content,String achi_grade,Integer user_id) {
+        Achievement achievement=new Achievement();
+        achievement.setAchi_id(achi_id);
+        achievement.setAchi_content(achi_content);
+        achievement.setAchi_grade(achi_grade);
+        achievement.setUser_id(user_id);
+        int i=adminService.addAchievement(achievement);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "添加成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "添加失败");
+        }
+        return rs;
+    }
+    //删除绩效
+    @RequestMapping("deleteAchievement")
+    @ResponseBody
+    public ResultMsg deleteAchievement(Integer achi_id) {
+        int i=adminService.deleteAchievement(achi_id);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+    //批量删除绩效
+    @RequestMapping(value = "batchDeleteAchievement")
+    @ResponseBody
+    public ResultMsg batchDeleteAchievement(Integer[] achi_ids) {
+        System.out.println(achi_ids);
+        boolean isDelete=false;
+        for(int achi_id:achi_ids) {
+            int i=adminService.deleteAchievement(achi_id);
+            if(i>0) {
+                isDelete=true;
+            }else {
+                isDelete=false;
+            }
+        }
+        ResultMsg rs=null;
+        if(isDelete) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+    //修改绩效页面
+    @RequestMapping(value = "updateAchievement")
+    public ModelAndView updateAchievement() {
+        List<Achievement> achievements=adminService.getAchievement();
+        Achievement achievement=null;
+        for(Achievement a:achievements){
+            achievement=a;
+        }
+        ModelAndView mv=new ModelAndView("admin/updateAchievement");
+        mv.addObject("achievement", achievement);
+        return mv;
+    }
+    //修改绩效
+    @RequestMapping(value = "updateAchievementSubmit")
+    @ResponseBody
+    public ResultMsg updateAchievementSubmit(Integer achi_id, String achi_content,String achi_grade){
+        Achievement a=new Achievement();
+        a.setAchi_id(achi_id);
+        a.setAchi_content(achi_content);
+        a.setAchi_grade(achi_grade);
+        ResultMsg rs=null;
+        int i=adminService.updateAchievement(a);
         if(i>0) {
             rs=new ResultMsg(Flag.SUCCESS, "修改成功");
         }else {

@@ -1,40 +1,51 @@
 package com.po;
 
 public class Achievement {
-    private Integer achiId;
-    private String achiContent;
-    private String achiGrade;
-    private Integer teaId;
+    private Integer achi_id;
+    private String achi_content;
+    private String achi_grade;
+    private Integer user_id;
 
-    public Integer getAchiId() {
-        return achiId;
+    private User user;
+
+    public User getUser() {
+        return user;
     }
 
-    public void setAchiId(Integer achiId) {
-        this.achiId = achiId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public String getAchiContent() {
-        return achiContent;
+    public Integer getAchi_id() {
+        return achi_id;
     }
 
-    public void setAchiContent(String achiContent) {
-        this.achiContent = achiContent;
+    public void setAchi_id(Integer achi_id) {
+        this.achi_id = achi_id;
     }
 
-    public String getAchiGrade() {
-        return achiGrade;
+    public String getAchi_content() {
+        return achi_content;
     }
 
-    public void setAchiGrade(String achiGrade) {
-        this.achiGrade = achiGrade;
+    public void setAchi_content(String achi_content) {
+        this.achi_content = achi_content;
     }
 
-    public Integer getTeaId() {
-        return teaId;
+    public String getAchi_grade() {
+        return achi_grade;
     }
 
-    public void setTeaId(Integer teaId) {
-        this.teaId = teaId;
+    public void setAchi_grade(String achi_grade) {
+        this.achi_grade = achi_grade;
     }
+
+    public Integer getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
+    }
+
 }
