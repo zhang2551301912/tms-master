@@ -35,14 +35,12 @@ public interface AdminService {
     int deleteMenu(Integer menu_id);
     //更新菜单
     int updateMenu(Menu menu);
-    //查询二级菜单
-    List<Menu> getSonMenu();
+
     //关联新增角色菜单
     int addRoleMenu(MenuRole mr);
     //删除角色菜单
     int deleteRoleMenu(Integer mr_id);
-    //查询角色菜单
-    List<MenuRole> getRoleMenu();
+
     //添加角色
     int addRoleSubmit(Role role);
     //删除角色
@@ -65,5 +63,30 @@ public interface AdminService {
     int deleteAchievement(Integer achi_id);
     //更新绩效
     int updateAchievement(Achievement achievement);
-
+    //查询出勤
+    List<Attendance> getAttendance();
+    //添加出勤
+    int addAttendance(Attendance attendance);
+    //删除出勤
+    int deleteAttendance(Integer atten_id);
+    //更新出勤
+    int updateAttendance(Attendance attendance);
+    //查询出勤明细
+    List<AttendanceDetail> getAttendanceDetail();
+    //添加出勤明细
+    int addAttendanceDetail(AttendanceDetail attendanceDetail);
+    //删除出勤明细
+    int deleteAttendanceDetail(Integer detail_id);
+    //查询班级学生
+    List<User> getClassStudent();
+    //编辑状态
+    int updateStatus(User user);
+    //查询班级
+    List<Cla> getCla();
+    //添加学生
+    int addStudent(User user);
+    //删除学生班级
+    int deleteStudentClass(Integer user_id);
+    //修改学生信息
+    int updateStudentClass(User user);
 }

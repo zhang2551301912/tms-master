@@ -5,6 +5,7 @@ public class Attendance {
     private Integer atten_times;
     private String atten_unit;
     private Integer user_id;
+    private double score;
 
     private User user;
 
@@ -46,5 +47,12 @@ public class Attendance {
 
     public void setUser_id(Integer user_id) {
         this.user_id = user_id;
+    }
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
     }
 }

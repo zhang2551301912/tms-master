@@ -1,22 +1,22 @@
 package com.po;
 
 public class Cla {
-    private Integer classId;
-    private String className;
+    private Integer class_id;
+    private String class_name;
 
-    public Integer getClassId() {
-        return classId;
+    public Integer getClass_id() {
+        return class_id;
     }
 
-    public void setClassId(Integer classId) {
-        this.classId = classId;
+    public void setClass_id(Integer class_id) {
+        this.class_id = class_id;
     }
 
-    public String getClassName() {
-        return className;
+    public String getClass_name() {
+        return class_name;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
+    public void setClass_name(String class_name) {
+        this.class_name = class_name;
     }
 }

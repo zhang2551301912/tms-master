@@ -3,7 +3,7 @@
 <html class="x-admin-sm">
 <head>
 <meta charset="UTF-8">
-<title>查看出勤统计及分数</title>
+<title>查看出勤明细</title>
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -19,9 +19,9 @@
         <div class="x-nav">
           <span class="layui-breadcrumb">
             <a href="">首页</a>
-            <a href="">出勤统计及打分管理</a>
+            <a href="">出勤明细管理</a>
             <a>
-              <cite>查看出勤及分数</cite></a>
+              <cite>查看明细</cite></a>
           </span>
           <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
             <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
@@ -32,7 +32,7 @@
                     <div class="layui-card">
                         <div class="layui-card-header">
                             <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-                            <button class="layui-btn" onclick="xadmin.open('添加出勤及分数','addAttendScore',600,400)"><i class="layui-icon"></i>添加</button>
+                            <button class="layui-btn" onclick="xadmin.open('添加出勤明细','addAttendDetail',600,400)"><i class="layui-icon"></i>添加</button>
                         </div>
                         <div class="layui-card-body layui-table-body layui-table-main">
                             <table class="layui-table layui-form">
@@ -42,27 +42,24 @@
                                       <input type="checkbox" lay-filter="checkall" name="" lay-skin="primary">
                                     </th>
                                     <th>ID</th>
-                                    <th>出勤天数</th>
+                                    <th>出勤起始时间</th>
+                                    <th>出勤结束时间</th>
                                     <th>出勤人ID</th>
                                     <th>出勤人姓名</th>
-                                    <th>出勤打分</th>
                                     <th>操作</th>
                                   </tr>
                                 </thead>
                                 <tbody>
-                     				<c:forEach items="${attendance}" var="attendance">
+                     				<c:forEach items="${attendanceDetail}" var="attendanceDetail">
                      					<tr>
-                     						<td> <input type="checkbox" value="${attendance.atten_id}" lay-filter="check" name="" lay-skin="primary"></td>
-                                            <td>${attendance.atten_id}</td>
-                                            <td>${attendance.atten_times}${attendance.atten_unit}</td>
-                                            <td>${attendance.user.user_id}</td>
-	                     					<td>${attendance.user.name}</td>
-                                            <td>${attendance.score}</td>
+                     						<td> <input type="checkbox" value="${attendanceDetail.detail_id}" lay-filter="check" name="" lay-skin="primary"></td>
+                                            <td>${attendanceDetail.detail_id}</td>
+                                            <td>${attendanceDetail.start_date}</td>
+                                            <td>${attendanceDetail.end_date}</td>
+	                     					<td>${attendanceDetail.user.user_id}</td>
+                                            <td>${attendanceDetail.user.name}</td>
 	                     					<td class="td-manage">
-	                     					  <a title="编辑"  onclick="xadmin.open('编辑','updateAttend?atten_id=${attendance.atten_id}',600,400)" href="javascript:;">
-		                                        <i class="layui-icon">&#xe642;</i>
-		                                      </a>
-		                                      <a title="删除" onclick="member_del(this,'${attendance.atten_id}')" href="javascript:;">
+		                                      <a title="删除" onclick="member_del(this,'${attendanceDetail.detail_id}')" href="javascript:;">
 		                                        <i class="layui-icon">&#xe640;</i>
 		                                      </a>
 	                                    	</td>
@@ -81,6 +78,7 @@
       layui.use(['laydate','form'], function(){
         var laydate = layui.laydate;
         var  form = layui.form;
+
         // 监听全选
         form.on('checkbox(checkall)', function(data){
           if(data.elem.checked){
@@ -104,8 +102,8 @@
       function member_del(obj,id){
     	  layer.confirm('确认要删除吗？',function(index){
               //发异步删除数据
-             parm={atten_id:id}
-         	 url= "${pageContext.request.contextPath}/admin/deleteAttendScore";
+             parm={detail_id:id}
+         	 url= "${pageContext.request.contextPath}/admin/deleteAttendDetail";
          	 $.post(url,parm,function(data){
          		 if(data.flag==1){
          			$(obj).parents("tr").remove();
@@ -119,18 +117,18 @@
 
       //批量删除
       function delAll (argument) {
-    	  var atten_ids = [];
+    	  var detail_ids = [];
           // 获取选中的id 
           $('tbody input').each(function(index, el) {
               if($(this).prop('checked')){
-                  atten_ids.push($(this).val())
+                  detail_ids.push($(this).val())
               }
           });
-          layer.confirm('确认要删除吗？'+atten_ids.toString(),function(index){
+          layer.confirm('确认要删除吗？'+detail_ids.toString(),function(index){
               //捉到所有被选中的，发异步进行删除
                $.ajax({
-              	url:"${pageContext.request.contextPath}/admin/batchDeleteAttendScore",
-   			    data:{atten_ids:atten_ids},
+              	url:"${pageContext.request.contextPath}/admin/batchDeleteAttendDetail",
+   			    data:{detail_ids:detail_ids},
    			    type:"Post",
    			    dataType: "json",
    			  	traditional:true,

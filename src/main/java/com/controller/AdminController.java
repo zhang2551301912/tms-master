@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.po.*;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Controller
@@ -668,6 +669,297 @@ public class AdminController {
             rs=new ResultMsg(Flag.SUCCESS, "修改成功");
         }else {
             rs=new ResultMsg(Flag.FAIL, "修改失败");
+        }
+        return rs;
+    }
+    //查看出勤及分数
+    @RequestMapping("lookAttendScore")
+    public ModelAndView lookAttendScore() {
+        List<Attendance> attendance=adminService.getAttendance();
+        for(Attendance a:attendance) {
+            System.out.println(a.getAtten_id()+" "+a.getAtten_times()+a.getAtten_unit()+""+a.getUser_id());
+        }
+        ModelAndView mv=new ModelAndView("admin/lookAttendScore");
+        mv.addObject("attendance", attendance);
+        return mv;
+    }
+    //添加出勤及分数页面
+    @RequestMapping("/addAttendScore")
+    public ModelAndView addAttendScore() {
+        List<User> teacher=adminService.getTeacher();
+        ModelAndView mv=new ModelAndView("admin/addAttendScore");
+        mv.addObject("teacher",teacher);
+        return mv;
+    }
+    //添加出勤及分数
+    @RequestMapping("addAttendScoreSubmit")
+    @ResponseBody
+    public ResultMsg addAttendScoreSubmit(Integer atten_id,Integer atten_times,String atten_unit,Integer user_id,Double score) {
+        Attendance attendance=new Attendance();
+        attendance.setAtten_id(atten_id);
+        attendance.setAtten_times(atten_times);
+        attendance.setAtten_unit(atten_unit);
+        attendance.setUser_id(user_id);
+        attendance.setScore(score);
+        int i=adminService.addAttendance(attendance);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "添加成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "添加失败");
+        }
+        return rs;
+    }
+    //删除出勤及分数
+    @RequestMapping("deleteAttendScore")
+    @ResponseBody
+    public ResultMsg deleteAttendScore(Integer atten_id) {
+        int i=adminService.deleteAttendance(atten_id);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+    //批量删除出勤及分数
+    @RequestMapping(value = "batchDeleteAttendScore")
+    @ResponseBody
+    public ResultMsg batchDeleteAttendScore(Integer[] atten_ids) {
+        System.out.println(atten_ids);
+        boolean isDelete=false;
+        for(int atten_id:atten_ids) {
+            int i=adminService.deleteAttendance(atten_id);
+            if(i>0) {
+                isDelete=true;
+            }else {
+                isDelete=false;
+            }
+        }
+        ResultMsg rs=null;
+        if(isDelete) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+    //修改出勤页面
+    @RequestMapping("updateAttend")
+    public ModelAndView updateAttdendScore() {
+        List<Attendance> attendances=adminService.getAttendance();
+        Attendance attendance=null;
+        for(Attendance a:attendances){
+            attendance=a;
+        }
+        ModelAndView mv=new ModelAndView("admin/updateAttend");
+        mv.addObject("attendance", attendance);
+        return mv;
+    }
+    //修改出勤
+    @RequestMapping(value = "updateAttendSubmit")
+    @ResponseBody
+    public ResultMsg updateAttendSubmit(Integer atten_id, Integer atten_times,Double score){
+        Attendance attendance=new Attendance();
+        attendance.setAtten_id(atten_id);
+        attendance.setAtten_times(atten_times);
+        attendance.setScore(score);
+        ResultMsg rs=null;
+        int i=adminService.updateAttendance(attendance);
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "修改成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "修改失败");
+        }
+        return rs;
+    }
+    //查看出勤及分数
+    @RequestMapping("lookAttendDetail")
+    public ModelAndView lookAttendDetail() {
+        List<AttendanceDetail> attendanceDetail=adminService.getAttendanceDetail();
+        for(AttendanceDetail a:attendanceDetail) {
+            System.out.println(a.getDetail_id()+" "+a.getStart_date()+a.getEnd_date()+" "+a.getUser_id());
+        }
+        ModelAndView mv=new ModelAndView("admin/lookAttendDetail");
+        mv.addObject("attendanceDetail", attendanceDetail);
+        return mv;
+    }
+    //添加出勤明细页面
+    @RequestMapping("/addAttendDetail")
+    public ModelAndView addAttendDetail() {
+        List<User> teacher=adminService.getTeacher();
+        ModelAndView mv=new ModelAndView("admin/addAttendDetail");
+        mv.addObject("teacher",teacher);
+        return mv;
+    }
+    //添加出勤明细
+    @RequestMapping("addAttendDetailSubmit")
+    @ResponseBody
+    public ResultMsg addAttendDetailSubmit(Integer detail_id, Timestamp start_date, Timestamp end_date, Integer user_id) {
+        AttendanceDetail ad=new AttendanceDetail();
+        ad.setDetail_id(detail_id);
+        ad.setStart_Date(start_date);
+        ad.setEnd_date(end_date);
+        ad.setUser_id(user_id);
+        int i=adminService.addAttendanceDetail(ad);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "添加成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "添加失败");
+        }
+        return rs;
+    }
+    //删除出勤明细
+    @RequestMapping("deleteAttendDetail")
+    @ResponseBody
+    public ResultMsg deleteAttendDetail(Integer detail_id) {
+        int i=adminService.deleteAttendanceDetail(detail_id);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+    //批量删除出勤明细
+    @RequestMapping(value = "batchDeleteAttendDetail")
+    @ResponseBody
+    public ResultMsg batchDeleteAttendDetail(Integer[] detail_ids) {
+        System.out.println(detail_ids);
+        boolean isDelete=false;
+        for(int detail_id:detail_ids) {
+            int i=adminService.deleteAttendanceDetail(detail_id);
+            if(i>0) {
+                isDelete=true;
+            }else {
+                isDelete=false;
+            }
+        }
+        ResultMsg rs=null;
+        if(isDelete) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+    //查看学生班级页面
+    @RequestMapping("lookStudentClass")
+    public ModelAndView lookStudentClass(){
+        List<User> stu_class=adminService.getClassStudent();
+        ModelAndView mv =new ModelAndView("admin/lookStudentClass");
+        mv.addObject("stu_class",stu_class);
+        return mv;
+    }
+    //编辑状态
+    @RequestMapping(value = "updateStatus")
+    @ResponseBody
+    public ResultMsg updateStatus(Integer user_id,String status){
+        System.out.println(user_id+" "+status);
+        User user=new User();
+        user.setUser_id(user_id);
+        user.setStatus(status);
+        ResultMsg rs=null;
+        int i=adminService.updateStatus(user);
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "修改成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "修改失败");
+        }
+        return rs;
+    }
+    //添加出勤及分数页面
+    @RequestMapping("/addStudentClass")
+    public ModelAndView addStudentClass() {
+        List<Cla> cla=adminService.getCla();
+        ModelAndView mv=new ModelAndView("admin/addStudentClass");
+        mv.addObject("cla",cla);
+        return mv;
+    }
+    //添加出勤及分数
+    @RequestMapping("addStudentClassSubmit")
+    @ResponseBody
+    public ResultMsg addStudentClassSubmit(Integer user_id,String name,String pwd,String phone_no,Integer class_id) {
+        User user=new User();
+        user.setUser_id(user_id);
+        user.setName(name);
+        user.setPwd(pwd);
+        user.setPhone_no(phone_no);
+        user.setClass_id(class_id);
+        int i=adminService.addStudent(user);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "添加成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "添加失败");
+        }
+        return rs;
+    }
+    //修改学生信息页面
+    @RequestMapping("updateStudentClass")
+    public ModelAndView updateStudentClass() {
+        List<User> users=adminService.getClassStudent();
+        User user=null;
+        for(User u:users){
+            user=u;
+        }
+        ModelAndView mv=new ModelAndView("admin/updateStudentClass");
+        mv.addObject("user",user);
+        return mv;
+    }
+    //修改出勤
+    @RequestMapping(value = "updateStudentClassSubmit")
+    @ResponseBody
+    public ResultMsg updateStudentClassSubmit(Integer user_id, String pwd,String phone_no,Integer class_id){
+        User user=new User();
+        user.setUser_id(user_id);
+        user.setPwd(pwd);
+        user.setPhone_no(phone_no);
+        user.setClass_id(class_id);
+        ResultMsg rs=null;
+        int i=adminService.updateStudentClass(user);
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "修改成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "修改失败");
+        }
+        return rs;
+    }
+    //删除学生班级
+    @RequestMapping("deleteStudentClass")
+    @ResponseBody
+    public ResultMsg deleteStudentClass(Integer user_id) {
+        int i=adminService.deleteStudentClass(user_id);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+    //批量删除学生班级
+    @RequestMapping(value = "batchDeleteStudentClass")
+    @ResponseBody
+    public ResultMsg batchDeleteStudentClass(Integer[] user_ids){
+        System.out.println(user_ids);
+        boolean isDelete=false;
+        for(int user_id:user_ids) {
+            int i=adminService.deleteStudentClass(user_id);
+            if(i>0) {
+                isDelete=true;
+            }else {
+                isDelete=false;
+            }
+        }
+        ResultMsg rs=null;
+        if(isDelete) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
         }
         return rs;
     }

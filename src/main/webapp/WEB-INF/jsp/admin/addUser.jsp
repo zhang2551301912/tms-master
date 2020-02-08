@@ -53,7 +53,7 @@
                         <div class="layui-input-inline">
                             <select name="role_id">
                                 <c:forEach items="${roles}" var="role">
-                                    <option value="${role.role_id}">${role.name}
+                                    <option value="${role.role_id}">${role.name}</option>
                                 </c:forEach>
                             </select>
                         </div>

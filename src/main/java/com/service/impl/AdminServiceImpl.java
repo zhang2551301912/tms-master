@@ -82,11 +82,7 @@ public class AdminServiceImpl implements AdminService {
     public int updateMenu(Menu menu) {
         return adminMapper.updateMenu(menu);
     }
-    //查询二级菜单
-    @Override
-    public List<Menu> getSonMenu() {
-        return adminMapper.getSonMenu();
-    }
+
     //关联新增角色菜单
     @Override
     public int addRoleMenu(MenuRole mr) {
@@ -97,11 +93,7 @@ public class AdminServiceImpl implements AdminService {
     public int deleteRoleMenu(Integer mr_id) {
         return adminMapper.deleteRoleMenu(mr_id);
     }
-    //查询角色菜单
-    @Override
-    public List<MenuRole> getRoleMenu() {
-        return adminMapper.getRoleMenu();
-    }
+
     //添加角色
     @Override
     public int addRoleSubmit(Role role) {
@@ -156,6 +148,71 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public int updateAchievement(Achievement achievement) {
         return adminMapper.updateAchievement(achievement);
+    }
+    //查询出勤
+    @Override
+    public List<Attendance> getAttendance() {
+        return adminMapper.getAttendance();
+    }
+    //添加出勤
+    @Override
+    public int addAttendance(Attendance attendance) {
+        return adminMapper.addAttendance(attendance);
+    }
+    //删除出勤
+    @Override
+    public int deleteAttendance(Integer atten_id) {
+        return adminMapper.deleteAttendance(atten_id);
+    }
+    //更新出勤
+    @Override
+    public int updateAttendance(Attendance attendance) {
+        return adminMapper.updateAttendance(attendance);
+    }
+    //查询出勤明细
+    @Override
+    public List<AttendanceDetail> getAttendanceDetail() {
+        return adminMapper.getAttendanceDetail();
+    }
+    //添加出勤明细
+    @Override
+    public int addAttendanceDetail(AttendanceDetail attendanceDetail) {
+        return adminMapper.addAttendanceDetail(attendanceDetail);
+    }
+    //删除出勤明细
+    @Override
+    public int deleteAttendanceDetail(Integer detail_id) {
+        return adminMapper.deleteAttendanceDetail(detail_id);
+    }
+    //查询班级学生
+    @Override
+    public List<User> getClassStudent() {
+        return adminMapper.getClassStudent();
+    }
+    //编辑状态
+    @Override
+    public int updateStatus(User user) {
+        return adminMapper.updateStatus(user);
+    }
+    //查询班级
+    @Override
+    public List<Cla> getCla() {
+        return adminMapper.getCla();
+    }
+    //添加学生
+    @Override
+    public int addStudent(User user) {
+        return adminMapper.addStudent(user);
+    }
+    //删除学生班级
+    @Override
+    public int deleteStudentClass(Integer user_id) {
+        return adminMapper.deleteStudentClass(user_id);
+    }
+    //修改学生信息
+    @Override
+    public int updateStudentClass(User user) {
+        return adminMapper.updateStudentClass(user);
     }
 
 }

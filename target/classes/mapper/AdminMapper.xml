@@ -5,10 +5,6 @@
     <select id="getMenu" resultType="com.po.Menu">
         select * from menu
     </select>
-    <!-- 查询二级菜单-->
-    <select id="getSonMenu" resultType="com.po.Menu">
-        select * from menu where grade=1
-    </select>
     <!-- 查询教师信息-->
     <select id="getTeacher" resultType="com.po.User">
         select * from user where role_id=2
@@ -72,10 +68,7 @@
     <delete id="deleteRoleMenu" parameterType="int">
 		delete from menu_role where mr_id=#{mr_id}
 	</delete>
-    <!-- 查询角色菜单 -->
-    <select id="getRoleMenu" resultType="com.po.MenuRole">
-		select * from menu_role order by menu_id
-	</select>
+
     <!-- 添加角色-->
     <insert id="addRoleSubmit" parameterType="com.po.Role">
         insert into role(role_id,name) values(#{role_id},#{name})
@@ -138,28 +131,104 @@
         update achievement set achi_content=#{achi_content},achi_grade=#{achi_grade}
         where achi_id=#{achi_id}
     </update>
-<!--    &lt;!&ndash; 用户出勤联合&ndash;&gt;-->
-<!--    <resultMap id="UserAndAttendance" type="com.po.UserAttendance">-->
-<!--        <id column="useratten_id" jdbcType="INTEGER" property="useratten_id" />-->
-<!--        <result column="user_id" jdbcType="INTEGER" property="user_id"/>-->
-<!--        <result column="atten_id" jdbcType="INTEGER" property="atten_id"/>-->
-<!--        <association property="user" javaType="com.po.User">-->
-<!--            <id column="user_id" jdbcType="INTEGER" property="user_id" />-->
-<!--            <result column="name" jdbcType="VARCHAR" property="name"/>-->
-<!--            <result column="pwd" jdbcType="VARCHAR" property="pwd"/>-->
-<!--            <result column="phone_no" jdbcType="VARCHAR" property="phone_no"/>-->
-<!--            <result column="role_id" jdbcType="INTEGER" property="role_id"/>-->
-<!--        </association>-->
-<!--        <association property="attendance" javaType="com.po.Attendance">-->
-<!--            <id column="atten_id" jdbcType="INTEGER" property="atten_id" />-->
-<!--            <result column="atten_times" jdbcType="INTEGER" property="atten_times"/>-->
-<!--            <result column="atten_unit" jdbcType="VARCHAR" property="atten_unit"/>-->
-<!--            <result column="user_id" jdbcType="INTEGER" property="user_id"/>-->
-<!--        </association>-->
-<!--    </resultMap>-->
-<!--    &lt;!&ndash; 查询出勤&ndash;&gt;-->
-<!--    <select id="getAttendance" resultMap="UserAndAttendance">-->
-<!--		select * from attendance a,user u,user_attendance ua where ua.atten_id=a.atten_id and ua.user_id=u.user_id and u.role_id=2-->
-<!--	</select>-->
+
+    <!-- 用户出勤统计联合-->
+    <resultMap id="UserAttendance" type="com.po.Attendance">
+        <id column="atten_id" jdbcType="INTEGER" property="atten_id" />
+        <result column="atten_times" jdbcType="INTEGER" property="atten_times"/>
+        <result column="atten_unit" jdbcType="VARCHAR" property="atten_unit"/>
+        <result column="user_id" jdbcType="INTEGER" property="user_id"/>
+        <result column="score" jdbcType="DOUBLE" property="score"/>
+        <association property="user" javaType="com.po.User">
+            <id column="user_id" jdbcType="INTEGER" property="user_id" />
+            <result column="name" jdbcType="VARCHAR" property="name"/>
+            <result column="pwd" jdbcType="VARCHAR" property="pwd"/>
+            <result column="phone_no" jdbcType="VARCHAR" property="phone_no"/>
+            <result column="role_id" jdbcType="INTEGER" property="role_id"/>
+        </association>
+    </resultMap>
+    <!-- 查询出勤-->
+    <select id="getAttendance" resultMap="UserAttendance">
+		SELECT a.atten_id,a.atten_times,a.atten_unit,a.score,u.user_id,u.`name` from attendance a,`user` u WHERE a.user_id=u.user_id AND u.role_id=2
+	</select>
+    <!-- 添加出勤-->
+    <insert id="addAttendance" parameterType="com.po.Attendance" useGeneratedKeys="true" keyProperty="Attendance.atten_id">
+        insert into attendance(atten_id,atten_times,atten_unit,user_id,score) values(#{atten_id},#{atten_times},'天',#{user_id},#{score})
+    </insert>
+    <!-- 删除出勤-->
+    <delete id="deleteAttendance" parameterType="int">
+		delete from attendance where atten_id=#{atten_id}
+	</delete>
+    <!-- 更新出勤-->
+    <update id="updateAttendance" parameterType="com.po.Attendance">
+        update attendance set atten_times=#{atten_times},score=#{score}
+        where atten_id=#{atten_id}
+    </update>
+    <!-- 用户出勤明细联合-->
+    <resultMap id="UserAttendanceDetail" type="com.po.AttendanceDetail">
+        <id column="detail_id" jdbcType="INTEGER" property="detail_id" />
+        <result column="start_date" jdbcType="TIMESTAMP" property="start_date"/>
+        <result column="end_date" jdbcType="TIMESTAMP" property="end_date"/>
+        <result column="user_id" jdbcType="INTEGER" property="user_id"/>
+        <association property="user" javaType="com.po.User">
+            <id column="user_id" jdbcType="INTEGER" property="user_id" />
+            <result column="name" jdbcType="VARCHAR" property="name"/>
+            <result column="pwd" jdbcType="VARCHAR" property="pwd"/>
+            <result column="phone_no" jdbcType="VARCHAR" property="phone_no"/>
+            <result column="role_id" jdbcType="INTEGER" property="role_id"/>
+        </association>
+    </resultMap>
+    <!-- 查询出勤明细-->
+    <select id="getAttendanceDetail" resultMap="UserAttendanceDetail">
+		SELECT a.detail_id,a.start_date,a.end_date,u.user_id,u.`name` from attendance_detail a,`user` u WHERE a.user_id=u.user_id;
+	</select>
+    <!-- 添加出勤明细-->
+    <insert id="addAttendanceDetail" parameterType="com.po.AttendanceDetail" useGeneratedKeys="true" keyProperty="AttendanceDetail.detail_id">
+        insert into attendance_detail(detail_id,start_date,end_date,user_id) values(#{detail_id},#{start_date},#{end_date},#{user_id})
+    </insert>
+    <!-- 删除出勤明细-->
+    <delete id="deleteAttendanceDetail" parameterType="int">
+		delete from attendance_detail where detail_id=#{detail_id}
+	</delete>
+    <!-- 用户班级联合-->
+    <resultMap id="UserClass" type="com.po.User">
+        <id column="user_id" jdbcType="INTEGER" property="user_id" />
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="pwd" jdbcType="VARCHAR" property="pwd"/>
+        <result column="phone_no" jdbcType="VARCHAR" property="phone_no"/>
+        <result column="role_id" jdbcType="INTEGER" property="role_id"/>
+        <result column="class_id" jdbcType="INTEGER" property="class_id"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <association property="cla" javaType="com.po.Cla">
+            <id column="class_id" jdbcType="INTEGER" property="class_id" />
+            <result column="class_name" jdbcType="VARCHAR" property="class_name"/>
+        </association>
+    </resultMap>
+    <!-- 查询班级学生-->
+    <select id="getClassStudent" resultMap="UserClass">
+		SELECT * from cla c,`user` u WHERE c.class_id=u.class_id AND u.role_id=4;
+	</select>
+    <!-- 编辑状态-->
+    <update id="updateStatus" parameterType="com.po.User">
+        update user set status=#{status}
+        where user_id=#{user_id}
+    </update>
+    <!-- 查询班级-->
+    <select id="getCla" resultType="com.po.Cla">
+        select * from cla
+    </select>
+    <!-- 添加学生-->
+    <insert id="addStudent" parameterType="com.po.User" useGeneratedKeys="true" keyProperty="User.user_id">
+        insert into user (user_id,name,pwd,phone_no,role_id,class_id,status) values(#{user_id},#{name},#{pwd},#{phone_no},4,#{class_id},'1')
+    </insert>
+    <!-- 删除学生班级-->
+    <delete id="deleteStudentClass" parameterType="int">
+		delete from user where user_id=#{user_id}
+	</delete>
+    <!-- 修改学生信息-->
+    <update id="updateStudentClass" parameterType="com.po.User">
+        update user set pwd=#{pwd},phone_no=#{phone_no},class_id=#{class_id}
+        where user_id=#{user_id}
+    </update>
 
 </mapper>

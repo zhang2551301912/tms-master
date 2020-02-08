@@ -6,6 +6,34 @@ public class User {
     private String pwd;
     private String phone_no;
     private Integer role_id;
+    private Integer class_id;
+    private String status;
+
+    private Cla cla;
+
+    public Integer getClass_id() {
+        return class_id;
+    }
+
+    public void setClass_id(Integer class_id) {
+        this.class_id = class_id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Cla getCla() {
+        return cla;
+    }
+
+    public void setCla(Cla cla) {
+        this.cla = cla;
+    }
 
     public Integer getUser_id() {
         return user_id;

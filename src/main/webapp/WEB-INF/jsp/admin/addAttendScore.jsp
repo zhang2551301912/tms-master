@@ -1,9 +1,9 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" import="com.po.*,java.util.*" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html class="x-admin-sm">
     <head>
         <meta charset="UTF-8">
-        <title>添加用户</title>
+        <title>添加出勤及打分</title>
         <meta name="renderer" content="webkit|ie-comp|ie-stand">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta http-equiv="Cache-Control" content="no-siteapp"/>
@@ -18,42 +18,26 @@
                 <form class="layui-form" id="form">
                     <div class="layui-form-item">
                         <label for="L_email" class="layui-form-label">
-                            <span class="x-red">*</span>账号</label>
+                            <span class="x-red">*</span>出勤天数</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="user_id" name="user_id" required="" lay-verify="" autocomplete="off" class="layui-input"></div>
+                            <input type="text" id="atten_times" name="atten_times" required="" lay-verify="" autocomplete="off" class="layui-input"></div>
                     </div>
 
                     <div class="layui-form-item">
                         <label for="L_username" class="layui-form-label">
-                            <span class="x-red">*</span>姓名</label>
+                            <span class="x-red">*</span>出勤打分</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="name" name="name" required="" lay-verify="nikename" autocomplete="off" class="layui-input">
+                            <input type="text" id="score" name="score" required="" lay-verify="nikename" autocomplete="off" class="layui-input">
                         </div>
                     </div>
 
                     <div class="layui-form-item">
                         <label for="L_username" class="layui-form-label">
-                            <span class="x-red">*</span>密码</label>
+                            <span class="x-red">*</span>出勤人</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="pwd" name="pwd" required="" lay-verify="nikename" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-
-                     <div class="layui-form-item">
-                        <label for="L_username" class="layui-form-label">
-                            <span class="x-red">*</span>电话号码</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="phone_no" name="phone_no" required="" lay-verify="nikename" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-
-                    <div class="layui-form-item">
-                        <label for="L_username" class="layui-form-label">
-                            <span class="x-red">*</span>角色</label>
-                        <div class="layui-input-inline">
-                            <select name="role_id">
-                                <c:forEach items="${roles}" var="role">
-                                    <option value="${role.role_id}">${role.name}</option>
+                            <select name="user_id">
+                                <c:forEach items="${teacher}" var="teacher">
+                                    <option value="${teacher.user_id}">${teacher.name}
                                 </c:forEach>
                             </select>
                         </div>
@@ -70,13 +54,13 @@
         layui.use(['form', 'layer','jquery'],
             function() {
                 $ = layui.jquery;
-                var form = layui.form,
+                var form = layui.form;
                 layer = layui.layer;
 
                 //自定义验证规则
                 //监听提交
 
-               	url= "${pageContext.request.contextPath}/admin/addUserSubmit";
+               	url= "${pageContext.request.contextPath}/admin/addAttendScoreSubmit";
                	form.on('submit(add)',function(sub){
 
                		var param = $("#form").serialize();
