@@ -165,10 +165,10 @@
         }
 
       /*用户-重置密码*/
-      function rePass(user_id){
+      function rePass(id){
           layer.confirm('确认要重置该用户的密码吗？',function(index){
               //发异步修改数据
-              parm={user_id:user_id}
+              parm={id:id}
               url= "${pageContext.request.contextPath}/admin/updatePwd";
               $.post(url,parm,function(data){
                   if(data.flag==1){

@@ -56,7 +56,7 @@
                                             <td>${p.pwd}</td>
 	                     					<td>${p.phone_no}</td>
 	                     					<td class="td-manage">
-	                     					  <a title="编辑"  onclick="xadmin.open('编辑','updateParent?user_id=${p.id}',600,400)" href="javascript:;">
+	                     					  <a title="编辑"  onclick="xadmin.open('编辑','updateParent?id=${p.id}',600,400)" href="javascript:;">
 		                                        <i class="layui-icon">&#xe642;</i>
 		                                      </a>
 		                                      <a onclick="rePass(${p.id})" title="重置密码" href="javascript:;">

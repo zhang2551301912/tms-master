@@ -21,7 +21,7 @@
                         <label for="L_email" class="layui-form-label">
                             <span class="x-red">*</span>账号</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="user_id" name="user_id" required="" lay-verify="" autocomplete="off" class="layui-input">
+                            <input type="text" id="user_id" name="user_id" required="" lay-verify="user_id" autocomplete="off" class="layui-input">
                         </div>
                     </div>
 
@@ -75,6 +75,35 @@
                 $ = layui.jquery;
                 var form = layui.form;
                 layer = layui.layer;
+
+                form.verify({
+                    //将用户名是否可用作为验证条件  表单提交时触发
+                    user_id:function(value){
+                        var datas={"user_id": value};
+                        var message='';
+                        $.ajax({
+                            type:"POST",
+                            url:"${pageContext.request.contextPath}/admin/findUserId",
+                            async: false, //改为同步请求
+                            contentType:'application/json;charset=UTF-8',
+                            data:JSON.stringify(datas),
+                            dataType:'json',
+                            success:function(data){
+                                if(data){
+
+                                }else {
+                                    message ="用户名已存在，请重新输入！"
+                                    return false;
+                                }
+                            }
+                        });
+                        //需要注意  需要将返回信息写在ajax方法外
+                        if (message!==''){
+                            return message;
+                        }
+                    }
+                });
+
 
                 //自定义验证规则
                 //监听提交

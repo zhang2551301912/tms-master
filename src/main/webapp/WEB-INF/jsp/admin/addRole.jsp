@@ -15,12 +15,12 @@
         <div class="layui-fluid">
             <div class="layui-row">
                 <form class="layui-form" id="form">
-                    <div class="layui-form-item">
-                        <label for="L_email" class="layui-form-label">
-                            <span class="x-red">*</span>角色ID</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="role_id" name="role_id" required="" lay-verify="" autocomplete="off" class="layui-input"></div>
-                    </div>
+<%--                    <div class="layui-form-item">--%>
+<%--                        <label for="L_email" class="layui-form-label">--%>
+<%--                            <span class="x-red">*</span>角色ID</label>--%>
+<%--                        <div class="layui-input-inline">--%>
+<%--                            <input type="text" id="role_id" name="role_id" required="" lay-verify="" autocomplete="off" class="layui-input"></div>--%>
+<%--                    </div>--%>
                     
                     <div class="layui-form-item">
                         <label for="L_username" class="layui-form-label">

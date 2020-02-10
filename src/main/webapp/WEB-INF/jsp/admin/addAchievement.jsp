@@ -27,7 +27,12 @@
                         <label for="L_username" class="layui-form-label">
                             <span class="x-red">*</span>绩效等级</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="achi_grade" name="achi_grade" required="" lay-verify="nikename" autocomplete="off" class="layui-input">
+                            <select name="achi_grade">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
                         </div>
                     </div>
 

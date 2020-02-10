@@ -51,9 +51,9 @@
 		select * from menu where grade=1
 	</select>
     <!-- 添加菜单-->
-    <insert id="addMenuSubmit" parameterType="com.po.Menu">
-        insert into menu(title,url,grade,p_id,sort,remark)
-        values(#{title},#{url},#{grade},#{p_id},#{sort},#{remark})
+    <insert id="addMenuSubmit" parameterType="com.po.Menu" useGeneratedKeys="true" keyProperty="Menu.menu_id">
+        insert into menu(menu_id,title,url,grade,p_id,sort,remark)
+        values(#{menu_id},#{title},#{url},#{grade},#{p_id},#{sort},#{remark})
     </insert>
     <!--删除菜单-->
     <delete id="deleteMenu" parameterType="int">
@@ -74,7 +74,7 @@
 	</delete>
 
     <!-- 添加角色-->
-    <insert id="addRoleSubmit" parameterType="com.po.Role">
+    <insert id="addRoleSubmit" parameterType="com.po.Role" useGeneratedKeys="true" keyProperty="Role.role_id">
         insert into role(role_id,name) values(#{role_id},#{name})
     </insert>
     <!-- 删除角色-->
@@ -91,7 +91,7 @@
 		select * from course order by course_id
 	</select>
     <!-- 添加课程-->
-    <insert id="addCourse" parameterType="com.po.Course">
+    <insert id="addCourse" parameterType="com.po.Course" useGeneratedKeys="true" keyProperty="Course.course_id">
         insert into course(course_id,name,price,unit,url,sort) values(#{course_id},#{name},#{price},#{unit},#{url},#{sort})
     </insert>
     <!-- 删除课程-->
