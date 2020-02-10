@@ -6,6 +6,7 @@ import com.service.LoginService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -55,6 +56,9 @@ public class AdminController {
     @RequestMapping("lookParent")
     public ModelAndView lookParent() {
         List<User> parents=adminService.getParent();
+        for(User u:parents) {
+            System.out.println(u.getUser_id()+" "+u.getName());
+        }
         ModelAndView mv=new ModelAndView("admin/lookParent");
         mv.addObject("parents", parents);
         return mv;
@@ -75,16 +79,32 @@ public class AdminController {
         mv.addObject("roles",roles);
         return mv;
     }
+    @RequestMapping(value = "findUserId",method = RequestMethod.POST,consumes = "application/json")
+    @ResponseBody
+    public boolean findUserId(@RequestBody User user){
+        Integer user_id=user.getUser_id();
+        System.out.println(user_id);
+        User u=adminService.getUserId(user_id);
+        if(u==null){
+            System.out.println("用户名可用");
+            return true;
+        }else{
+            System.out.println("用户名已经存在，请使用其他用户名");
+            return false;
+        }
+    }
     //添加用户
     @RequestMapping("addUserSubmit")
     @ResponseBody
-    public ResultMsg addUserSubmit(Integer user_id, String name,String pwd,String phone_no,Integer role_id) {
+    public ResultMsg addUserSubmit(Integer id,Integer user_id, String name,String pwd,String phone_no,Integer role_id,String status) {
         User u=new User();
+        u.setId(id);
         u.setUser_id(user_id);
         u.setName(name);
         u.setPwd(pwd);
         u.setPhone_no(phone_no);
         u.setRole_id(role_id);
+        u.setStatus(status);
         int i=adminService.addUserSubmit(u);
         ResultMsg rs=null;
         if(i>0) {
@@ -96,11 +116,13 @@ public class AdminController {
     }
     //更新教师页面
     @RequestMapping("/updateTeacher")
-    public ModelAndView updateTeacher() {
+    public ModelAndView updateTeacher(Integer id) {
         List<User> users=adminService.getTeacher();
         User user=null;
         for(User u:users){
+            if(u.getId()==id){
                 user=u;
+            }
         }
         ModelAndView mv=new ModelAndView("admin/updateTeacher");
         mv.addObject("user",user);
@@ -108,11 +130,14 @@ public class AdminController {
     }
     //更新家长页面
     @RequestMapping("/updateParent")
-    public ModelAndView updateParent() {
+    public ModelAndView updateParent(Integer id) {
         List<User> users=adminService.getParent();
         User user=null;
         for(User u:users){
-            user=u;
+            if(u.getId()==id){
+                user=u;
+                System.out.println(user.getUser_id()+" "+user.getName());
+            }
         }
         ModelAndView mv=new ModelAndView("admin/updateParent");
         mv.addObject("user",user);
@@ -120,11 +145,13 @@ public class AdminController {
     }
     //更新学生页面
     @RequestMapping("/updateStudent")
-    public ModelAndView updateStudent() {
+    public ModelAndView updateStudent(Integer id) {
         List<User> users=adminService.getStudent();
         User user=null;
         for(User u:users){
-            user=u;
+            if(u.getId()==id){
+                user=u;
+            }
         }
         ModelAndView mv=new ModelAndView("admin/updateStudent");
         mv.addObject("user",user);
@@ -133,9 +160,9 @@ public class AdminController {
     //更新用户
     @RequestMapping(value="updateUserSubmit",method= RequestMethod.POST)
     @ResponseBody
-    public ResultMsg updateUserSubmit(Integer user_id,String pwd,String phone_no,Integer role_id){
+    public ResultMsg updateUserSubmit(Integer id,String pwd,String phone_no,Integer role_id){
         User u=new User();
-        u.setUser_id(user_id);
+        u.setId(id);
         u.setPwd(pwd);
         u.setPhone_no(phone_no);
         u.setRole_id(role_id);
@@ -152,8 +179,8 @@ public class AdminController {
     //删除用户
     @RequestMapping(value = "deleteUser",method=RequestMethod.POST)
     @ResponseBody
-    public ResultMsg deleteUser(Integer user_id) {
-        int i=adminService.deleteUser(user_id);
+    public ResultMsg deleteUser(Integer id) {
+        int i=adminService.deleteUser(id);
         ResultMsg rs=null;
         if(i>0) {
             rs=new ResultMsg(Flag.SUCCESS, "删除成功");
@@ -165,10 +192,10 @@ public class AdminController {
     //批量删除用户
     @RequestMapping(value = "batchDeleteUser",method=RequestMethod.POST)
     @ResponseBody
-    public ResultMsg batchDeleteUser(Integer[] user_ids) {
+    public ResultMsg batchDeleteUser(Integer[] ids) {
         boolean isDelete=false;
-        for(int user_id:user_ids) {
-            int i=adminService.deleteUser(user_id);
+        for(int id:ids) {
+            int i=adminService.deleteUser(id);
             if(i>0) {
                 isDelete=true;
             }else {
@@ -186,10 +213,10 @@ public class AdminController {
     //重置密码
     @RequestMapping(value="updatePwd")
     @ResponseBody
-    public ResultMsg updatePwd(Integer user_id){
-        System.out.println(user_id);
+    public ResultMsg updatePwd(Integer id){
+        System.out.println(id);
         ResultMsg rs=null;
-        Integer i=adminService.updatePwd(user_id);
+        Integer i=adminService.updatePwd(id);
         if(i>0) {
             rs=new ResultMsg(Flag.SUCCESS, "重置成功");
         }else {
@@ -432,7 +459,9 @@ public class AdminController {
         List<Role> roles=adminService.getRole();
         Role role=null;
         for(Role r:roles){
-            role=r;
+            if(r.getRole_id()==role_id){
+                role=r;
+            }
         }
         ModelAndView mv=new ModelAndView("admin/updateRole");
         mv.addObject("role", role);
@@ -528,11 +557,13 @@ public class AdminController {
     }
     //修改课程页面
     @RequestMapping(value = "updateCourse")
-    public ModelAndView updateCourse() {
+    public ModelAndView updateCourse(Integer course_id) {
         List<Course> courses=adminService.getCourse();
         Course course=null;
         for(Course c:courses){
-            course=c;
+            if(c.getCourse_id()==course_id) {
+                course = c;
+            }
         }
         ModelAndView mv=new ModelAndView("admin/updateCourse");
         mv.addObject("course", course);
@@ -645,11 +676,13 @@ public class AdminController {
     }
     //修改绩效页面
     @RequestMapping(value = "updateAchievement")
-    public ModelAndView updateAchievement() {
+    public ModelAndView updateAchievement(Integer achi_id) {
         List<Achievement> achievements=adminService.getAchievement();
         Achievement achievement=null;
         for(Achievement a:achievements){
-            achievement=a;
+            if(a.getAchi_id()==achi_id){
+                achievement=a;
+            }
         }
         ModelAndView mv=new ModelAndView("admin/updateAchievement");
         mv.addObject("achievement", achievement);
@@ -747,11 +780,13 @@ public class AdminController {
     }
     //修改出勤页面
     @RequestMapping("updateAttend")
-    public ModelAndView updateAttdendScore() {
+    public ModelAndView updateAttdendScore(Integer atten_id) {
         List<Attendance> attendances=adminService.getAttendance();
         Attendance attendance=null;
         for(Attendance a:attendances){
-            attendance=a;
+            if(a.getAtten_id()==atten_id){
+                attendance=a;
+            }
         }
         ModelAndView mv=new ModelAndView("admin/updateAttend");
         mv.addObject("attendance", attendance);
@@ -850,6 +885,9 @@ public class AdminController {
     @RequestMapping("lookStudentClass")
     public ModelAndView lookStudentClass(){
         List<User> stu_class=adminService.getClassStudent();
+        for(User u:stu_class){
+            System.out.println(u.getUser_id()+" "+u.getName()+" "+u.getCla().getClass_id()+" "+u.getCla().getClass_name());
+        }
         ModelAndView mv =new ModelAndView("admin/lookStudentClass");
         mv.addObject("stu_class",stu_class);
         return mv;
@@ -871,7 +909,7 @@ public class AdminController {
         }
         return rs;
     }
-    //添加出勤及分数页面
+    //添加学生信息页面
     @RequestMapping("/addStudentClass")
     public ModelAndView addStudentClass() {
         List<Cla> cla=adminService.getCla();
@@ -879,7 +917,7 @@ public class AdminController {
         mv.addObject("cla",cla);
         return mv;
     }
-    //添加出勤及分数
+    //添加学生信息
     @RequestMapping("addStudentClassSubmit")
     @ResponseBody
     public ResultMsg addStudentClassSubmit(Integer user_id,String name,String pwd,String phone_no,Integer class_id) {
@@ -900,22 +938,25 @@ public class AdminController {
     }
     //修改学生信息页面
     @RequestMapping("updateStudentClass")
-    public ModelAndView updateStudentClass() {
-        List<User> users=adminService.getClassStudent();
-        User user=null;
-        for(User u:users){
-            user=u;
+    public ModelAndView updateStudentClass(Integer id) {
+        System.out.println(id);
+        List<User> stu_classes=adminService.getClassStudent();
+        User stu_class=null;
+        for(User u:stu_classes){
+            if(u.getId()==id){
+                stu_class=u;
+            }
         }
         ModelAndView mv=new ModelAndView("admin/updateStudentClass");
-        mv.addObject("user",user);
+        mv.addObject("stu_class",stu_class);
         return mv;
     }
-    //修改出勤
+    //修改学生信息
     @RequestMapping(value = "updateStudentClassSubmit")
     @ResponseBody
-    public ResultMsg updateStudentClassSubmit(Integer user_id, String pwd,String phone_no,Integer class_id){
+    public ResultMsg updateStudentClassSubmit(Integer id, String pwd,String phone_no,Integer class_id){
         User user=new User();
-        user.setUser_id(user_id);
+        user.setId(id);
         user.setPwd(pwd);
         user.setPhone_no(phone_no);
         user.setClass_id(class_id);
@@ -931,8 +972,8 @@ public class AdminController {
     //删除学生班级
     @RequestMapping("deleteStudentClass")
     @ResponseBody
-    public ResultMsg deleteStudentClass(Integer user_id) {
-        int i=adminService.deleteStudentClass(user_id);
+    public ResultMsg deleteStudentClass(Integer id) {
+        int i=adminService.deleteStudentClass(id);
         ResultMsg rs=null;
         if(i>0) {
             rs=new ResultMsg(Flag.SUCCESS, "删除成功");
@@ -944,11 +985,11 @@ public class AdminController {
     //批量删除学生班级
     @RequestMapping(value = "batchDeleteStudentClass")
     @ResponseBody
-    public ResultMsg batchDeleteStudentClass(Integer[] user_ids){
-        System.out.println(user_ids);
+    public ResultMsg batchDeleteStudentClass(Integer[] ids){
+        System.out.println(ids);
         boolean isDelete=false;
-        for(int user_id:user_ids) {
-            int i=adminService.deleteStudentClass(user_id);
+        for(int id:ids) {
+            int i=adminService.deleteStudentClass(id);
             if(i>0) {
                 isDelete=true;
             }else {

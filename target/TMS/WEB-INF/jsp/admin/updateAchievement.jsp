@@ -17,6 +17,13 @@
         <div class="layui-fluid">
             <div class="layui-row">
                 <form class="layui-form" id="form">
+                    <div class="layui-form-item">
+                        <label for="L_email" class="layui-form-label">
+                            <span class="x-red">*</span>绩效ID</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="achi_id" value="${achievement.achi_id}" name="achi_content" disabled="disabled" required="" lay-verify="" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
 
                     <div class="layui-form-item">
                         <label for="L_email" class="layui-form-label">

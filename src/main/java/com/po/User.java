@@ -1,6 +1,7 @@
 package com.po;
 
 public class User {
+    private Integer id;
     private Integer user_id;
     private String name;
     private String pwd;
@@ -11,10 +12,17 @@ public class User {
 
     private Cla cla;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Integer getClass_id() {
         return class_id;
     }
-
     public void setClass_id(Integer class_id) {
         this.class_id = class_id;
     }

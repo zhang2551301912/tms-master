@@ -9,6 +9,9 @@
         <meta http-equiv="Cache-Control" content="no-siteapp"/>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/xadmin.css">
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js" ></script>
+        <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/lib/layui/layui.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
     </head>
@@ -16,11 +19,13 @@
         <div class="layui-fluid">
             <div class="layui-row">
                 <form class="layui-form" id="form">
+
                     <div class="layui-form-item">
                         <label for="L_email" class="layui-form-label">
                             <span class="x-red">*</span>账号</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="user_id" name="user_id" required="" lay-verify="" autocomplete="off" class="layui-input"></div>
+                            <input type="text" id="user_id" name="user_id" lay-verify="user_id" required="" autocomplete="off" class="layui-input">
+                        </div>
                     </div>
 
                     <div class="layui-form-item">
@@ -61,24 +66,51 @@
 
                     <div class="layui-form-item">
                         <label for="L_repass" class="layui-form-label"></label>
-                        <button class="layui-btn" type="button" lay-filter="add" lay-submit="" >增加</button></div>
+                        <button class="layui-btn" type="button" lay-filter="add" lay-submit="" >增加</button>
+                    </div>
                 </form>
             </div>
         </div>
         <script>
-        var isTrue=false;
-        layui.use(['form', 'layer','jquery'],
-            function() {
-                $ = layui.jquery;
-                var form = layui.form,
-                layer = layui.layer;
+            var isTrue=false;
+            layui.use(['form', 'layer','jquery'],
+                function() {
+                    $ = layui.jquery;
+                    var form = layui.form,
+                    layer = layui.layer;
+
+                    form.verify({
+                        //将用户名是否可用作为验证条件  表单提交时触发
+                        user_id:function(value){
+                        var datas={"user_id": value};
+                        var message='';
+                        $.ajax({
+                            type:"POST",
+                            url:"${pageContext.request.contextPath}/admin/findUserId",
+                            async: false, //改为同步请求
+                            contentType:'application/json;charset=UTF-8',
+                            data:JSON.stringify(datas),
+                            dataType:'json',
+                            success:function(data){
+                              if(data){
+
+                              }else {
+                                  message ="用户名已存在，请重新输入！"
+                                  return false;
+                              }
+                            }
+                        });
+                        //需要注意  需要将返回信息写在ajax方法外
+                        if (message!==''){
+                            return message;
+                        }
+                    }
+                });
 
                 //自定义验证规则
                 //监听提交
-
                	url= "${pageContext.request.contextPath}/admin/addUserSubmit";
                	form.on('submit(add)',function(sub){
-
                		var param = $("#form").serialize();
                		$.post(url,param,function(data){
                			if(data.flag==1){
@@ -90,7 +122,6 @@
                				  	xadmin.close();//关闭当前frame
                				  	xadmin.father_reload();//刷新父窗口
                				});
-
                			}else{
                				layer.alert("添加失败",{
            						icon:5
@@ -99,11 +130,11 @@
            						window.location.reload();
            					});
                			}
-
                		});
 
                	})
             });
+
         </script>
         <script>
         	var _hmt = _hmt || []; (function() {

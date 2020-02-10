@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" import="com.po.*,java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html class="x-admin-sm">
     <head>
@@ -20,9 +20,17 @@
 
                     <div class="layui-form-item">
                         <label for="L_email" class="layui-form-label">
+                            <span class="x-red">*</span>账号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="user_id" value="${stu_class.user_id}" name="user_id" disabled="disabled" required="" lay-verify="" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label for="L_email" class="layui-form-label">
                             <span class="x-red">*</span>密码</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="pwd" value="${user.pwd}" name="pwd" required="" lay-verify="" autocomplete="off" class="layui-input">
+                            <input type="text" id="pwd" value="${stu_class.pwd}" name="pwd" required="" lay-verify="" autocomplete="off" class="layui-input">
                         </div>
                     </div>
 
@@ -30,7 +38,7 @@
                         <label for="L_email" class="layui-form-label">
                             <span class="x-red">*</span>电话号码</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="phone_no" value="${user.phone_no}" name="phone_no" required="" lay-verify="" autocomplete="off" class="layui-input">
+                            <input type="text" id="phone_no" value="${stu_class.phone_no}" name="phone_no" required="" lay-verify="" autocomplete="off" class="layui-input">
                         </div>
                     </div>
 
@@ -40,17 +48,17 @@
                         <div class="layui-input-inline">
                             <select name="class_id">
                                 <c:choose>
-                                    <c:when test="${user.class_id==1}">
+                                    <c:when test="${stu_class.class_id==1}">
                                         <option value="1" selected="selected">一班</option>
                                         <option value="2">二班</option>
                                         <option value="3">三班</option>
                                     </c:when>
-                                    <c:when test="${user.class_id==2}">
+                                    <c:when test="${stu_class.class_id==2}">
                                         <option value="1">一班</option>
                                         <option value="2" selected="selected">二班</option>
                                         <option value="3">三班</option>
                                     </c:when>
-                                    <c:when test="${user.class_id==3}">
+                                    <c:when test="${stu_class.class_id==3}">
                                         <option value="1">一班</option>
                                         <option value="2">二班</option>
                                         <option value="3" selected="selected">三班</option>
@@ -64,7 +72,7 @@
                             </select>
                         </div>
                     </div>
-                    <input type="hidden" name="user_id" value="${user.user_id}">
+                    <input type="hidden" name="id" value="${stu_class.id}">
                     <div class="layui-form-item">
                         <label for="L_repass" class="layui-form-label"></label>
                         <button class="layui-btn" type="button" lay-filter="add" lay-submit="" >修改</button>

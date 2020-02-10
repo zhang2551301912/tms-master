@@ -32,7 +32,7 @@
                     <div class="layui-card">
                         <div class="layui-card-header">
                             <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-                            <button class="layui-btn" onclick="xadmin.open('添加绩效','addStudentClass',600,400)"><i class="layui-icon"></i>添加</button>
+                            <button class="layui-btn" onclick="xadmin.open('添加学生','addStudentClass',600,400)"><i class="layui-icon"></i>添加</button>
                         </div>
                         <div class="layui-card-body layui-table-body layui-table-main">
                             <table class="layui-table layui-form">
@@ -41,10 +41,11 @@
                                     <th>
                                       <input type="checkbox" lay-filter="checkall" name="" lay-skin="primary">
                                     </th>
-                                    <th>学生ID</th>
+                                    <th>ID</th>
+                                    <th>学生账号</th>
                                     <th>学生姓名</th>
                                     <th>密码</th>
-                                    <th>学生号码</th>
+                                    <th>电话号码</th>
                                     <th>班级ID</th>
                                     <th>班级名称</th>
                                     <th>是否启用</th>
@@ -54,7 +55,8 @@
                                 <tbody>
                      				<c:forEach items="${stu_class}" var="stu_class">
                      					<tr>
-                     						<td><input type="checkbox" value="${stu_class.user_id}" lay-filter="check" name="" lay-skin="primary"></td>
+                     						<td><input type="checkbox" value="${stu_class.id}" lay-filter="check" name="" lay-skin="primary"></td>
+                                            <td>${stu_class.id}</td>
                                             <td>${stu_class.user_id}</td>
                                             <td>${stu_class.name}</td>
                                             <td>${stu_class.pwd}</td>
@@ -63,10 +65,10 @@
                                             <td>${stu_class.cla.class_name}</td>
                                             <td><input id="${stu_class.user_id}" value="${stu_class.user_id}" type="checkbox" name="status" lay-skin="switch" lay-filter="status"${stu_class.status=='1' ? 'checked' : '0'} lay-text="ON|OFF"></td>
 	                     					<td class="td-manage">
-	                     					  <a title="编辑"  onclick="xadmin.open('编辑','updateStudentClass?user_id=${stu_class.user_id}',600,400)" href="javascript:;">
+	                     					  <a title="编辑"  onclick="xadmin.open('编辑','updateStudentClass?id=${stu_class.id}',600,400)" href="javascript:;">
 		                                        <i class="layui-icon">&#xe642;</i>
 		                                      </a>
-		                                      <a title="删除" onclick="member_del(this,'${stu_class.user_id}')" href="javascript:;">
+		                                      <a title="删除" onclick="member_del(this,'${stu_class.id}')" href="javascript:;">
 		                                        <i class="layui-icon">&#xe640;</i>
 		                                      </a>
 	                                    	</td>
@@ -83,9 +85,16 @@
     </body>
     <script>
       layui.use(['laydate','form'], function(){
-        var laydate = layui.laydate;
         var  form = layui.form;
-
+          // 监听全选
+          form.on('checkbox(checkall)', function(data){
+              if(data.elem.checked){
+                  $('tbody input').prop('checked',true);
+              }else{
+                  $('tbody input').prop('checked',false);
+              }
+              form.render('checkbox');
+          });
           form.on('switch(status)', function (data) {
               var swithcData = data;
               var user_id = data.value;// 获取要修改的ID
@@ -115,22 +124,13 @@
                   }
               });
           });
-          // 监听全选
-          form.on('checkbox(checkall)', function(data){
-              if(data.elem.checked){
-                  $('tbody input').prop('checked',true);
-              }else{
-                  $('tbody input').prop('checked',false);
-              }
-              form.render('checkbox');
-          });
       });
 
       /*用户-删除*/
       function member_del(obj,id){
     	  layer.confirm('确认要删除吗？',function(index){
               //发异步删除数据
-             parm={user_id:id}
+             parm={id:id}
          	 url= "${pageContext.request.contextPath}/admin/deleteStudentClass";
          	 $.post(url,parm,function(data){
          		 if(data.flag==1){
@@ -144,18 +144,18 @@
       }
       //批量删除
       function delAll (argument) {
-          var user_ids = [];
+          var ids = [];
           // 获取选中的id
           $('tbody input').each(function(index, el) {
               if($(this).prop('checked')){
-                  user_ids.push($(this).val())
+                  ids.push($(this).val())
               }
           });
-          layer.confirm('确认要删除吗？'+user_ids.toString(),function(index){
+          layer.confirm('确认要删除吗？'+ids.toString(),function(index){
               //捉到所有被选中的，发异步进行删除
               $.ajax({
-                  url:"${pageContext.request.contextPath}/admin/batchDeleteAttendDetail",
-                  data:{user_ids:user_ids},
+                  url:"${pageContext.request.contextPath}/admin/batchDeleteStudentClass",
+                  data:{ids:ids},
                   type:"Post",
                   dataType: "json",
                   traditional:true,

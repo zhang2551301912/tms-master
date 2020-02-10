@@ -20,13 +20,13 @@
             <div class="layui-row">
                 <form class="layui-form" id="form">
 
-<%--                    <div class="layui-form-item">--%>
-<%--                        <label for="L_username" class="layui-form-label">--%>
-<%--                            <span class="x-red">*</span>账号</label>--%>
-<%--                        <div class="layui-input-inline">--%>
-<%--                            <input type="text" id="user_id" value="${user.user_id}" name="pwd" required="" lay-verify="nikename" autocomplete="off" class="layui-input">--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
+                    <div class="layui-form-item">
+                        <label for="L_username" class="layui-form-label">
+                            <span class="x-red">*</span>账号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="user_id" value="${user.user_id}" disabled="disabled" name="user_id" required="" lay-verify="nikename" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
 
                     <div class="layui-form-item">
                         <label for="L_username" class="layui-form-label">
@@ -84,7 +84,7 @@
                             </select>
                         </div>
                     </div>
-                    <input type="hidden" name="user_id" value="${user.user_id}">
+                    <input type="hidden" name="id" value="${user.id}">
                     <div class="layui-form-item">
                         <label for="L_repass" class="layui-form-label"></label>
                         <button class="layui-btn" type="button" lay-filter="update" lay-submit="" >修改</button>

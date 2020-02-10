@@ -39,6 +39,7 @@
                                       <input type="checkbox" lay-filter="checkall" name="" lay-skin="primary">
                                     </th>
                                     <th>ID</th>
+                                    <th>账号</th>
                                     <th>姓名</th>
                                     <th>密码</th>
                                     <th>电话号码</th>
@@ -48,19 +49,20 @@
                                 <tbody>
                      				<c:forEach items="${parents}" var="p">
                      					<tr>
-                     						<td> <input type="checkbox" value="${p.user_id}" lay-filter="check" name="" lay-skin="primary"></td>
-                     						<td>${p.user_id}</td>
+                     						<td> <input type="checkbox" value="${p.id}" lay-filter="check" name="" lay-skin="primary"></td>
+                                            <td>${p.id}</td>
+                                            <td>${p.user_id}</td>
 	                     					<td>${p.name}</td>
                                             <td>${p.pwd}</td>
 	                     					<td>${p.phone_no}</td>
 	                     					<td class="td-manage">
-	                     					  <a title="编辑"  onclick="xadmin.open('编辑','updateParent?id=${p.user_id}',600,400)" href="javascript:;">
+	                     					  <a title="编辑"  onclick="xadmin.open('编辑','updateParent?user_id=${p.id}',600,400)" href="javascript:;">
 		                                        <i class="layui-icon">&#xe642;</i>
 		                                      </a>
-		                                      <a onclick="rePass(${p.user_id})" title="重置密码" href="javascript:;">
+		                                      <a onclick="rePass(${p.id})" title="重置密码" href="javascript:;">
 			                                     <i class="layui-icon">&#xe631;</i>
 			                                  </a>
-		                                      <a title="删除" onclick="member_del(this,'${p.user_id}')" href="javascript:;">
+		                                      <a title="删除" onclick="member_del(this,'${p.id}')" href="javascript:;">
 		                                        <i class="layui-icon">&#xe640;</i>
 		                                      </a>
 	                                    	</td>
@@ -111,7 +113,7 @@
       function member_del(obj,id){
     	  layer.confirm('确认要删除吗？',function(index){
               //发异步删除数据
-             parm={user_id:id}
+             parm={id:id}
          	 url= "${pageContext.request.contextPath}/admin/deleteUser";
          	 $.post(url,parm,function(data){
          		 if(data.flag==1){
@@ -126,18 +128,18 @@
 
       //批量删除
       function delAll (argument) {
-          var user_ids = [];
+          var ids = [];
           // 获取选中的id 
           $('tbody input').each(function(index, el) {
               if($(this).prop('checked')){
-                  user_ids.push($(this).val())
+                  ids.push($(this).val())
               }
           });
-          layer.confirm('确认要删除吗？'+user_ids.toString(),function(index){
+          layer.confirm('确认要删除吗？'+ids.toString(),function(index){
               //捉到所有被选中的，发异步进行删除
               $.ajax({
                   url:"${pageContext.request.contextPath}/admin/batchDeleteUser",
-                  data:{user_ids:user_ids},
+                  data:{ids:ids},
                   type:"Post",
                   dataType: "json",
                   traditional:true,
@@ -161,10 +163,10 @@
       }
 
       /*用户-重置密码*/
-      function rePass(user_id){
+      function rePass(id){
           layer.confirm('确认要重置该用户的密码吗？',function(index){
               //发异步修改数据
-              parm={user_id:user_id}
+              parm={id:id}
               url= "${pageContext.request.contextPath}/admin/updatePwd";
               $.post(url,parm,function(data){
                   if(data.flag==1){

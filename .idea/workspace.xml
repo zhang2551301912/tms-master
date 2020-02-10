@@ -7,43 +7,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fec41df-1ab9-45c6-9e49-7e9202deb78e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/po/AttendanceDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/addAttendDetail.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/addAttendScore.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/addStudentClass.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookAttendDetail.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookStudentClass.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/ss.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/updateAttend.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/updateStudentClass.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/AdminMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapper/AdminMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/po/Attendance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/po/Attendance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/po/Cla.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/po/Cla.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/po/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/po/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/AdminService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/service/impl/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/impl/AdminServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/AdminMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/AdminMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/addStudentClass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/addStudentClass.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/addUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/addUser.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookAttendScore.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookAttendScore.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookParent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookParent.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookStudent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookStudent.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookStudentClass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookStudentClass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookTeacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookTeacher.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/ss.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/updateAchievement.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/updateAchievement.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/updateParent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/updateParent.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/updateStudent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/updateStudent.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/updateStudentClass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/updateStudentClass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/updateTeacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/updateTeacher.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/mapper/AdminMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/mapper/AdminMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/po/Attendance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/po/Attendance.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/po/Cla.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/po/Cla.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/po/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/po/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/service/AdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/service/AdminService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/service/impl/AdminServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/service/impl/AdminServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/mapper/AdminMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/mapper/AdminMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/admin/addUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/admin/addUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/admin/addStudentClass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/admin/addStudentClass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/admin/lookParent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/admin/lookParent.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/admin/lookStudentClass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/admin/lookStudentClass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/admin/ss.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/admin/updateStudentClass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/admin/updateStudentClass.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mapper/AdminMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mapper/AdminMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/po/Attendance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/po/Attendance.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/po/Cla.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/po/Cla.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/po/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/po/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/service/AdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/AdminService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/service/impl/AdminServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/impl/AdminServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/AdminMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/AdminMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -298,6 +287,9 @@
       <workItem from="1580906543844" duration="7963000" />
       <workItem from="1580953145132" duration="32609000" />
       <workItem from="1581038624561" duration="54528000" />
+      <workItem from="1581148713017" duration="9922000" />
+      <workItem from="1581209753508" duration="10250000" />
+      <workItem from="1581297773842" duration="26317000" />
     </task>
     <servers />
   </component>
@@ -334,10 +326,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="139" y="101" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1580367262733" />
-    <state x="574" y="105" key="#com.intellij.ide.util.MemberChooser" timestamp="1581139350644">
+    <state x="574" y="105" key="#com.intellij.ide.util.MemberChooser" timestamp="1581306776621">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="105" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1581139350644" />
+    <state x="574" y="105" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1581306776621" />
     <state x="276" y="104" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable" timestamp="1580367255470">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -362,70 +354,70 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="561" y="137" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1580988610874" />
-    <state width="1176" height="197" key="GridCell.Tab.0.bottom" timestamp="1581147920505">
+    <state width="1176" height="127" key="GridCell.Tab.0.bottom" timestamp="1581330985971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1176" height="197" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581147920505" />
-    <state width="1176" height="197" key="GridCell.Tab.0.center" timestamp="1581147920505">
+    <state width="1176" height="127" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581330985971" />
+    <state width="1176" height="127" key="GridCell.Tab.0.center" timestamp="1581330985971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1176" height="197" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581147920505" />
-    <state width="1176" height="197" key="GridCell.Tab.0.left" timestamp="1581147920504">
+    <state width="1176" height="127" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581330985971" />
+    <state width="1176" height="127" key="GridCell.Tab.0.left" timestamp="1581330985971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1176" height="197" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581147920504" />
-    <state width="1176" height="197" key="GridCell.Tab.0.right" timestamp="1581147920505">
+    <state width="1176" height="127" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581330985971" />
+    <state width="1176" height="127" key="GridCell.Tab.0.right" timestamp="1581330985971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1176" height="197" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581147920505" />
-    <state width="1176" height="197" key="GridCell.Tab.1.bottom" timestamp="1581147920505">
+    <state width="1176" height="127" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581330985971" />
+    <state width="1176" height="127" key="GridCell.Tab.1.bottom" timestamp="1581330985971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1176" height="197" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581147920505" />
-    <state width="1176" height="197" key="GridCell.Tab.1.center" timestamp="1581147920505">
+    <state width="1176" height="127" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581330985971" />
+    <state width="1176" height="127" key="GridCell.Tab.1.center" timestamp="1581330985971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1176" height="197" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1581147920505" />
-    <state width="1176" height="197" key="GridCell.Tab.1.left" timestamp="1581147920505">
+    <state width="1176" height="127" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1581330985971" />
+    <state width="1176" height="127" key="GridCell.Tab.1.left" timestamp="1581330985971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1176" height="197" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1581147920505" />
-    <state width="1176" height="197" key="GridCell.Tab.1.right" timestamp="1581147920505">
+    <state width="1176" height="127" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1581330985971" />
+    <state width="1176" height="127" key="GridCell.Tab.1.right" timestamp="1581330985971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1176" height="197" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1581147920505" />
-    <state width="1176" height="197" key="GridCell.Tab.2.bottom" timestamp="1581147920505">
+    <state width="1176" height="127" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1581330985971" />
+    <state width="1176" height="127" key="GridCell.Tab.2.bottom" timestamp="1581330985971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1176" height="197" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581147920505" />
-    <state width="1176" height="197" key="GridCell.Tab.2.center" timestamp="1581147920505">
+    <state width="1176" height="127" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581330985971" />
+    <state width="1176" height="127" key="GridCell.Tab.2.center" timestamp="1581330985971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1176" height="197" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1581147920505" />
-    <state width="1176" height="197" key="GridCell.Tab.2.left" timestamp="1581147920505">
+    <state width="1176" height="127" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1581330985971" />
+    <state width="1176" height="127" key="GridCell.Tab.2.left" timestamp="1581330985971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1176" height="197" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1581147920505" />
-    <state width="1176" height="197" key="GridCell.Tab.2.right" timestamp="1581147920505">
+    <state width="1176" height="127" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1581330985971" />
+    <state width="1176" height="127" key="GridCell.Tab.2.right" timestamp="1581330985971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1176" height="197" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1581147920505" />
-    <state width="1176" height="197" key="GridCell.Tab.3.bottom" timestamp="1581147920505">
+    <state width="1176" height="127" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1581330985971" />
+    <state width="1176" height="127" key="GridCell.Tab.3.bottom" timestamp="1581330985971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1176" height="197" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581147920505" />
-    <state width="1176" height="197" key="GridCell.Tab.3.center" timestamp="1581147920505">
+    <state width="1176" height="127" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581330985971" />
+    <state width="1176" height="127" key="GridCell.Tab.3.center" timestamp="1581330985971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1176" height="197" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1581147920505" />
-    <state width="1176" height="197" key="GridCell.Tab.3.left" timestamp="1581147920505">
+    <state width="1176" height="127" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1581330985971" />
+    <state width="1176" height="127" key="GridCell.Tab.3.left" timestamp="1581330985971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1176" height="197" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1581147920505" />
-    <state width="1176" height="197" key="GridCell.Tab.3.right" timestamp="1581147920505">
+    <state width="1176" height="127" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1581330985971" />
+    <state width="1176" height="127" key="GridCell.Tab.3.right" timestamp="1581330985971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1176" height="197" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1581147920505" />
+    <state width="1176" height="127" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1581330985971" />
     <state width="1145" height="587" key="GridCell.Tab.4.bottom" timestamp="1580366093846">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

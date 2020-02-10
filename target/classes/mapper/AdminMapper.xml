@@ -21,14 +21,18 @@
     <select id="getRole" resultType="com.po.Role">
         select * from role
     </select>
+    <!-- 查询ID-->
+    <select id="getUserId" resultType="com.po.User">
+        select user_id from user where user_id=#{user_id}
+    </select>
     <!-- 添加用户-->
-    <insert id="addUserSubmit" parameterType="com.po.User">
-        insert into user(user_id,name,pwd,phone_no,role_id)
-        values(#{user_id},#{name},#{pwd},#{phone_no},#{role_id})
+    <insert id="addUserSubmit" parameterType="com.po.User" useGeneratedKeys="true" keyProperty="User.id">
+        insert into user(id,user_id,name,pwd,phone_no,role_id,status)
+        values(#{id},#{user_id},#{name},#{pwd},#{phone_no},#{role_id},'1')
     </insert>
     <!-- 修改用户-->
     <update id="updateUser" parameterType="com.po.User">
-        update user set pwd=#{pwd},phone_no=#{phone_no},role_id=#{role_id} where user_id=#{user_id}
+        update user set pwd=#{pwd},phone_no=#{phone_no},role_id=#{role_id} where id=#{id}
     </update>
     <!-- 查询用户-->
     <select id="getUser" resultType="com.po.User" parameterType="com.po.User">
@@ -36,11 +40,11 @@
     </select>
     <!--删除用户-->
     <delete id="deleteUser" parameterType="int">
-        delete from user where user_Id=#{user_id}
+        delete from user where id=#{id}
     </delete>
     <!--重置密码-->
     <update id="updatePwd" parameterType="com.po.User">
-        update user set pwd=123 where user_id=#{user_id}
+        update user set pwd=123 where id=#{id}
     </update>
     <!-- 查询出所有的父级菜单 -->
     <select id="getMenusParent" resultType="com.po.Menu">
@@ -106,6 +110,7 @@
             <result column="achi_grade" jdbcType="VARCHAR" property="achi_grade"/>
             <result column="user_id" jdbcType="INTEGER" property="user_id"/>
         <association property="user" javaType="com.po.User">
+            <id column="id" jdbcType="INTEGER" property="id" />
             <id column="user_id" jdbcType="INTEGER" property="user_id" />
             <result column="name" jdbcType="VARCHAR" property="name"/>
             <result column="pwd" jdbcType="VARCHAR" property="pwd"/>
@@ -140,6 +145,7 @@
         <result column="user_id" jdbcType="INTEGER" property="user_id"/>
         <result column="score" jdbcType="DOUBLE" property="score"/>
         <association property="user" javaType="com.po.User">
+            <id column="id" jdbcType="INTEGER" property="id" />
             <id column="user_id" jdbcType="INTEGER" property="user_id" />
             <result column="name" jdbcType="VARCHAR" property="name"/>
             <result column="pwd" jdbcType="VARCHAR" property="pwd"/>
@@ -171,6 +177,7 @@
         <result column="end_date" jdbcType="TIMESTAMP" property="end_date"/>
         <result column="user_id" jdbcType="INTEGER" property="user_id"/>
         <association property="user" javaType="com.po.User">
+            <id column="id" jdbcType="INTEGER" property="id" />
             <id column="user_id" jdbcType="INTEGER" property="user_id" />
             <result column="name" jdbcType="VARCHAR" property="name"/>
             <result column="pwd" jdbcType="VARCHAR" property="pwd"/>
@@ -192,6 +199,7 @@
 	</delete>
     <!-- 用户班级联合-->
     <resultMap id="UserClass" type="com.po.User">
+        <id column="id" jdbcType="INTEGER" property="id" />
         <id column="user_id" jdbcType="INTEGER" property="user_id" />
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="pwd" jdbcType="VARCHAR" property="pwd"/>
@@ -218,17 +226,17 @@
         select * from cla
     </select>
     <!-- 添加学生-->
-    <insert id="addStudent" parameterType="com.po.User" useGeneratedKeys="true" keyProperty="User.user_id">
-        insert into user (user_id,name,pwd,phone_no,role_id,class_id,status) values(#{user_id},#{name},#{pwd},#{phone_no},4,#{class_id},'1')
+    <insert id="addStudent" parameterType="com.po.User" useGeneratedKeys="true" keyProperty="User.id">
+        insert into user (id,user_id,name,pwd,phone_no,role_id,class_id,status) values(#{id},#{user_id},#{name},#{pwd},#{phone_no},4,#{class_id},'1')
     </insert>
     <!-- 删除学生班级-->
     <delete id="deleteStudentClass" parameterType="int">
-		delete from user where user_id=#{user_id}
+		delete from user where id=#{id}
 	</delete>
     <!-- 修改学生信息-->
     <update id="updateStudentClass" parameterType="com.po.User">
         update user set pwd=#{pwd},phone_no=#{phone_no},class_id=#{class_id}
-        where user_id=#{user_id}
+        where id=#{id}
     </update>
 
 </mapper>

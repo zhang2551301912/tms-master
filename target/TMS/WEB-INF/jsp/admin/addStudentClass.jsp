@@ -17,13 +17,13 @@
             <div class="layui-row">
                 <form class="layui-form" id="form">
 
-<%--                    <div class="layui-form-item">--%>
-<%--                        <label for="L_email" class="layui-form-label">--%>
-<%--                            <span class="x-red">*</span>账号</label>--%>
-<%--                        <div class="layui-input-inline">--%>
-<%--                            <input type="text" id="user_id" name="user_id" required="" lay-verify="" autocomplete="off" class="layui-input">--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
+                    <div class="layui-form-item">
+                        <label for="L_email" class="layui-form-label">
+                            <span class="x-red">*</span>账号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="user_id" name="user_id" required="" lay-verify="" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
 
                     <div class="layui-form-item">
                         <label for="L_username" class="layui-form-label">
@@ -55,7 +55,7 @@
                         <div class="layui-input-inline">
                             <select name="class_id" id="select" name="select">
                                 <c:forEach items="${cla}" var="cla">
-                                    <option value="${cla.class_id}">${cla.class_name }
+                                    <option value="${cla.class_id}">${cla.class_name }</option>
                                 </c:forEach>
                             </select>
                         </div>

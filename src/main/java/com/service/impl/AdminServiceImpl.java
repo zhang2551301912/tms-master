@@ -54,13 +54,13 @@ public class AdminServiceImpl implements AdminService {
     }
     //删除用户
     @Override
-    public int deleteUser(Integer user_id) {
-        return adminMapper.deleteUser(user_id);
+    public int deleteUser(Integer id) {
+        return adminMapper.deleteUser(id);
     }
     //重置密码
     @Override
-    public Integer updatePwd(Integer user_id) {
-        return adminMapper.updatePwd(user_id);
+    public Integer updatePwd(Integer id) {
+        return adminMapper.updatePwd(id);
     }
     //查询父级菜单
     @Override
@@ -206,13 +206,18 @@ public class AdminServiceImpl implements AdminService {
     }
     //删除学生班级
     @Override
-    public int deleteStudentClass(Integer user_id) {
-        return adminMapper.deleteStudentClass(user_id);
+    public int deleteStudentClass(Integer id) {
+        return adminMapper.deleteStudentClass(id);
     }
     //修改学生信息
     @Override
     public int updateStudentClass(User user) {
         return adminMapper.updateStudentClass(user);
+    }
+    //查询ID
+    @Override
+    public User getUserId(Integer user_id) {
+        return adminMapper.getUserId(user_id);
     }
 
 }

@@ -24,9 +24,9 @@ public interface AdminService {
     //查询用户
     List<User> getUser();
     //删除用户
-    int deleteUser(Integer user_id);
+    int deleteUser(Integer id);
     //重置密码
-    Integer updatePwd(Integer user_id);
+    Integer updatePwd(Integer id);
     //查询父级菜单
     List<Menu> getMenusParent();
     //添加菜单
@@ -86,7 +86,9 @@ public interface AdminService {
     //添加学生
     int addStudent(User user);
     //删除学生班级
-    int deleteStudentClass(Integer user_id);
+    int deleteStudentClass(Integer id);
     //修改学生信息
     int updateStudentClass(User user);
+    //查询ID
+    User getUserId(Integer user_id);
 }
