@@ -91,17 +91,17 @@
 		select * from course order by course_id
 	</select>
     <!-- 添加课程-->
-    <insert id="addCourse" parameterType="com.po.Course" useGeneratedKeys="true" keyProperty="Course.course_id">
-        insert into course(course_id,name,price,unit,url,sort) values(#{course_id},#{name},#{price},#{unit},#{url},#{sort})
+    <insert id="addCourse" parameterType="com.po.Course" useGeneratedKeys="true" keyProperty="Course.id">
+        insert into course(id,course_id,name2,price,unit,url,sort) values(#{id},#{course_id},#{name2},#{price},#{unit},#{url},#{sort})
     </insert>
     <!-- 删除课程-->
     <delete id="deleteCourse" parameterType="int">
-		delete from course where course_id=#{course_id}
+		delete from course where id=#{id}
 	</delete>
     <!-- 更新课程-->
     <update id="updateCourse" parameterType="com.po.Course">
         update course set name=#{name},price=#{price},unit=#{unit},sort=#{sort}
-        where course_id=#{course_id}
+        where id=#{id}
     </update>
     <!-- 用户绩效-->
     <resultMap id="UserAchievement" type="com.po.Achievement">
@@ -187,7 +187,7 @@
     </resultMap>
     <!-- 查询出勤明细-->
     <select id="getAttendanceDetail" resultMap="UserAttendanceDetail">
-		SELECT a.detail_id,a.start_date,a.end_date,u.user_id,u.`name` from attendance_detail a,`user` u WHERE a.user_id=u.user_id;
+		SELECT a.detail_id,a.start_date,a.end_date,u.user_id,u.`name` from attendance_detail a,`user` u WHERE a.user_id=u.user_id and u.role_id=2;
 	</select>
     <!-- 添加出勤明细-->
     <insert id="addAttendanceDetail" parameterType="com.po.AttendanceDetail" useGeneratedKeys="true" keyProperty="AttendanceDetail.detail_id">
@@ -214,7 +214,7 @@
     </resultMap>
     <!-- 查询班级学生-->
     <select id="getClassStudent" resultMap="UserClass">
-		SELECT * from cla c,`user` u WHERE c.class_id=u.class_id AND u.role_id=4;
+		SELECT u.id,u.user_id,u.name,u.pwd,u.phone_no,u.status,c.class_id,c.class_name from cla c,`user` u WHERE c.class_id=u.class_id AND u.role_id=4;
 	</select>
     <!-- 编辑状态-->
     <update id="updateStatus" parameterType="com.po.User">
@@ -239,4 +239,45 @@
         where id=#{id}
     </update>
 
+    <!--课程教师关联-->
+    <resultMap id="UserAndCourse" type="com.po.CourseUser">
+        <id column="cu_id" jdbcType="INTEGER" property="cu_id" />
+        <result column="user_id" jdbcType="INTEGER" property="user_id"/>
+        <result column="course_id" jdbcType="INTEGER" property="course_id"/>
+        <association property="user" javaType="com.po.User">
+            <id column="id" jdbcType="INTEGER" property="id" />
+            <id column="user_id" jdbcType="INTEGER" property="user_id" />
+            <result column="name" jdbcType="VARCHAR" property="name"/>
+            <result column="pwd" jdbcType="VARCHAR" property="pwd"/>
+            <result column="phone_no" jdbcType="VARCHAR" property="phone_no"/>
+            <result column="role_id" jdbcType="INTEGER" property="role_id"/>
+            <result column="class_id" jdbcType="INTEGER" property="class_id"/>
+            <result column="status" jdbcType="VARCHAR" property="status"/>
+        </association>
+        <association property="course" javaType="com.po.Course">
+            <id column="id" jdbcType="INTEGER" property="id" />
+            <result column="course_id" jdbcType="INTEGER" property="course_id"/>
+            <result column="name2" jdbcType="VARCHAR" property="name2"/>
+            <result column="price" jdbcType="DECIMAL" property="price"/>
+            <result column="unit" jdbcType="VARCHAR" property="unit"/>
+            <result column="url" jdbcType="VARCHAR" property="url"/>
+            <result column="sort" jdbcType="INTEGER" property="sort"/>
+        </association>
+    </resultMap>
+    <!-- 查询课程及教师-->
+    <select id="getCourseTeacher" resultMap="UserAndCourse">
+		select cu.cu_id,c.course_id,c.name2,u.user_id,u.name from course c,`user` u,course_user cu where cu.user_id=u.user_id and cu.course_id=c.course_id order by cu.cu_id
+	</select>
+    <!--关联新增教师课程-->
+    <insert id="addCourseTeacher" parameterType="com.po.CourseUser" useGeneratedKeys="true" keyProperty="CourseUser.cu_id">
+		insert into course_user(cu_id,course_id,user_id) values(#{cu_id},#{course_id},#{user_id})
+	</insert>
+    <!--删除教师课程-->
+    <delete id="deleteCourseTea" parameterType="int">
+        delete from course_user where cu_id=#{cu_id}
+    </delete>
+    <!-- 查询课程ID-->
+    <select id="getCourseID" resultType="com.po.Course">
+		select course_id from course where course_id=#{course_id}
+	</select>
 </mapper>

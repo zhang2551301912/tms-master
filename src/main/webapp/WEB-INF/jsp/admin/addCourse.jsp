@@ -9,6 +9,9 @@
         <meta http-equiv="Cache-Control" content="no-siteapp"/>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/xadmin.css">
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js" ></script>
+        <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/lib/layui/layui.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
     </head>
@@ -16,18 +19,18 @@
         <div class="layui-fluid">
             <div class="layui-row">
                 <form class="layui-form" id="form">
-<%--                    <div class="layui-form-item">--%>
-<%--                        <label for="L_email" class="layui-form-label">--%>
-<%--                            <span class="x-red">*</span>ID</label>--%>
-<%--                        <div class="layui-input-inline">--%>
-<%--                            <input type="text" id="course_id" name="course_id" required="" lay-verify="" autocomplete="off" class="layui-input"></div>--%>
-<%--                    </div>--%>
+                    <div class="layui-form-item">
+                        <label for="L_email" class="layui-form-label">
+                            <span class="x-red">*</span>课程编号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="course_id" name="course_id" required="" lay-verify="course_id" autocomplete="off" class="layui-input"></div>
+                    </div>
 
                     <div class="layui-form-item">
                         <label for="L_username" class="layui-form-label">
                             <span class="x-red">*</span>课程名</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="name" name="name" required="" lay-verify="nikename" autocomplete="off" class="layui-input">
+                            <input type="text" id="name2" name="name2" required="" lay-verify="nikename" autocomplete="off" class="layui-input">
                         </div>
                     </div>
 
@@ -79,6 +82,36 @@
                 $ = layui.jquery;
                 var form = layui.form,
                 layer = layui.layer;
+
+
+                form.verify({
+                    //将用户名是否可用作为验证条件  表单提交时触发
+                        course_id:function(value){
+                        var datas={"course_id": value};
+                        var message='';
+                        $.ajax({
+                            type:"POST",
+                            url:"${pageContext.request.contextPath}/admin/findCourseId",
+                            async: false, //改为同步请求
+                            contentType:'application/json;charset=UTF-8',
+                            data:JSON.stringify(datas),
+                            dataType:'json',
+                            success:function(data){
+                                if(data){
+
+                                }else {
+                                    message ="课程编号已存在，请重新输入！"
+                                    return false;
+                                }
+                            }
+                        });
+                        //需要注意  需要将返回信息写在ajax方法外
+                        if (message!==''){
+                            return message;
+                        }
+                    }
+                });
+
 
                 //自定义验证规则
                 //监听提交

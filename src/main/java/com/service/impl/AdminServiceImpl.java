@@ -121,8 +121,8 @@ public class AdminServiceImpl implements AdminService {
     }
     //删除课程
     @Override
-    public int deleteCourse(Integer course_id) {
-        return adminMapper.deleteCourse(course_id);
+    public int deleteCourse(Integer id) {
+        return adminMapper.deleteCourse(id);
     }
     //更新课程
     @Override
@@ -218,6 +218,26 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public User getUserId(Integer user_id) {
         return adminMapper.getUserId(user_id);
+    }
+    //关联新增教师课程
+    @Override
+    public int addCourseTeacher(CourseUser courseUser) {
+        return adminMapper.addCourseTeacher(courseUser);
+    }
+    //查询课程及教师
+    @Override
+    public List<CourseUser> getCourseTeacher() {
+        return adminMapper.getCourseTeacher();
+    }
+    //删除教师课程
+    @Override
+    public int deleteCourseTea(Integer cu_id) {
+        return adminMapper.deleteCourseTea(cu_id);
+    }
+    //获取课程ID
+    @Override
+    public Course getCourseID(Integer course_id) {
+        return adminMapper.getCourseID(course_id);
     }
 
 }

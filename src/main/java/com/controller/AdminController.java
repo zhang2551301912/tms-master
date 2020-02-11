@@ -488,7 +488,7 @@ public class AdminController {
     public ModelAndView lookCourse() {
         List<Course> course=adminService.getCourse();
         for(Course c:course) {
-            System.out.println(c.getCourse_id()+" "+c.getName()+" "+c.getPrice()+""+c.getUnit());
+            System.out.println(c.getCourse_id()+" "+c.getName2()+" "+c.getPrice()+""+c.getUnit());
         }
         ModelAndView mv=new ModelAndView("admin/lookCourse");
         mv.addObject("course", course);
@@ -501,12 +501,28 @@ public class AdminController {
         return mv;
     }
     //添加课程
+    @RequestMapping(value = "findCourseId",method = RequestMethod.POST,consumes = "application/json")
+    @ResponseBody
+    public boolean findCourseId(@RequestBody Course course){
+        Integer course_id=course.getCourse_id();
+        System.out.println(course_id);
+        Course c=adminService.getCourseID(course_id);
+        if(c==null){
+            System.out.println("课程编号可用");
+            return true;
+        }else{
+            System.out.println("课程编号已经存在，请使用其他编号");
+            return false;
+        }
+    }
+    //添加课程
     @RequestMapping("addCourseSubmit")
     @ResponseBody
-    public ResultMsg addCourseSubmit(Integer course_id, String name, BigDecimal price,String unit,String url,Integer sort) {
+    public ResultMsg addCourseSubmit(Integer id,Integer course_id, String name2, BigDecimal price,String unit,String url,Integer sort) {
         Course course=new Course();
+        course.setId(id);
         course.setCourse_id(course_id);
-        course.setName(name);
+        course.setName2(name2);
         course.setPrice(price);
         course.setUnit(unit);
         course.setUrl(url);
@@ -523,8 +539,8 @@ public class AdminController {
     //删除课程
     @RequestMapping("deleteCourse")
     @ResponseBody
-    public ResultMsg deleteCourse(Integer course_id) {
-        int i=adminService.deleteCourse(course_id);
+    public ResultMsg deleteCourse(Integer id) {
+        int i=adminService.deleteCourse(id);
         ResultMsg rs=null;
         if(i>0) {
             rs=new ResultMsg(Flag.SUCCESS, "删除成功");
@@ -536,11 +552,11 @@ public class AdminController {
     //批量删除角色
     @RequestMapping(value = "batchDeleteCourse")
     @ResponseBody
-    public ResultMsg batchDeleteCourse(Integer[] course_ids) {
-        System.out.println(course_ids);
+    public ResultMsg batchDeleteCourse(Integer[] ids) {
+        System.out.println(ids);
         boolean isDelete=false;
-        for(int course_id:course_ids) {
-            int i=adminService.deleteCourse(course_id);
+        for(int id:ids) {
+            int i=adminService.deleteCourse(id);
             if(i>0) {
                 isDelete=true;
             }else {
@@ -557,11 +573,11 @@ public class AdminController {
     }
     //修改课程页面
     @RequestMapping(value = "updateCourse")
-    public ModelAndView updateCourse(Integer course_id) {
+    public ModelAndView updateCourse(Integer id) {
         List<Course> courses=adminService.getCourse();
         Course course=null;
         for(Course c:courses){
-            if(c.getCourse_id()==course_id) {
+            if(c.getId()==id) {
                 course = c;
             }
         }
@@ -572,8 +588,8 @@ public class AdminController {
     //修改课程地址
     @RequestMapping(value = "updateCourseSubmit")
     @ResponseBody
-    public ResultMsg updateSubjectSectionSubmit(Integer course_id, String name, BigDecimal price,String unit,Integer sort){
-//            System.out.println(course_id+"  ");
+    public ResultMsg updateSubjectSectionSubmit(Integer id,Integer user_id,String name2, BigDecimal price,String unit,Integer sort){
+//            System.out.println(id+"  ");
 //            //上传到服务器
 //            //1.获取文件所在的物理路径（项目服务器的物理地址/upload/文件）
 //            String realPath=request.getServletContext().getRealPath("/");
@@ -591,8 +607,9 @@ public class AdminController {
 //            file.transferTo(file1);
 //            System.out.println(file1);
             Course course=new Course();
-            course.setCourse_id(course_id);
-            course.setName(name);
+            course.setId(id);
+            course.setUser_id(user_id);
+            course.setName2(name2);
             course.setPrice(price);
             course.setUnit(unit);
             course.setSort(sort);
@@ -1004,4 +1021,75 @@ public class AdminController {
         }
         return rs;
     }
+    //课程教师
+    @RequestMapping(value = "lookCourseTeacher")
+    public ModelAndView lookCourseTeacher() {
+        List<CourseUser> courseUsers=adminService.getCourseTeacher();
+        ModelAndView mv=new ModelAndView("admin/lookCourseTeacher");
+        mv.addObject("courseUsers", courseUsers);
+        return mv;
+    }
+    //添加课程教师页面
+    @RequestMapping("/addCourseTeacher")
+    public ModelAndView addCourseTeacher() {
+        List<Course> course=adminService.getCourse();
+        List<User> tea=adminService.getTeacher();
+        ModelAndView mv=new ModelAndView("admin/addCourseTeacher");
+        mv.addObject("course",course);
+        mv.addObject("tea",tea);
+        return mv;
+    }
+    //添加课程教师信息
+    @RequestMapping("addCourseTeacherSubmit")
+    @ResponseBody
+    public ResultMsg addCourseTeacherSubmit(Integer cu_id,Integer user_id,Integer course_id) {
+        CourseUser courseUser=new CourseUser();
+        courseUser.setCu_id(cu_id);
+        courseUser.setUser_id(user_id);
+        courseUser.setCourse_id(course_id);
+        int i=adminService.addCourseTeacher(courseUser);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "添加成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "添加失败");
+        }
+        return rs;
+    }
+    //删除学生班级
+    @RequestMapping("deleteCourseTea")
+    @ResponseBody
+    public ResultMsg deleteCourseTea(Integer cu_id) {
+        int i=adminService.deleteCourseTea(cu_id);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+    //批量删除学生班级
+    @RequestMapping(value = "batchDeleteCourseTea")
+    @ResponseBody
+    public ResultMsg batchDeleteCourseTea(Integer[] cu_ids){
+        System.out.println(cu_ids);
+        boolean isDelete=false;
+        for(int cu_id:cu_ids) {
+            int i=adminService.deleteCourseTea(cu_id);
+            if(i>0) {
+                isDelete=true;
+            }else {
+                isDelete=false;
+            }
+        }
+        ResultMsg rs=null;
+        if(isDelete) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+
 }

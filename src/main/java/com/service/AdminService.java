@@ -52,7 +52,7 @@ public interface AdminService {
     //添加课程
     int addCourse(Course course);
     //删除课程
-    int deleteCourse(Integer course_id);
+    int deleteCourse(Integer id);
     //更新课程
     int updateCourse(Course course);
     //查询绩效
@@ -91,4 +91,12 @@ public interface AdminService {
     int updateStudentClass(User user);
     //查询ID
     User getUserId(Integer user_id);
+    //关联新增教师课程
+    int addCourseTeacher(CourseUser courseUser);
+    //查询课程及教师
+    List<CourseUser> getCourseTeacher();
+    //删除教师课程
+    int deleteCourseTea(Integer cu_id);
+    //获取课程ID
+    Course getCourseID(Integer course_id);
 }

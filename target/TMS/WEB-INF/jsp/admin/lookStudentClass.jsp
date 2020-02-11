@@ -39,7 +39,7 @@
                                 <thead>
                                   <tr>
                                     <th>
-                                      <input type="checkbox" lay-filter="checkall" name="" lay-skin="primary">
+                                      <input type="checkbox" lay-filter="checkall" name="id" lay-skin="primary">
                                     </th>
                                     <th>ID</th>
                                     <th>学生账号</th>
@@ -55,7 +55,7 @@
                                 <tbody>
                      				<c:forEach items="${stu_class}" var="stu_class">
                      					<tr>
-                     						<td><input type="checkbox" value="${stu_class.id}" lay-filter="check" name="" lay-skin="primary"></td>
+                     						<td><input type="checkbox" value="${stu_class.id}" lay-filter="check" name="id" lay-skin="primary"></td>
                                             <td>${stu_class.id}</td>
                                             <td>${stu_class.user_id}</td>
                                             <td>${stu_class.name}</td>
@@ -146,7 +146,7 @@
       function delAll (argument) {
           var ids = [];
           // 获取选中的id
-          $('tbody input').each(function(index, el) {
+          $('tbody input[name="id"]').each(function(index, el) {
               if($(this).prop('checked')){
                   ids.push($(this).val())
               }

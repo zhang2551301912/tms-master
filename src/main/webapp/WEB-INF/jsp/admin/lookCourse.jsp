@@ -47,7 +47,8 @@
                                       <input type="checkbox" lay-filter="checkall" name="" lay-skin="primary">
                                     </th>
                                     <th>ID</th>
-                                    <th>课程</th>              
+                                    <th>课程编号</th>
+                                    <th>课程</th>
                                     <th>价格</th>
 <%--                                    <th>课程文件</th>--%>
                                     <th>序号</th>
@@ -57,18 +58,19 @@
                                 <tbody>
                      				<c:forEach items="${course}" var="course">
                      					<tr>
-                     						<td> <input type="checkbox" value="${course.course_id}" lay-filter="check" name="" lay-skin="primary"></td>
-                     						<td>${course.course_id}</td>
-	                     					<td>${course.name}</td>
+                     						<td> <input type="checkbox" value="${course.id}" lay-filter="check" name="" lay-skin="primary"></td>
+                                            <td>${course.id}</td>
+                                            <td>${course.course_id}</td>
+	                     					<td>${course.name2}</td>
 	                     					<td>${course.price}${course.unit}</td>
-<%--	                     					<td>${course.url}</td>--%>
+<%--	                     				<td>${course.url}</td>--%>
 	                     					<td>${course.sort}</td>
 	                     					
 	                     					<td class="td-manage">
-		                                      <a title="编辑"  onclick="xadmin.open('编辑','updateCourse?course_id=${course.course_id}',600,400)" href="javascript:;">
+		                                      <a title="编辑"  onclick="xadmin.open('编辑','updateCourse?id=${course.id}',600,400)" href="javascript:;">
 		                                        <i class="layui-icon">&#xe642;</i>
 		                                      </a>
-		                                      <a title="删除" onclick="member_del(this,'${course.course_id}')" href="javascript:;">
+		                                      <a title="删除" onclick="member_del(this,'${course.id}')" href="javascript:;">
 		                                        <i class="layui-icon">&#xe640;</i>
 		                                      </a>
 	                                    	</td>
@@ -117,7 +119,7 @@
       function member_del(obj,id){
     	  layer.confirm('确认要删除吗？',function(index){
               //发异步删除数据
-             parm={course_id:id}
+             parm={id:id}
          	 url= "${pageContext.request.contextPath}/admin/deleteCourse";
          	 $.post(url,parm,function(data){
          		 if(data.flag==1){
@@ -134,18 +136,18 @@
 
       //批量删除
       function delAll (argument) {
-    	  var course_ids = [];
+    	  var ids = [];
           // 获取选中的id 
           $('tbody input').each(function(index, el) {
               if($(this).prop('checked')){
-                  course_ids.push($(this).val())
+                  ids.push($(this).val())
               }
           });
-          layer.confirm('确认要删除吗？'+course_ids.toString(),function(index){
+          layer.confirm('确认要删除吗？'+ids.toString(),function(index){
               //捉到所有被选中的，发异步进行删除
                $.ajax({
               	url:"${pageContext.request.contextPath}/admin/batchDeleteCourse",
-   			    data:{course_ids:course_ids},
+   			    data:{ids:ids},
    			    type:"Post",
    			    dataType: "json",
    			  	traditional:true,

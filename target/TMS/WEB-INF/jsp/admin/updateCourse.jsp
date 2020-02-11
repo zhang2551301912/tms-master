@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/xadmin.css">
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js" ></script>
+        <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
         <script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
     </head>
@@ -17,6 +19,13 @@
         <div class="layui-fluid">
             <div class="layui-row">
                 <form class="layui-form" id="form">
+                    <div class="layui-form-item">
+                        <label for="L_email" class="layui-form-label">
+                            <span class="x-red">*</span>课程编号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="course_id" value="${course.course_id}" name="course_id" disabled="disabled" required="" lay-verify="" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
                     <div class="layui-form-item">
                         <label for="L_email" class="layui-form-label">
                             <span class="x-red">*</span>课程</label>
@@ -45,7 +54,7 @@
                             <input type="text" id="sort" value="${course.sort}" name="sort" required="" lay-verify="" autocomplete="off" class="layui-input">
                         </div>
                     </div>
-                    <input type="hidden" name="course_id" value="${course.course_id}">
+                    <input type="hidden" name="id" value="${course.id}">
                     <div class="layui-form-item">
                         <label for="L_repass" class="layui-form-label"></label>
                         <button class="layui-btn" type="button" lay-filter="add" lay-submit="" >修改</button>
