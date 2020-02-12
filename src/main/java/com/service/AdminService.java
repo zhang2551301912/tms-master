@@ -99,4 +99,11 @@ public interface AdminService {
     int deleteCourseTea(Integer cu_id);
     //获取课程ID
     Course getCourseID(Integer course_id);
+    //查看留言
+    List<Message> getMsg();
+    //添加留言
+    int addMsg(Message message);
+    //删除留言
+    int deleteMsg(Integer msg_id);
+
 }

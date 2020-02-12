@@ -1091,5 +1091,75 @@ public class AdminController {
         }
         return rs;
     }
-
+    //查看留言
+    @RequestMapping("lookMessage")
+    public ModelAndView LookMessage(){
+        List<Message> messages=adminService.getMsg();
+        ModelAndView mv=new ModelAndView("admin/lookMessage");
+        mv.addObject("message",messages);
+        return mv;
+    }
+    //添加留言页面
+    @RequestMapping("/addMsg")
+    public ModelAndView addMsg() {
+        List<User> parent=adminService.getParent();
+        List<User> teacher=adminService.getTeacher();
+        ModelAndView mv=new ModelAndView("admin/addMsg");
+        mv.addObject("parent",parent);
+        mv.addObject("teacher",teacher);
+        return mv;
+    }
+    //添加留言
+    @RequestMapping("addMsgSubmit")
+    @ResponseBody
+    public ResultMsg addMsgSubmit(Integer msg_id,String msg_content,Integer parent_id,Integer teacher_id) {
+        Message m=new Message();
+        m.setMsg_id(msg_id);
+        m.setMsg_content(msg_content);
+        m.setParent_id(parent_id);
+        m.setTeacher_id(teacher_id);
+        int i=adminService.addMsg(m);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "添加成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "添加失败");
+        }
+        return rs;
+    }
+    //删除留言
+    @RequestMapping("deleteMsg")
+    @ResponseBody
+    public ResultMsg deleteMsg(Integer msg_id) {
+        int i=adminService.deleteMsg(msg_id);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+    //批量删除留言
+    @RequestMapping(value = "batchDeleteMsg")
+    @ResponseBody
+    public ResultMsg batchDeleteMsg(Integer[] msg_ids){
+        System.out.println(msg_ids);
+        boolean isDelete=false;
+        for(int msg_id:msg_ids) {
+            int i=adminService.deleteMsg(msg_id);
+            if(i>0) {
+                isDelete=true;
+            }else {
+                isDelete=false;
+            }
+        }
+        ResultMsg rs=null;
+        if(isDelete) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
 }

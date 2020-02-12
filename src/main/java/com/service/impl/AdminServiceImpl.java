@@ -239,5 +239,20 @@ public class AdminServiceImpl implements AdminService {
     public Course getCourseID(Integer course_id) {
         return adminMapper.getCourseID(course_id);
     }
+    //查看留言
+    @Override
+    public List<Message> getMsg() {
+        return adminMapper.getMsg();
+    }
+    //添加留言
+    @Override
+    public int addMsg(Message message) {
+        return adminMapper.addMsg(message);
+    }
+    //删除留言
+    @Override
+    public int deleteMsg(Integer msg_id) {
+        return adminMapper.deleteMsg(msg_id);
+    }
 
 }
