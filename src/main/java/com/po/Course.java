@@ -10,7 +10,6 @@ public class Course {
     private String unit;
     private String url;
     private Integer sort;
-    private Integer user_id;
 
     public Integer getId() {
         return id;
@@ -18,14 +17,6 @@ public class Course {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
     }
 
     public Integer getCourse_id() {

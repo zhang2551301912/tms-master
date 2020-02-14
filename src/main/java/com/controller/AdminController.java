@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.po.*;
@@ -585,30 +584,12 @@ public class AdminController {
         mv.addObject("course", course);
         return mv;
     }
-    //修改课程地址
+    //修改课程
     @RequestMapping(value = "updateCourseSubmit")
     @ResponseBody
-    public ResultMsg updateSubjectSectionSubmit(Integer id,Integer user_id,String name2, BigDecimal price,String unit,Integer sort){
-//            System.out.println(id+"  ");
-//            //上传到服务器
-//            //1.获取文件所在的物理路径（项目服务器的物理地址/upload/文件）
-//            String realPath=request.getServletContext().getRealPath("/");
-//            System.out.println(realPath);
-//            String filename=file.getOriginalFilename();//文件名+后缀
-//            System.out.println(filename);
-//            String path=realPath+"/upload/"+filename;
-//            System.out.println(path);
-//            //通过给定路径来创建一个File实例
-//            File file1=new File(path);
-//            //将上传的文件传输到File中
-//            if(file1.getParentFile().exists()) {
-//                file1.getParentFile().mkdirs();
-//            }
-//            file.transferTo(file1);
-//            System.out.println(file1);
+    public ResultMsg updateSubjectSectionSubmit(Integer id,String name2, BigDecimal price,String unit,Integer sort){
             Course course=new Course();
             course.setId(id);
-            course.setUser_id(user_id);
             course.setName2(name2);
             course.setPrice(price);
             course.setUnit(unit);
@@ -1159,6 +1140,121 @@ public class AdminController {
             rs=new ResultMsg(Flag.SUCCESS, "删除成功");
         }else {
             rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+    //查看课表
+    @RequestMapping("lookTable")
+    public ModelAndView lookTable(){
+        List<CourseTable> courseTable=adminService.getCourseTable();
+        ModelAndView mv=new ModelAndView("admin/lookTable");
+        mv.addObject("courseTable",courseTable);
+        return mv;
+    }
+    //添加课表页面
+    @RequestMapping("/addCourseTable")
+    public ModelAndView addCourseTable() {
+        List<Cla> cla=adminService.getCla();
+        List<Course> course=adminService.getCourse();
+        List<User> teacher=adminService.getTeacher();
+        List<Week> wk=adminService.getWeek();
+        List<Jieci> jie=adminService.getJie();
+        List<Address> addr=adminService.getAddress();
+        ModelAndView mv=new ModelAndView("admin/addCourseTable");
+        mv.addObject("cla",cla);
+        mv.addObject("course",course);
+        mv.addObject("teacher",teacher);
+        mv.addObject("wk",wk);
+        mv.addObject("jie",jie);
+        mv.addObject("addr",addr);
+        return mv;
+    }
+    //添加留言
+    @RequestMapping("addCourseTableSubmit")
+    @ResponseBody
+    public ResultMsg addCourseTableSubmit(Integer class_id,Integer course_id,Integer user_id,Integer week,Integer jieci,Integer address) {
+        CourseTable ct=new CourseTable();
+        ct.setClass_id(class_id);
+        ct.setCourse_id(course_id);
+        ct.setUser_id(user_id);
+        ct.setWeek(week);
+        ct.setJieci(jieci);
+        ct.setAddress(address);
+        int i=adminService.addCourseTable(ct);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "添加成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "添加失败");
+        }
+        return rs;
+    }
+    //删除留言
+    @RequestMapping("deleteCourseTable")
+    @ResponseBody
+    public ResultMsg deleteCourseTable(Integer id) {
+        int i=adminService.deleteCourseTable(id);
+        ResultMsg rs=null;
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+    //批量删除留言
+    @RequestMapping(value = "batchDeleteCourseTable")
+    @ResponseBody
+    public ResultMsg batchDeleteCourseTable(Integer[] ids){
+        System.out.println(ids);
+        boolean isDelete=false;
+        for(int id:ids) {
+            int i=adminService.deleteCourseTable(id);
+            if(i>0) {
+                isDelete=true;
+            }else {
+                isDelete=false;
+            }
+        }
+        ResultMsg rs=null;
+        if(isDelete) {
+            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "删除失败");
+        }
+        return rs;
+    }
+    //修改课表页面
+    @RequestMapping("updateCourseTable")
+    public ModelAndView updateCourseTable(Integer id) {
+        System.out.println(id);
+        List<CourseTable> courseTables=adminService.getCourseTable();
+        CourseTable courseTable=null;
+        for(CourseTable ct:courseTables){
+            if(ct.getId()==id){
+                courseTable=ct;
+            }
+        }
+        ModelAndView mv=new ModelAndView("admin/updateCourseTable");
+        mv.addObject("courseTable",courseTable);
+        return mv;
+    }
+    //修改课表
+    @RequestMapping(value = "updateCourseTableSubmit")
+    @ResponseBody
+    public ResultMsg updateCourseTableSubmit(Integer id,Integer week,Integer jieci,Integer address,Integer class_id){
+        CourseTable c=new CourseTable();
+        c.setId(id);
+        c.setWeek(week);
+        c.setJieci(jieci);
+        c.setAddress(address);
+        c.setClass_id(class_id);
+        ResultMsg rs=null;
+        int i=adminService.updateCourseTable(c);
+        if(i>0) {
+            rs=new ResultMsg(Flag.SUCCESS, "修改成功");
+        }else {
+            rs=new ResultMsg(Flag.FAIL, "修改失败");
         }
         return rs;
     }

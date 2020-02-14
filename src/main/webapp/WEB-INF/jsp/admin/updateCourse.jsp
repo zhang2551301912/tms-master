@@ -30,7 +30,7 @@
                         <label for="L_email" class="layui-form-label">
                             <span class="x-red">*</span>课程</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="name" value="${course.name}" name="name" required="" lay-verify="" autocomplete="off" class="layui-input">
+                            <input type="text" id="name2" value="${course.name2}" name="name2" required="" lay-verify="" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -44,7 +44,22 @@
                         <label for="L_email" class="layui-form-label">
                             <span class="x-red">*</span>单位</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="unit" value="${course.unit}" name="unit" required="" lay-verify="" autocomplete="off" class="layui-input">
+                            <select name="unit">
+                                <c:choose>
+                                    <c:when test="${course.unit=='元/节'}">
+                                        <option value="元/节" selected="selected">元/节</option>
+                                        <option value="元/月">元/月</option>
+                                    </c:when>
+                                    <c:when test="${course.unit=='元/月'}">
+                                        <option value="元/节">元/节</option>
+                                        <option value="元/月" selected="selected">元/月</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option value="元/节">元/节</option>
+                                        <option value="元/月">元/月</option>
+                                    </c:otherwise>
+                                </c:choose>
+                            </select>
                         </div>
                     </div>
                     <div class="layui-form-item">

@@ -100,7 +100,7 @@
 	</delete>
     <!-- 更新课程-->
     <update id="updateCourse" parameterType="com.po.Course">
-        update course set name=#{name},price=#{price},unit=#{unit},sort=#{sort}
+        update course set name2=#{name2},price=#{price},unit=#{unit},sort=#{sort}
         where id=#{id}
     </update>
     <!-- 用户绩效-->
@@ -311,4 +311,72 @@
         delete from message where msg_id=#{msg_id}
     </delete>
 
+    <!--课程用户班级关联-->
+    <resultMap id="CourseTable" type="com.po.CourseTable">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="course_id" jdbcType="INTEGER" property="course_id"/>
+        <result column="week" jdbcType="INTEGER" property="week"/>
+        <result column="jieci" jdbcType="INTEGER" property="jieci"/>
+        <result column="class_id" jdbcType="INTEGER" property="class_id"/>
+        <result column="address" jdbcType="INTEGER" property="address"/>
+        <result column="user_id" jdbcType="INTEGER" property="user_id"/>
+        <association property="user" javaType="com.po.User">
+            <id column="id" jdbcType="INTEGER" property="id" />
+            <id column="user_id" jdbcType="INTEGER" property="user_id" />
+            <result column="name" jdbcType="VARCHAR" property="name"/>
+            <result column="pwd" jdbcType="VARCHAR" property="pwd"/>
+            <result column="phone_no" jdbcType="VARCHAR" property="phone_no"/>
+            <result column="role_id" jdbcType="INTEGER" property="role_id"/>
+            <result column="class_id" jdbcType="INTEGER" property="class_id"/>
+            <result column="status" jdbcType="VARCHAR" property="status"/>
+        </association>
+        <association property="course" javaType="com.po.Course">
+            <id column="id" jdbcType="INTEGER" property="id" />
+            <result column="course_id" jdbcType="INTEGER" property="course_id"/>
+            <result column="name2" jdbcType="VARCHAR" property="name2"/>
+            <result column="price" jdbcType="DECIMAL" property="price"/>
+            <result column="unit" jdbcType="VARCHAR" property="unit"/>
+            <result column="url" jdbcType="VARCHAR" property="url"/>
+            <result column="sort" jdbcType="INTEGER" property="sort"/>
+        </association>
+        <association property="cla" javaType="com.po.Cla">
+            <id column="class_id" jdbcType="INTEGER" property="class_id" />
+            <result column="class_name" jdbcType="VARCHAR" property="class_name"/>
+        </association>
+        <association property="wk" javaType="com.po.Week">
+            <id column="w_id" jdbcType="INTEGER" property="w_id" />
+            <result column="w_name" jdbcType="VARCHAR" property="w_name"/>
+        </association>
+        <association property="jie" javaType="com.po.Jieci">
+            <id column="j_id" jdbcType="INTEGER" property="j_id" />
+            <result column="j_name" jdbcType="VARCHAR" property="j_name"/>
+        </association>
+        <association property="addr" javaType="com.po.Address">
+            <id column="addr_id" jdbcType="INTEGER" property="addr_id"/>
+            <result column="addr_name" jdbcType="VARCHAR" property="addr_name"/>
+        </association>
+    </resultMap>
+    <select id="getCourseTable" resultMap="CourseTable">
+        SELECT * FROM course_table a,`user` b,cla c,course d,`week` e,jieci f,address g WHERE a.user_id=b.user_id AND a.course_id=d.course_id AND a.class_id=c.class_id
+        AND a.`week`=e.w_id AND a.jieci=f.j_id AND a.address=g.addr_id
+    </select>
+    <insert id="addCourseTable" parameterType="com.po.CourseTable" useGeneratedKeys="true" keyProperty="CourseTable.id">
+        insert into course_table(id,course_id,week,jieci,class_id,address,user_id) values(#{id},#{course_id},#{week},#{jieci},#{class_id},#{address},#{user_id})
+    </insert>
+    <delete id="deleteCourseTable" parameterType="int">
+        delete from course_table where id=#{id}
+    </delete>
+    <select id="getWeek" resultType="com.po.Week">
+        select * from week
+    </select>
+    <select id="getJie" resultType="com.po.Jieci">
+        select * from jieci
+    </select>
+    <select id="getAddress" resultType="com.po.Address">
+        select * from address
+    </select>
+    <update id="updateCourseTable" parameterType="com.po.CourseTable">
+        update course_table set
+        week=#{week},jieci=#{jieci},address=#{address},class_id=#{class_id} where id=#{id}
+    </update>
 </mapper>

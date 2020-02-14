@@ -103,5 +103,18 @@ public interface AdminMapper {
     int addMsg(Message message);
     //删除留言
     int deleteMsg(Integer msg_id);
-
+    //查询课表
+    List<CourseTable> getCourseTable();
+    //添加课表
+    int addCourseTable(CourseTable courseTable);
+    //删除课表
+    int deleteCourseTable(Integer id);
+    //查询星期
+    List<Week> getWeek();
+    //查询节次
+    List<Jieci> getJie();
+    //查询教室
+    List<Address> getAddress();
+    //修改课表
+    int updateCourseTable(CourseTable courseTable);
 }

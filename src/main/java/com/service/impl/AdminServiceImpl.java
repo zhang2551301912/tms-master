@@ -254,5 +254,40 @@ public class AdminServiceImpl implements AdminService {
     public int deleteMsg(Integer msg_id) {
         return adminMapper.deleteMsg(msg_id);
     }
+    //查询课表
+    @Override
+    public List<CourseTable> getCourseTable() {
+        return adminMapper.getCourseTable();
+    }
+    //添加课表
+    @Override
+    public int addCourseTable(CourseTable courseTable) {
+        return adminMapper.addCourseTable(courseTable);
+    }
+    //删除课表
+    @Override
+    public int deleteCourseTable(Integer id) {
+        return adminMapper.deleteCourseTable(id);
+    }
+    //查询星期
+    @Override
+    public List<Week> getWeek() {
+        return adminMapper.getWeek();
+    }
+    //查询节次
+    @Override
+    public List<Jieci> getJie() {
+        return adminMapper.getJie();
+    }
+    //查询教室
+    @Override
+    public List<Address> getAddress() {
+        return adminMapper.getAddress();
+    }
+    //修改课表
+    @Override
+    public int updateCourseTable(CourseTable courseTable) {
+        return adminMapper.updateCourseTable(courseTable);
+    }
 
 }
