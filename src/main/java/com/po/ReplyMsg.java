@@ -7,6 +7,15 @@ public class ReplyMsg {
     private Integer teacher_id;
 
     private User user;
+    private Message message;
+
+    public Message getMessage() {
+        return message;
+    }
+
+    public void setMessage(Message message) {
+        this.message = message;
+    }
 
     public Integer getRepmsg_id() {
         return repmsg_id;
