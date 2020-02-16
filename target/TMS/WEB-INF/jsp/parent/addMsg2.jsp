@@ -3,7 +3,7 @@
 <html class="x-admin-sm">
     <head>
         <meta charset="UTF-8">
-        <title>关联课程教师</title>
+        <title>添加留言</title>
         <meta name="renderer" content="webkit">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
@@ -19,23 +19,31 @@
 
                     <div class="layui-form-item">
                         <label for="L_email" class="layui-form-label">
-                            <span class="x-red">*</span>课程名</label>
+                            <span class="x-red">*</span>选择教师留言</label>
                         <div class="layui-input-inline">
-                        	<select name="course_id" id="select1" name="select">
-	                            	<c:forEach items="${course}" var="c">
-	                            		<option value="${c.course_id}">${c.name2 }
+                        	<select name="teacher_id" id="select1" name="select">
+	                            	<c:forEach items="${teacher}" var="t">
+	                            		<option value="${t.user_id}">${t.name }
 	                            	</c:forEach>
 	                        </select>    
                         </div>
                     </div>
-                    
+
                     <div class="layui-form-item">
                         <label for="L_username" class="layui-form-label">
-                            <span class="x-red">*</span>教师名</label>
+                            <span class="x-red">*</span>留言内容</label>
                         <div class="layui-input-inline">
-                        	<select name="user_id" id="select2" name="select">
-	                            	<c:forEach items="${tea}" var="t">
-	                            		<option value="${t.user_id}">${t.name }
+                            <input type="text" id="msg_content" name="msg_content" required="" lay-verify="nikename" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label for="L_username" class="layui-form-label">
+                            <span class="x-red">*</span>留言家长</label>
+                        <div class="layui-input-inline">
+                        	<select name="parent_id" id="select2" name="select">
+	                            	<c:forEach items="${parent}" var="p">
+	                            		<option value="${p.user_id}">${p.name }
 	                            	</c:forEach>
 	                        </select>
                         </div>
@@ -55,11 +63,11 @@
                 $ = layui.jquery;
                 var form = layui.form,
                 layer = layui.layer;
-                
+
                 //自定义验证规则
                 //监听提交
               	
-               	url= "${pageContext.request.contextPath}/admin/addCourseTeacherSubmit";
+               	url= "${pageContext.request.contextPath}/admin/addMsgSubmit";
                	form.on('submit(add)',function(sub){
                		var param = $("#form").serialize();
                		$.post(url,param,function(data){

@@ -4,7 +4,7 @@
 <html class="x-admin-sm">
 <head>
 <meta charset="UTF-8">
-<title>查看课程</title>
+<title>查看课时费</title>
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -23,10 +23,7 @@
 <body>
         <div class="x-nav">
           <span class="layui-breadcrumb">
-            <a href="">首页</a>
-            <a href="">课程管理</a>
-            <a>
-              <cite>查看课程</cite></a>
+            <a><cite>查看课时费</cite></a>
           </span>
           <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
             <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>

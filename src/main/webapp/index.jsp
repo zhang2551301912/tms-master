@@ -24,11 +24,12 @@
 <div class="loginForm">
     <div class="sys_title">教师管理系统</div>
     <form method="post" id="formLogin">
-        <input name="username" placeholder="用户名"  type="text" class="username" id="username">
+        <input name="username" placeholder="账号"  type="text" class="username" id="username">
         <input name="password" placeholder="密码"  type="password" class="pwd" id="pwd">
         <select class="op">
             <option name="role" value="1">管理员</option>
             <option name="role" value="2">教师</option>
+            <option name="role" value="3">家长</option>
         </select>
         <div class="btn">
             <input id="submit" value="登录" class="login_btn" type="button"/>
@@ -53,6 +54,8 @@
                                 location.href="${pageContext.request.contextPath}/admin/index";
                             }else if(role_id==2){
                                 location.href="${pageContext.request.contextPath}/teacher/index";
+                            }else if(role_id==3){
+                                location.href="${pageContext.request.contextPath}/parent/index";
                             }
                         }else {
                             AjaxErro(data.content);

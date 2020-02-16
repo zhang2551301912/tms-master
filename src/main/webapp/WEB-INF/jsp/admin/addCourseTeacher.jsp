@@ -3,7 +3,7 @@
 <html class="x-admin-sm">
     <head>
         <meta charset="UTF-8">
-        <title>添加角色菜单</title>
+        <title>关联课程教师</title>
         <meta name="renderer" content="webkit">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">

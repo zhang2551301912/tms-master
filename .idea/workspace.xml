@@ -7,42 +7,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fec41df-1ab9-45c6-9e49-7e9202deb78e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/service/TeacherService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/service/impl/TeacherServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/addReplyMsg.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/addStudentClass2.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/lookCourseFee.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/lookDetail.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/lookMsg.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/lookStudentClass2.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/lookTeaAchieve.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/lookTeaAttend.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/lookTeaTable.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/replyMsg.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/controller/ParentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/parent/addMsg2.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/parent/lookMessage3.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/ParentController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/TeacherController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/ParentMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/TeacherMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapper/TeacherMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/po/ReplyMsg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/po/ReplyMsg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ParentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/TeacherMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/s.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/updateStudentClass2.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/addCourseTeacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/addCourseTeacher.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookMessage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookMessage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookRoleMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookRoleMenu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookStudent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookStudent.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookTable.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookTable.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/updateAttend.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/updateAttend.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/addReplyMsg.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/addReplyMsg.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/lookCourseFee.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/lookCourseFee.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/lookDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/lookDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/lookMsg.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/lookMsg.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/lookStudentClass2.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/lookStudentClass2.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/controller/ParentController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/controller/TeacherController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/controller/TeacherController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/mapper/ParentMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/mapper/TeacherMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/mapper/TeacherMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/po/ReplyMsg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/po/ReplyMsg.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/mapper/ParentMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/admin/s.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/login.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/TMS/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/ParentController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/TeacherController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/TeacherController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mapper/ParentMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mapper/TeacherMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mapper/TeacherMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/po/ReplyMsg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/po/ReplyMsg.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/ParentMapper.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,8 +59,8 @@
         <option value="FxmlFile" />
         <option value="Interface" />
         <option value="Jsp File" />
-        <option value="Class" />
         <option value="XML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -117,7 +101,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/parent" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="SDKs" />
@@ -126,20 +110,16 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\idea_workspace\TMS\src\main\webapp" />
-      <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF" />
-      <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF\jsp\admin" />
-      <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF\jsp" />
-      <recent name="D:\idea_workspace\TMS\src\main\resources" />
-    </key>
     <key name="OPEN_URL_DIALOG">
       <recent name="https://github.com/dabai-cai/thesis" />
     </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.po" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF\jsp\parent" />
       <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF\jsp\teacher" />
       <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF\jsp\admin" />
-      <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF\jsp\parent" />
       <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF\jsp" />
       <recent name="D:\idea_workspace\TMS\src\main\webapp\js" />
     </key>
@@ -150,8 +130,12 @@
       <recent name="com.mapper" />
       <recent name="com.service.Impl" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.po" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\idea_workspace\TMS\src\main\webapp" />
+      <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF" />
+      <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF\jsp\admin" />
+      <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF\jsp" />
+      <recent name="D:\idea_workspace\TMS\src\main\resources" />
     </key>
   </component>
   <component name="RunManager">
@@ -233,7 +217,7 @@
     <option name="viewStates">
       <list>
         <serviceView>
-          <option name="contentProportion" value="0.21311475" />
+          <option name="contentProportion" value="0.19535519" />
           <treeState>
             <expand>
               <path>
@@ -307,6 +291,10 @@
       <workItem from="1581574956901" duration="18751000" />
       <workItem from="1581638402377" duration="1723000" />
       <workItem from="1581640293562" duration="18247000" />
+      <workItem from="1581664974187" duration="1552000" />
+      <workItem from="1581676823900" duration="322000" />
+      <workItem from="1581736201382" duration="251000" />
+      <workItem from="1581818530437" duration="8432000" />
     </task>
     <servers />
   </component>
@@ -367,74 +355,74 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="438" y="160" key="DetectedRootsChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1578623339826" />
-    <state x="561" y="137" key="FileChooserDialogImpl" timestamp="1581569299365">
+    <state x="561" y="137" key="FileChooserDialogImpl" timestamp="1581676858674">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="561" y="137" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1581569299365" />
-    <state width="1151" height="141" key="GridCell.Tab.0.bottom" timestamp="1581664742217">
+    <state x="561" y="137" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1581676858674" />
+    <state width="1177" height="215" key="GridCell.Tab.0.bottom" timestamp="1581836151634">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1151" height="141" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581664742217" />
-    <state width="1151" height="141" key="GridCell.Tab.0.center" timestamp="1581664742217">
+    <state width="1177" height="215" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581836151634" />
+    <state width="1177" height="215" key="GridCell.Tab.0.center" timestamp="1581836151634">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1151" height="141" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581664742217" />
-    <state width="1151" height="141" key="GridCell.Tab.0.left" timestamp="1581664742217">
+    <state width="1177" height="215" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581836151634" />
+    <state width="1177" height="215" key="GridCell.Tab.0.left" timestamp="1581836151634">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1151" height="141" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581664742217" />
-    <state width="1151" height="141" key="GridCell.Tab.0.right" timestamp="1581664742217">
+    <state width="1177" height="215" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581836151634" />
+    <state width="1177" height="215" key="GridCell.Tab.0.right" timestamp="1581836151634">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1151" height="141" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581664742217" />
-    <state width="1151" height="141" key="GridCell.Tab.1.bottom" timestamp="1581664742217">
+    <state width="1177" height="215" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581836151634" />
+    <state width="1177" height="215" key="GridCell.Tab.1.bottom" timestamp="1581836151634">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1151" height="141" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581664742217" />
-    <state width="1151" height="141" key="GridCell.Tab.1.center" timestamp="1581664742217">
+    <state width="1177" height="215" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581836151634" />
+    <state width="1177" height="215" key="GridCell.Tab.1.center" timestamp="1581836151634">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1151" height="141" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1581664742217" />
-    <state width="1151" height="141" key="GridCell.Tab.1.left" timestamp="1581664742217">
+    <state width="1177" height="215" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1581836151634" />
+    <state width="1177" height="215" key="GridCell.Tab.1.left" timestamp="1581836151634">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1151" height="141" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1581664742217" />
-    <state width="1151" height="141" key="GridCell.Tab.1.right" timestamp="1581664742217">
+    <state width="1177" height="215" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1581836151634" />
+    <state width="1177" height="215" key="GridCell.Tab.1.right" timestamp="1581836151634">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1151" height="141" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1581664742217" />
-    <state width="1151" height="141" key="GridCell.Tab.2.bottom" timestamp="1581664742217">
+    <state width="1177" height="215" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1581836151634" />
+    <state width="1177" height="215" key="GridCell.Tab.2.bottom" timestamp="1581836151634">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1151" height="141" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581664742217" />
-    <state width="1151" height="141" key="GridCell.Tab.2.center" timestamp="1581664742217">
+    <state width="1177" height="215" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581836151634" />
+    <state width="1177" height="215" key="GridCell.Tab.2.center" timestamp="1581836151634">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1151" height="141" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1581664742217" />
-    <state width="1151" height="141" key="GridCell.Tab.2.left" timestamp="1581664742217">
+    <state width="1177" height="215" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1581836151634" />
+    <state width="1177" height="215" key="GridCell.Tab.2.left" timestamp="1581836151634">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1151" height="141" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1581664742217" />
-    <state width="1151" height="141" key="GridCell.Tab.2.right" timestamp="1581664742217">
+    <state width="1177" height="215" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1581836151634" />
+    <state width="1177" height="215" key="GridCell.Tab.2.right" timestamp="1581836151634">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1151" height="141" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1581664742217" />
-    <state width="1151" height="141" key="GridCell.Tab.3.bottom" timestamp="1581664742218">
+    <state width="1177" height="215" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1581836151634" />
+    <state width="1177" height="215" key="GridCell.Tab.3.bottom" timestamp="1581836151635">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1151" height="141" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581664742218" />
-    <state width="1151" height="141" key="GridCell.Tab.3.center" timestamp="1581664742218">
+    <state width="1177" height="215" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581836151635" />
+    <state width="1177" height="215" key="GridCell.Tab.3.center" timestamp="1581836151635">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1151" height="141" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1581664742218" />
-    <state width="1151" height="141" key="GridCell.Tab.3.left" timestamp="1581664742218">
+    <state width="1177" height="215" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1581836151635" />
+    <state width="1177" height="215" key="GridCell.Tab.3.left" timestamp="1581836151635">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1151" height="141" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1581664742218" />
-    <state width="1151" height="141" key="GridCell.Tab.3.right" timestamp="1581664742218">
+    <state width="1177" height="215" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1581836151635" />
+    <state width="1177" height="215" key="GridCell.Tab.3.right" timestamp="1581836151635">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1151" height="141" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1581664742218" />
+    <state width="1177" height="215" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1581836151635" />
     <state width="1145" height="587" key="GridCell.Tab.4.bottom" timestamp="1580366093846">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

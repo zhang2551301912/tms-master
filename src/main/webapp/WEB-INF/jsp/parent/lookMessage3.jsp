@@ -18,7 +18,8 @@
 <body>
         <div class="x-nav">
           <span class="layui-breadcrumb">
-            <a href="">查看留言</a>
+            <a href="">首页</a>
+            <a href="">留言管理</a>
           </span>
           <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
             <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
@@ -27,11 +28,16 @@
             <div class="layui-row layui-col-space15">
                 <div class="layui-col-md12">
                     <div class="layui-card">
+                        <div class="layui-card-header">
+                            <button class="layui-btn" onclick="xadmin.open('添加留言','addMsg2',600,400)"><i class="layui-icon"></i>添加</button>
+                        </div>
                         <div class="layui-card-body layui-table-body layui-table-main">
                             <table class="layui-table layui-form">
                                 <thead>
                                   <tr>
-
+                                    <th>
+                                      <input type="checkbox" lay-filter="checkall" name="id" lay-skin="primary">
+                                    </th>
                                     <th>留言ID</th>
                                     <th>留言内容</th>
                                     <th>被留言教师ID</th>
@@ -42,6 +48,7 @@
                                 <tbody>
                      				<c:forEach items="${message}" var="m">
                      					<tr>
+                     						<td><input type="checkbox" value="${m.msg_id}" lay-filter="check" name="id" lay-skin="primary"></td>
                                             <td>${m.msg_id}</td>
                                             <td>${m.msg_content}</td>
                                             <td>${m.teacher_id}</td>
@@ -58,5 +65,19 @@
             </div>
         </div> 
     </body>
+    <script>
+      layui.use(['laydate','form'], function(){
+        var  form = layui.form;
+          // 监听全选
+          form.on('checkbox(checkall)', function(data){
+              if(data.elem.checked){
+                  $('tbody input').prop('checked',true);
+              }else{
+                  $('tbody input').prop('checked',false);
+              }
+              form.render('checkbox');
+          });
+      });
 
+    </script>
 </html>

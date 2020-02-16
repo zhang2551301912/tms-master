@@ -18,7 +18,6 @@
 <body>
         <div class="x-nav">
           <span class="layui-breadcrumb">
-            <a href="">首页</a>
             <a href="">返班管理</a>
             <a>
               <cite>查看学生班级</cite></a>

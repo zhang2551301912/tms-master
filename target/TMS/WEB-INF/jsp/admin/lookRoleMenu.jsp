@@ -40,7 +40,7 @@
                     <div class="layui-card">
                         <!-- 表头选择器 -->
                         <div class="layui-card-header">
-                            <button class="layui-btn" onclick="xadmin.open('添加菜单','addRoleMenu',600,400)"><i class="layui-icon"></i>添加</button>
+                            <button class="layui-btn" onclick="xadmin.open('关联角色菜单','addRoleMenu',600,400)"><i class="layui-icon"></i>添加</button>
                             <button class="layui-btn" style="">
                             	<select name="" id="select" style="border: 0; background: #009688;color: white;">
 	                            	<option value="1" id="manager">管理员</option>
