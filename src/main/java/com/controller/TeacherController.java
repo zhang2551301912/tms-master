@@ -70,7 +70,7 @@ public class TeacherController {
         mv.addObject("attendance", attendance);
         return mv;
     }
-    //查看出勤及分数
+    //查看出勤明细
     @RequestMapping("lookDetail")
     public ModelAndView lookAttendDetail() {
         List<AttendanceDetail> attendanceDetail=adminService.getAttendanceDetail();

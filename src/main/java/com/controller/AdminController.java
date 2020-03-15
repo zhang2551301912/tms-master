@@ -1169,7 +1169,7 @@ public class AdminController {
         mv.addObject("addr",addr);
         return mv;
     }
-    //添加留言
+    //添加课表
     @RequestMapping("addCourseTableSubmit")
     @ResponseBody
     public ResultMsg addCourseTableSubmit(Integer class_id,Integer course_id,Integer user_id,Integer week,Integer jieci,Integer address) {
@@ -1189,7 +1189,7 @@ public class AdminController {
         }
         return rs;
     }
-    //删除留言
+    //删除课表
     @RequestMapping("deleteCourseTable")
     @ResponseBody
     public ResultMsg deleteCourseTable(Integer id) {
@@ -1202,7 +1202,7 @@ public class AdminController {
         }
         return rs;
     }
-    //批量删除留言
+    //批量删除课表
     @RequestMapping(value = "batchDeleteCourseTable")
     @ResponseBody
     public ResultMsg batchDeleteCourseTable(Integer[] ids){
