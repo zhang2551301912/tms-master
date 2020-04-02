@@ -1,3 +1,4 @@
+<%@ page import="com.po.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html class="x-admin-sm">
@@ -13,6 +14,7 @@
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
     </head>
     <body>
+    <% User u=(User)session.getAttribute("user"); %>
         <div class="layui-fluid">
             <div class="layui-row">
                 <form class="layui-form" id="form">
@@ -31,7 +33,7 @@
 
                     <div class="layui-form-item">
                         <label for="L_username" class="layui-form-label">
-                            <span class="x-red">*</span>回复内容</label>
+                            <span class="x-red">*</span>回复留言内容</label>
                         <div class="layui-input-inline">
                             <input type="text" id="repmsg_content" name="repmsg_content" required="" lay-verify="nikename" autocomplete="off" class="layui-input">
                         </div>
@@ -41,11 +43,7 @@
                         <label for="L_username" class="layui-form-label">
                             <span class="x-red">*</span>回复人</label>
                         <div class="layui-input-inline">
-                            <select name="teacher_id" id="select" name="select">
-                                <c:forEach items="${teacher}" var="t">
-                                    <option value="${t.user_id}">${t.name }</option>
-                                </c:forEach>
-                            </select>
+                            <input type="text" id="teacher_id" name="teacher_id" value="<%=u.getUser_id() %>" required="" lay-verify="teacher_id" autocomplete="off" class="layui-input">
                         </div>
                     </div>
 

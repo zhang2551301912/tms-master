@@ -56,4 +56,9 @@ public class LoginServiceImpl implements LoginService {
         return loginMapper.getMenuByPid(p_id);
     }
 
+    @Override
+    public List<MenuRole> getStudentByMenuAndRole() {
+        return loginMapper.getStudentByMenuAndRole();
+    }
+
 }

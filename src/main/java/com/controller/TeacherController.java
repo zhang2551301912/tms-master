@@ -97,7 +97,7 @@ public class TeacherController {
         mv.addObject("message",messages);
         return mv;
     }
-    //查看留言回复
+    //查看回复留言
     @RequestMapping("replyMsg")
     public ModelAndView replyMsg(){
         List<ReplyMsg> replyMsg=teacherService.getReplyMsg();
@@ -116,7 +116,7 @@ public class TeacherController {
         mv.addObject("teacher",teacher);
         return mv;
     }
-    //添加留言
+    //回复留言
     @RequestMapping("addReplyMsgSubmit")
     @ResponseBody
     public ResultMsg addMsgSubmit(Integer repmsg_id,String repmsg_content,Integer msg_id,Integer teacher_id) {
@@ -134,7 +134,7 @@ public class TeacherController {
         }
         return rs;
     }
-    //删除学生班级
+    //删除回复留言
     @RequestMapping("deleteReplyMsg")
     @ResponseBody
     public ResultMsg deleteReplyMsg(Integer repmsg_id) {
@@ -147,127 +147,31 @@ public class TeacherController {
         }
         return rs;
     }
+
     //查看学生班级页面
     @RequestMapping("lookStudentClass2")
     public ModelAndView lookStudentClass(){
-        List<User> stu_class=adminService.getClassStudent();
-        for(User u:stu_class){
-            System.out.println(u.getUser_id()+" "+u.getName()+" "+u.getCla().getClass_id()+" "+u.getCla().getClass_name());
-        }
+        List<StudentCourse> studentCourse=teacherService.getStudentCourseByStatus();
         ModelAndView mv =new ModelAndView("teacher/lookStudentClass2");
-        mv.addObject("stu_class",stu_class);
+        mv.addObject("studentCourse",studentCourse);
         return mv;
     }
+
     //编辑状态
-    @RequestMapping(value = "updateStatus")
+    @RequestMapping(value = "updateStudentCourseStatus")
     @ResponseBody
-    public ResultMsg updateStatus(Integer user_id,String status){
-        System.out.println(user_id+" "+status);
-        User user=new User();
-        user.setUser_id(user_id);
-        user.setStatus(status);
+    public ResultMsg updateStudentCourseStatus(Integer id,String status){
+        StudentCourse studentCourse=new StudentCourse();
+        studentCourse.setId(id);
+        studentCourse.setStatus(status);
         ResultMsg rs=null;
-        int i=adminService.updateStatus(user);
+        int i=teacherService.updateStudentCourseStatus(studentCourse);
         if(i>0) {
-            rs=new ResultMsg(Flag.SUCCESS, "修改成功");
+            rs=new ResultMsg(Flag.SUCCESS, "审核通过");
         }else {
-            rs=new ResultMsg(Flag.FAIL, "修改失败");
+            rs=new ResultMsg(Flag.FAIL, "审核失败");
         }
         return rs;
     }
-    //添加学生信息页面
-    @RequestMapping("/addStudentClass2")
-    public ModelAndView addStudentClass() {
-        List<Cla> cla=adminService.getCla();
-        ModelAndView mv=new ModelAndView("teacher/addStudentClass2");
-        mv.addObject("cla",cla);
-        return mv;
-    }
-    //添加学生信息
-    @RequestMapping("addStudentClassSubmit")
-    @ResponseBody
-    public ResultMsg addStudentClassSubmit(Integer user_id,String name,String pwd,String phone_no,Integer class_id) {
-        User user=new User();
-        user.setUser_id(user_id);
-        user.setName(name);
-        user.setPwd(pwd);
-        user.setPhone_no(phone_no);
-        user.setClass_id(class_id);
-        int i=adminService.addStudent(user);
-        ResultMsg rs=null;
-        if(i>0) {
-            rs=new ResultMsg(Flag.SUCCESS, "添加成功");
-        }else {
-            rs=new ResultMsg(Flag.FAIL, "添加失败");
-        }
-        return rs;
-    }
-    //修改学生信息页面
-    @RequestMapping("updateStudentClass2")
-    public ModelAndView updateStudentClass(Integer id) {
-        System.out.println(id);
-        List<User> stu_classes=adminService.getClassStudent();
-        User stu_class=null;
-        for(User u:stu_classes){
-            if(u.getId()==id){
-                stu_class=u;
-            }
-        }
-        ModelAndView mv=new ModelAndView("teacher/updateStudentClass2");
-        mv.addObject("stu_class",stu_class);
-        return mv;
-    }
-    //修改学生信息
-    @RequestMapping(value = "updateStudentClassSubmit")
-    @ResponseBody
-    public ResultMsg updateStudentClassSubmit(Integer id, String pwd,String phone_no,Integer class_id){
-        User user=new User();
-        user.setId(id);
-        user.setPwd(pwd);
-        user.setPhone_no(phone_no);
-        user.setClass_id(class_id);
-        ResultMsg rs=null;
-        int i=adminService.updateStudentClass(user);
-        if(i>0) {
-            rs=new ResultMsg(Flag.SUCCESS, "修改成功");
-        }else {
-            rs=new ResultMsg(Flag.FAIL, "修改失败");
-        }
-        return rs;
-    }
-    //删除学生班级
-    @RequestMapping("deleteStudentClass")
-    @ResponseBody
-    public ResultMsg deleteStudentClass(Integer id) {
-        int i=adminService.deleteStudentClass(id);
-        ResultMsg rs=null;
-        if(i>0) {
-            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
-        }else {
-            rs=new ResultMsg(Flag.FAIL, "删除失败");
-        }
-        return rs;
-    }
-    //批量删除学生班级
-    @RequestMapping(value = "batchDeleteStudentClass")
-    @ResponseBody
-    public ResultMsg batchDeleteStudentClass(Integer[] ids){
-        System.out.println(ids);
-        boolean isDelete=false;
-        for(int id:ids) {
-            int i=adminService.deleteStudentClass(id);
-            if(i>0) {
-                isDelete=true;
-            }else {
-                isDelete=false;
-            }
-        }
-        ResultMsg rs=null;
-        if(isDelete) {
-            rs=new ResultMsg(Flag.SUCCESS, "删除成功");
-        }else {
-            rs=new ResultMsg(Flag.FAIL, "删除失败");
-        }
-        return rs;
-    }
+
 }

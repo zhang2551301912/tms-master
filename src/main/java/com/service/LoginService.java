@@ -27,4 +27,7 @@ public interface LoginService {
 
     //根据父级ID获取子菜单
     List<Menu> getMenuByPid(Integer p_id);
+
+    //获取学生菜单
+    List<MenuRole> getStudentByMenuAndRole();
 }

@@ -46,6 +46,7 @@
 	                            	<option value="1" id="manager">管理员</option>
 									<option value="2" id="teacher">教师</option>
                                     <option value="3" id="parent">家长</option>
+                                    <option value="4" id="student">学生</option>
 	                            </select>
                             </button>
                         </div>
@@ -66,12 +67,12 @@
                                 <tbody>
                      				<c:forEach items="${admin}" var="admin">
                      					<tr>
-                     						<td> <input type="checkbox" value="${admin.menu_id}" lay-filter="check" name="" lay-skin="primary"></td>
+                     						<td> <input type="checkbox" value="${admin.mr_id}" lay-filter="check" name="" lay-skin="primary"></td>
                      						<td>${admin.menu_id}</td>
 	                     					<td>${admin.role.name}</td>
 	                     					<td>${admin.menu.title}</td>
 	                     					<td class="td-manage">
-		                                      <a title="删除" onclick="member_del(this,'${admin.menu_id}')" href="javascript:;">
+		                                      <a title="删除" onclick="member_del(this,'${admin.mr_id}')" href="javascript:;">
 		                                        <i class="layui-icon">&#xe640;</i>
 		                                      </a>
 	                                    	</td>
@@ -98,12 +99,12 @@
                                 <tbody>
                      				<c:forEach items="${teacher}" var="teacher">
                      					<tr>
-                     						<td> <input type="checkbox" value="${teacher.menu_id}" lay-filter="check" name="" lay-skin="primary"></td>
+                     						<td> <input type="checkbox" value="${teacher.mr_id}" lay-filter="check" name="" lay-skin="primary"></td>
                      						<td>${teacher.menu_id}</td>
 	                     					<td>${teacher.role.name}</td>
 	                     					<td>${teacher.menu.title}</td>
 	                     					<td class="td-manage">
-		                                      <a title="删除" onclick="member_del(this,'${teacher.menu_id}')" href="javascript:;">
+		                                      <a title="删除" onclick="member_del(this,'${teacher.mr_id}')" href="javascript:;">
 		                                        <i class="layui-icon">&#xe640;</i>
 		                                      </a>
 	                                    	</td>
@@ -130,12 +131,44 @@
                                 <tbody>
                                 <c:forEach items="${parent}" var="parent">
                                     <tr>
-                                        <td> <input type="checkbox" value="${parent.menu_id}" lay-filter="check" name="" lay-skin="primary"></td>
+                                        <td> <input type="checkbox" value="${parent.mr_id}" lay-filter="check" name="" lay-skin="primary"></td>
                                         <td>${parent.menu_id}</td>
                                         <td>${parent.role.name}</td>
                                         <td>${parent.menu.title}</td>
                                         <td class="td-manage">
-                                            <a title="删除" onclick="member_del(this,'${parent.menu_id}')" href="javascript:;">
+                                            <a title="删除" onclick="member_del(this,'${parent.mr_id}')" href="javascript:;">
+                                                <i class="layui-icon">&#xe640;</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- 学生 -->
+                        <div class="layui-card-body layui-table-body layui-table-main u4" id="4" style="display: none;">
+                            <table class="layui-table layui-form">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        <input type="checkbox" lay-filter="checkall" name="" lay-skin="primary">
+                                    </th>
+                                    <th>ID</th>
+                                    <th>角色名</th>
+                                    <th>菜单名</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach items="${student}" var="student">
+                                    <tr>
+                                        <td> <input type="checkbox" value="${student.mr_id}" lay-filter="check" name="" lay-skin="primary"></td>
+                                        <td>${student.menu_id}</td>
+                                        <td>${student.role.name}</td>
+                                        <td>${student.menu.title}</td>
+                                        <td class="td-manage">
+                                            <a title="删除" onclick="member_del(this,'${student.mr_id}')" href="javascript:;">
                                                 <i class="layui-icon">&#xe640;</i>
                                             </a>
                                         </td>

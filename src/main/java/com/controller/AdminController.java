@@ -78,6 +78,7 @@ public class AdminController {
         mv.addObject("roles",roles);
         return mv;
     }
+    //添加账号查重
     @RequestMapping(value = "findUserId",method = RequestMethod.POST,consumes = "application/json")
     @ResponseBody
     public boolean findUserId(@RequestBody User user){
@@ -341,10 +342,12 @@ public class AdminController {
         List<MenuRole> adminMenu=loginService.getAdminByMenuAndRole();//管理员的菜单表
         List<MenuRole> teacherMenu=loginService.getTeacherByMenuAndRole();//教师的菜单表
         List<MenuRole> parentMenu=loginService.getParentByMenuAndRole();//家长的菜单表
+        List<MenuRole> studentMenu=loginService.getStudentByMenuAndRole();//学生的菜单表
         ModelAndView mv=new ModelAndView("admin/lookRoleMenu");
         mv.addObject("admin", adminMenu);
         mv.addObject("teacher", teacherMenu);
         mv.addObject("parent", parentMenu);
+        mv.addObject("student", studentMenu);
         return mv;
     }
     //添加关联菜单页面
@@ -879,34 +882,33 @@ public class AdminController {
         }
         return rs;
     }
+
     //查看学生班级页面
     @RequestMapping("lookStudentClass")
     public ModelAndView lookStudentClass(){
-        List<User> stu_class=adminService.getClassStudent();
-        for(User u:stu_class){
-            System.out.println(u.getUser_id()+" "+u.getName()+" "+u.getCla().getClass_id()+" "+u.getCla().getClass_name());
-        }
+        List<StudentCourse> studentCourse=adminService.getStudentCourseByStatus();
         ModelAndView mv =new ModelAndView("admin/lookStudentClass");
-        mv.addObject("stu_class",stu_class);
+        mv.addObject("studentCourse",studentCourse);
         return mv;
     }
+
     //编辑状态
-    @RequestMapping(value = "updateStatus")
+    @RequestMapping(value = "updateStudentCourseStatus")
     @ResponseBody
-    public ResultMsg updateStatus(Integer user_id,String status){
-        System.out.println(user_id+" "+status);
-        User user=new User();
-        user.setUser_id(user_id);
-        user.setStatus(status);
+    public ResultMsg updateStatus(Integer id,String status){
+        StudentCourse studentCourse=new StudentCourse();
+        studentCourse.setId(id);
+        studentCourse.setStatus(status);
         ResultMsg rs=null;
-        int i=adminService.updateStatus(user);
+        int i=adminService.updateStudentCourseStatus(studentCourse);
         if(i>0) {
-            rs=new ResultMsg(Flag.SUCCESS, "修改成功");
+            rs=new ResultMsg(Flag.SUCCESS, "审核通过");
         }else {
-            rs=new ResultMsg(Flag.FAIL, "修改失败");
+            rs=new ResultMsg(Flag.FAIL, "审核失败");
         }
         return rs;
     }
+
     //添加学生信息页面
     @RequestMapping("/addStudentClass")
     public ModelAndView addStudentClass() {

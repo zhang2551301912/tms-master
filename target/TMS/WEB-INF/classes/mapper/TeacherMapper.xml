@@ -25,10 +25,51 @@
     <select id="getReplyMsg" resultMap="ReplyMsg">
         SELECT * from reply_msg r,message m,`user` u WHERE r.msg_id=m.msg_id AND r.teacher_id=u.user_id
     </select>
-    <insert id="addReplyMsg" parameterType="com.po.ReplyMsg" useGeneratedKeys="true" keyProperty="ReplyMsg.repmsg_id">
+    <insert id="addReplyMsg" parameterType="com.po.ReplyMsg" useGeneratedKeys="true" keyProperty="repmsg_id">
         insert into reply_msg(repmsg_id,repmsg_content,msg_id,teacher_id) values (#{repmsg_id},#{repmsg_content},#{msg_id},#{teacher_id})
     </insert>
     <delete id="deleteReplyMsg" parameterType="int">
         delete from reply_msg where repmsg_id=#{repmsg_id}
     </delete>
+
+    <!--学生选课报名-->
+    <resultMap id="StudentCourse" type="com.po.StudentCourse">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="course_id" jdbcType="INTEGER" property="course_id"/>
+        <result column="teacher_id" jdbcType="INTEGER" property="teacher_id"/>
+        <result column="student_id" jdbcType="INTEGER" property="student_id"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <association property="user" javaType="com.po.User">
+            <id column="id" jdbcType="INTEGER" property="id" />
+            <id column="user_id" jdbcType="INTEGER" property="user_id" />
+            <result column="name" jdbcType="VARCHAR" property="name"/>
+            <result column="pwd" jdbcType="VARCHAR" property="pwd"/>
+            <result column="phone_no" jdbcType="VARCHAR" property="phone_no"/>
+            <result column="role_id" jdbcType="INTEGER" property="role_id"/>
+            <result column="class_id" jdbcType="INTEGER" property="class_id"/>
+            <result column="status" jdbcType="VARCHAR" property="status"/>
+        </association>
+        <association property="course" javaType="com.po.Course">
+            <id column="id" jdbcType="INTEGER" property="id" />
+            <result column="course_id" jdbcType="INTEGER" property="course_id"/>
+            <result column="name2" jdbcType="VARCHAR" property="name2"/>
+            <result column="price" jdbcType="DECIMAL" property="price"/>
+            <result column="unit" jdbcType="VARCHAR" property="unit"/>
+            <result column="url" jdbcType="VARCHAR" property="url"/>
+            <result column="sort" jdbcType="INTEGER" property="sort"/>
+        </association>
+    </resultMap>
+
+    <!--根据学生状态获取报名记录-->
+    <select id="getStudentCourseByStatus" resultMap="StudentCourse">
+        select * from student_course s,`user` u,course cc where s.teacher_id=u.user_id and s.course_id=cc.course_id and (s.status='0' or s.status='1')
+    </select>
+
+    <!--审核报名状态-->
+    <update id="updateStudentCourseStatus" parameterType="com.po.StudentCourse">
+        update student_course set
+        status=#{status}
+        where id=#{id}
+    </update>
+
 </mapper>

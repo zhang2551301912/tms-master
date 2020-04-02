@@ -30,6 +30,7 @@
             <option name="role" value="1">管理员</option>
             <option name="role" value="2">教师</option>
             <option name="role" value="3">家长</option>
+            <option name="role" value="4">学生</option>
         </select>
         <div class="btn">
             <input id="submit" value="登录" class="login_btn" type="button"/>
@@ -56,6 +57,8 @@
                                 location.href="${pageContext.request.contextPath}/teacher/index";
                             }else if(role_id==3){
                                 location.href="${pageContext.request.contextPath}/parent/index";
+                            }else if(role_id==4){
+                                location.href="${pageContext.request.contextPath}/student/index";
                             }
                         }else {
                             AjaxErro(data.content);

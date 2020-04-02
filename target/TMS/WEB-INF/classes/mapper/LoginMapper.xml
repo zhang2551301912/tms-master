@@ -45,4 +45,10 @@
     where menu_role.menu_id=menu.menu_id and menu_role.role_id=role.role_id and menu_role.role_id=3 order by menu_role.menu_id;
   </select>
 
+  <!--  获取学生菜单-->
+  <select id="getStudentByMenuAndRole" resultMap="MenuAndRole">
+    select * from menu_role,menu,role
+    where menu_role.menu_id=menu.menu_id and menu_role.role_id=role.role_id and menu_role.role_id=4 order by menu_role.menu_id;
+  </select>
+
 </mapper>

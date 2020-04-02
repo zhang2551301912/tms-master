@@ -2,6 +2,7 @@ package com.service.impl;
 
 import com.mapper.TeacherMapper;
 import com.po.ReplyMsg;
+import com.po.StudentCourse;
 import com.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,16 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public int deleteReplyMsg(Integer repmsg_id) {
         return teacherMapper.deleteReplyMsg(repmsg_id);
+    }
+
+    //根据学生状态获取报名记录
+    @Override
+    public List<StudentCourse> getStudentCourseByStatus() {
+        return teacherMapper.getStudentCourseByStatus();
+    }
+    //审核报名状态
+    @Override
+    public int updateStudentCourseStatus(StudentCourse studentCourse) {
+        return teacherMapper.updateStudentCourseStatus(studentCourse);
     }
 }

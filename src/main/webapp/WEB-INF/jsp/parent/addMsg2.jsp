@@ -13,6 +13,7 @@
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
     </head>
     <body>
+    <% User u=(User)session.getAttribute("user"); %>
         <div class="layui-fluid">
             <div class="layui-row">
                 <form class="layui-form" id="form">
@@ -41,11 +42,7 @@
                         <label for="L_username" class="layui-form-label">
                             <span class="x-red">*</span>留言家长</label>
                         <div class="layui-input-inline">
-                        	<select name="parent_id" id="select2" name="select">
-	                            	<c:forEach items="${parent}" var="p">
-	                            		<option value="${p.user_id}">${p.name }
-	                            	</c:forEach>
-	                        </select>
+                            <input type="text" id="parent_id" name="parent_id" value="<%=u.getUser_id() %>" required="" lay-verify="parent_id" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     

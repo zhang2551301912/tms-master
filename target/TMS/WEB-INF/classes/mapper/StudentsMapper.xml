@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.StudentMapper">
+    <!--学生选课报名-->
+    <resultMap id="StudentCourse" type="com.po.StudentCourse">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="course_id" jdbcType="INTEGER" property="course_id"/>
+        <result column="teacher_id" jdbcType="INTEGER" property="teacher_id"/>
+        <result column="student_id" jdbcType="INTEGER" property="student_id"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <association property="user" javaType="com.po.User">
+            <id column="id" jdbcType="INTEGER" property="id" />
+            <id column="user_id" jdbcType="INTEGER" property="user_id" />
+            <result column="name" jdbcType="VARCHAR" property="name"/>
+            <result column="pwd" jdbcType="VARCHAR" property="pwd"/>
+            <result column="phone_no" jdbcType="VARCHAR" property="phone_no"/>
+            <result column="role_id" jdbcType="INTEGER" property="role_id"/>
+            <result column="class_id" jdbcType="INTEGER" property="class_id"/>
+            <result column="status" jdbcType="VARCHAR" property="status"/>
+        </association>
+        <association property="course" javaType="com.po.Course">
+            <id column="id" jdbcType="INTEGER" property="id" />
+            <result column="course_id" jdbcType="INTEGER" property="course_id"/>
+            <result column="name2" jdbcType="VARCHAR" property="name2"/>
+            <result column="price" jdbcType="DECIMAL" property="price"/>
+            <result column="unit" jdbcType="VARCHAR" property="unit"/>
+            <result column="url" jdbcType="VARCHAR" property="url"/>
+            <result column="sort" jdbcType="INTEGER" property="sort"/>
+        </association>
+    </resultMap>
+
+    <!--选课报名-->
+    <insert id="addStudentCourse" parameterType="com.po.StudentCourse" useGeneratedKeys="true" keyProperty="id">
+        insert into student_course(
+        id,course_id,teacher_id,student_id,status
+        )
+        values (
+        #{id},#{course_id},#{teacher_id},#{student_id},'0'
+        )
+    </insert>
+
+    <!--根据学生状态获取报名记录-->
+    <select id="getStudentCourseByStatus" resultMap="StudentCourse">
+        select * from student_course s,`user` u,course cc where s.teacher_id=u.user_id and s.course_id=cc.course_id and (s.status='0' or s.status='2')
+    </select>
+
+    <!--报名查重-->
+    <select id="getStudentCourse" parameterType="java.lang.Integer" resultMap="StudentCourse">
+        select * from student_course where course_id=#{course_id} and teacher_id=#{teacher_id} and student_id=#{student_id}
+    </select>
+
+</mapper>
+

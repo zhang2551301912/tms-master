@@ -7,9 +7,58 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fec41df-1ab9-45c6-9e49-7e9202deb78e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/controller/StudentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mapper/StudentMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/po/StudentCourse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/service/StudentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/service/impl/StudentServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/StudentsMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/addStudentCourse.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/chooseCourseAndTeacher.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/TeacherController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/AdminMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapper/AdminMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/LoginMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapper/LoginMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/TeacherMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapper/TeacherMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/TeacherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/impl/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/impl/AdminServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/impl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/impl/LoginServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/impl/TeacherServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/impl/TeacherServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/AdminMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/AdminMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/LoginMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/LoginMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/TeacherMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/TeacherMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookRoleMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookRoleMenu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookStudentClass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/lookStudentClass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/parent/addMsg2.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/parent/addMsg2.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/addReplyMsg.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/addReplyMsg.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/lookStudentClass2.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacher/lookStudentClass2.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/controller/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/mapper/LoginMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/mapper/LoginMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/service/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/service/LoginService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/service/impl/LoginServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/com/service/impl/LoginServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/mapper/AdminMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/mapper/AdminMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/mapper/LoginMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/mapper/LoginMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/mapper/TeacherMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/classes/mapper/TeacherMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/admin/lookRoleMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/admin/lookRoleMenu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/admin/lookStudentClass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/admin/lookStudentClass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/parent/addMsg2.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/parent/addMsg2.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/teacher/addReplyMsg.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/teacher/addReplyMsg.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/teacher/lookStudentClass2.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/WEB-INF/jsp/teacher/lookStudentClass2.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/TMS/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/TMS/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/TeacherController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/TeacherController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mapper/LoginMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mapper/LoginMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/LoginService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/impl/LoginServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/impl/LoginServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/AdminMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/AdminMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/LoginMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/LoginMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/TeacherMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/TeacherMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,10 +89,10 @@
         <option value="AnnotationType" />
         <option value="HTML File" />
         <option value="FxmlFile" />
-        <option value="Interface" />
         <option value="Jsp File" />
-        <option value="XML File" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="XML File" />
       </list>
     </option>
   </component>
@@ -87,24 +136,28 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF\jsp\student" />
+      <recent name="D:\idea_workspace\TMS\src\main\webapp" />
+      <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF" />
+      <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF\jsp\admin" />
+      <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF\jsp" />
+    </key>
     <key name="OPEN_URL_DIALOG">
       <recent name="https://github.com/dabai-cai/thesis" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.po" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF\jsp\parent" />
+      <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF\jsp\student" />
       <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF\jsp\teacher" />
       <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF\jsp\admin" />
       <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF\jsp" />
-      <recent name="D:\idea_workspace\TMS\src\main\webapp\js" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.service.impl" />
@@ -113,12 +166,8 @@
       <recent name="com.mapper" />
       <recent name="com.service.Impl" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\idea_workspace\TMS\src\main\webapp" />
-      <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF" />
-      <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF\jsp\admin" />
-      <recent name="D:\idea_workspace\TMS\src\main\webapp\WEB-INF\jsp" />
-      <recent name="D:\idea_workspace\TMS\src\main\resources" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.po" />
     </key>
   </component>
   <component name="RunManager">
@@ -200,7 +249,7 @@
     <option name="viewStates">
       <list>
         <serviceView>
-          <option name="contentProportion" value="0.19535519" />
+          <option name="contentProportion" value="0.18442623" />
           <treeState>
             <expand>
               <path>
@@ -307,6 +356,13 @@
       <workItem from="1583991033373" duration="11000" />
       <workItem from="1584161135109" duration="1282000" />
       <workItem from="1584249446608" duration="8487000" />
+      <workItem from="1584334562587" duration="62000" />
+      <workItem from="1585451146281" duration="2848000" />
+      <workItem from="1585646802962" duration="3590000" />
+      <workItem from="1585661244384" duration="8306000" />
+      <workItem from="1585710540102" duration="10668000" />
+      <workItem from="1585739758496" duration="13026000" />
+      <workItem from="1585801972785" duration="8720000" />
     </task>
     <servers />
   </component>
@@ -343,14 +399,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="139" y="101" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1580367262733" />
-    <state x="574" y="105" key="#com.intellij.ide.util.MemberChooser" timestamp="1581663022657">
+    <state x="574" y="105" key="#com.intellij.ide.util.MemberChooser" timestamp="1585822953841">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="105" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1581663022657" />
+    <state x="574" y="105" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1585822953841" />
     <state x="276" y="104" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable" timestamp="1580367255470">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="276" y="104" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable/0.0.1536.824@0.0.1536.824" timestamp="1580367255470" />
+    <state x="553" y="302" width="429" height="225" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585802000135">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="553" y="302" width="429" height="225" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1585802000135" />
     <state x="446" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1581587391300">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -367,74 +427,74 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="438" y="160" key="DetectedRootsChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1578623339826" />
-    <state x="561" y="137" key="FileChooserDialogImpl" timestamp="1583198529563">
+    <state x="561" y="137" key="FileChooserDialogImpl" timestamp="1585789797994">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="561" y="137" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1583198529563" />
-    <state width="1177" height="17" key="GridCell.Tab.0.bottom" timestamp="1584269805075">
+    <state x="561" y="137" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585789797994" />
+    <state width="1193" height="253" key="GridCell.Tab.0.bottom" timestamp="1585823592407">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1177" height="17" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584269805075" />
-    <state width="1177" height="17" key="GridCell.Tab.0.center" timestamp="1584269805075">
+    <state width="1193" height="253" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585823592407" />
+    <state width="1193" height="253" key="GridCell.Tab.0.center" timestamp="1585823592406">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1177" height="17" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584269805075" />
-    <state width="1177" height="17" key="GridCell.Tab.0.left" timestamp="1584269805075">
+    <state width="1193" height="253" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585823592406" />
+    <state width="1193" height="253" key="GridCell.Tab.0.left" timestamp="1585823592406">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1177" height="17" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584269805075" />
-    <state width="1177" height="17" key="GridCell.Tab.0.right" timestamp="1584269805075">
+    <state width="1193" height="253" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585823592406" />
+    <state width="1193" height="253" key="GridCell.Tab.0.right" timestamp="1585823592407">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1177" height="17" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584269805075" />
-    <state width="1177" height="17" key="GridCell.Tab.1.bottom" timestamp="1584269805075">
+    <state width="1193" height="253" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585823592407" />
+    <state width="1193" height="253" key="GridCell.Tab.1.bottom" timestamp="1585823592408">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1177" height="17" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584269805075" />
-    <state width="1177" height="17" key="GridCell.Tab.1.center" timestamp="1584269805075">
+    <state width="1193" height="253" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585823592408" />
+    <state width="1193" height="253" key="GridCell.Tab.1.center" timestamp="1585823592408">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1177" height="17" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1584269805075" />
-    <state width="1177" height="17" key="GridCell.Tab.1.left" timestamp="1584269805075">
+    <state width="1193" height="253" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1585823592408" />
+    <state width="1193" height="253" key="GridCell.Tab.1.left" timestamp="1585823592407">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1177" height="17" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1584269805075" />
-    <state width="1177" height="17" key="GridCell.Tab.1.right" timestamp="1584269805075">
+    <state width="1193" height="253" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1585823592407" />
+    <state width="1193" height="253" key="GridCell.Tab.1.right" timestamp="1585823592408">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1177" height="17" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1584269805075" />
-    <state width="1177" height="17" key="GridCell.Tab.2.bottom" timestamp="1584269805075">
+    <state width="1193" height="253" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1585823592408" />
+    <state width="1193" height="253" key="GridCell.Tab.2.bottom" timestamp="1585823592408">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1177" height="17" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584269805075" />
-    <state width="1177" height="17" key="GridCell.Tab.2.center" timestamp="1584269805075">
+    <state width="1193" height="253" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585823592408" />
+    <state width="1193" height="253" key="GridCell.Tab.2.center" timestamp="1585823592408">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1177" height="17" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1584269805075" />
-    <state width="1177" height="17" key="GridCell.Tab.2.left" timestamp="1584269805075">
+    <state width="1193" height="253" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1585823592408" />
+    <state width="1193" height="253" key="GridCell.Tab.2.left" timestamp="1585823592408">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1177" height="17" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1584269805075" />
-    <state width="1177" height="17" key="GridCell.Tab.2.right" timestamp="1584269805075">
+    <state width="1193" height="253" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1585823592408" />
+    <state width="1193" height="253" key="GridCell.Tab.2.right" timestamp="1585823592408">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1177" height="17" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1584269805075" />
-    <state width="1177" height="17" key="GridCell.Tab.3.bottom" timestamp="1584269805075">
+    <state width="1193" height="253" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1585823592408" />
+    <state width="1193" height="253" key="GridCell.Tab.3.bottom" timestamp="1585823592408">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1177" height="17" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584269805075" />
-    <state width="1177" height="17" key="GridCell.Tab.3.center" timestamp="1584269805075">
+    <state width="1193" height="253" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585823592408" />
+    <state width="1193" height="253" key="GridCell.Tab.3.center" timestamp="1585823592408">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1177" height="17" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1584269805075" />
-    <state width="1177" height="17" key="GridCell.Tab.3.left" timestamp="1584269805075">
+    <state width="1193" height="253" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1585823592408" />
+    <state width="1193" height="253" key="GridCell.Tab.3.left" timestamp="1585823592408">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1177" height="17" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1584269805075" />
-    <state width="1177" height="17" key="GridCell.Tab.3.right" timestamp="1584269805075">
+    <state width="1193" height="253" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1585823592408" />
+    <state width="1193" height="253" key="GridCell.Tab.3.right" timestamp="1585823592408">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1177" height="17" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1584269805075" />
+    <state width="1193" height="253" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1585823592408" />
     <state width="1145" height="587" key="GridCell.Tab.4.bottom" timestamp="1580366093846">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -507,10 +567,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="299" y="70" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1580957412176" />
-    <state x="66" y="115" key="SettingsEditor" timestamp="1580957739248">
+    <state x="142" y="34" width="1058" height="709" key="SettingsEditor" timestamp="1585706951779">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="66" y="115" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1580957739248" />
+    <state x="142" y="34" width="1058" height="709" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585706951779" />
     <state x="490" y="154" width="540" height="524" key="StructurePopup" timestamp="1580299527884">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -523,22 +583,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="658" y="307" key="extract.method.dialog/0.0.1536.824@0.0.1536.824" timestamp="1580208901196" />
-    <state x="457" y="167" width="621" height="490" key="find.popup" timestamp="1580562530456">
+    <state x="457" y="167" width="755" height="548" key="find.popup" timestamp="1585717989647">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="457" y="167" width="621" height="490" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1580562530456" />
+    <state x="457" y="167" width="755" height="548" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1585717989647" />
     <state x="178" y="0" key="new project wizard" timestamp="1580300530527">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="178" y="0" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1580300530527" />
-    <state x="426" y="186" key="run.anything.popup" timestamp="1584263529562">
+    <state x="426" y="186" key="run.anything.popup" timestamp="1585751948572">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="426" y="186" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1584263529562" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1581604250087">
+    <state x="426" y="186" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1585751948572" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1585726121807">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1581604250087" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1585726121807" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

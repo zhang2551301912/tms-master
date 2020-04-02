@@ -290,4 +290,15 @@ public class AdminServiceImpl implements AdminService {
         return adminMapper.updateCourseTable(courseTable);
     }
 
+    //根据学生状态获取报名记录
+    @Override
+    public List<StudentCourse> getStudentCourseByStatus() {
+        return adminMapper.getStudentCourseByStatus();
+    }
+    //审核报名状态
+    @Override
+    public int updateStudentCourseStatus(StudentCourse studentCourse) {
+        return adminMapper.updateStudentCourseStatus(studentCourse);
+    }
+
 }

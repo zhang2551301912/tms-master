@@ -117,4 +117,10 @@ public interface AdminMapper {
     List<Address> getAddress();
     //修改课表
     int updateCourseTable(CourseTable courseTable);
+
+    //根据学生状态获取报名记录
+    List<StudentCourse> getStudentCourseByStatus();
+    //审核报名状态
+    int updateStudentCourseStatus(StudentCourse studentCourse);
+
 }
