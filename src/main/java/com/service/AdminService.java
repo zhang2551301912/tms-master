@@ -107,6 +107,8 @@ public interface AdminService {
     int deleteMsg(Integer msg_id);
     //查询课表
     List<CourseTable> getCourseTable();
+
+    List<CourseTable> getCurrentCourseTable(Integer user_id);
     //添加课表
     int addCourseTable(CourseTable courseTable);
     //删除课表

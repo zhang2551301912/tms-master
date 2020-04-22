@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -41,8 +43,12 @@ public class TeacherController {
     }
     //查看课表
     @RequestMapping("lookTeaTable")
-    public ModelAndView lookTable(){
-        List<CourseTable> courseTable=adminService.getCourseTable();
+    public ModelAndView lookTable(HttpServletRequest request){
+        HttpSession session=request.getSession();
+        User u=(User)session.getAttribute("user");
+        Integer currentUserId=u.getUser_id();
+        System.out.println(currentUserId);
+        List<CourseTable> courseTable=adminService.getCurrentCourseTable(currentUserId);
         ModelAndView mv=new ModelAndView("teacher/lookTeaTable");
         mv.addObject("courseTable",courseTable);
         return mv;

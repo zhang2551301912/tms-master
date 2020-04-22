@@ -259,6 +259,11 @@ public class AdminServiceImpl implements AdminService {
     public List<CourseTable> getCourseTable() {
         return adminMapper.getCourseTable();
     }
+    //查询课表
+    @Override
+    public List<CourseTable> getCurrentCourseTable(Integer user_id) {
+        return adminMapper.getCurrentCourseTable(user_id);
+    }
     //添加课表
     @Override
     public int addCourseTable(CourseTable courseTable) {

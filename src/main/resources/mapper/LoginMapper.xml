@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mapper.LoginMapper">
   <!--根据ID和role查询用户-->
-  <select id="getUserByIdAndRole" resultType="com.po.User" parameterType="com.po.User">
+  <select id="getUserByIdAndRole" resultType="com.po.User">
 	select * from user
 	where user_Id=#{user_id,jdbcType=INTEGER} and pwd=#{pwd,jdbcType=VARCHAR} and role_id=#{role_id,jdbcType=INTEGER};
   </select>
