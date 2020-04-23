@@ -39,24 +39,22 @@
 <%--                                    <th>--%>
 <%--                                      <input type="checkbox" lay-filter="checkall" name="" lay-skin="primary">--%>
 <%--                                    </th>--%>
-                                    <th>ID</th>
                                     <th>课程编号</th>
-                                    <th>课程</th>
+                                    <th>课程名称</th>
                                     <th>课时费</th>
-<%--                                    <th>课程文件</th>--%>
-                                    <th>序号</th>
+                                    <th>教师编号</th>
+                                    <th>教师姓名</th>
                                   </tr>
                                 </thead>
                                 <tbody>
-                     				<c:forEach items="${course}" var="course">
+                     				<c:forEach items="${courseUser}" var="courseUser">
                      					<tr>
 <%--                     						<td> <input type="checkbox" value="${course.id}" lay-filter="check" name="" lay-skin="primary"></td>--%>
-                                            <td>${course.id}</td>
-                                            <td>${course.course_id}</td>
-	                     					<td>${course.name2}</td>
-	                     					<td>${course.price}${course.unit}</td>
-<%--	                     				<td>${course.url}</td>--%>
-	                     					<td>${course.sort}</td>
+                                            <td>${courseUser.course_id}</td>
+                                            <td>${courseUser.course.name2}</td>
+	                     					<td>${courseUser.course.price}${courseUser.course.unit}</td>
+	                     				    <td>${courseUser.user_id}</td>
+	                     					<td>${courseUser.user.name}</td>
 
                                     	</tr>
                      				</c:forEach>	                                                                                     

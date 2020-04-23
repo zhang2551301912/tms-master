@@ -55,58 +55,66 @@ public class TeacherController {
     }
     //查看课程
     @RequestMapping("lookCourseFee")
-    public ModelAndView lookCourseFee() {
-        List<Course> course=adminService.getCourse();
-        for(Course c:course) {
-            System.out.println(c.getCourse_id()+" "+c.getName2()+" "+c.getPrice()+""+c.getUnit());
-        }
+    public ModelAndView lookCourseFee(HttpServletRequest request) {
+        HttpSession session=request.getSession();
+        User u=(User)session.getAttribute("user");
+        Integer currentUserId=u.getUser_id();
+        List<CourseUser> courseUser=adminService.getCurrentCourseByUserId(currentUserId);
         ModelAndView mv=new ModelAndView("teacher/lookCourseFee");
-        mv.addObject("course", course);
+        mv.addObject("courseUser", courseUser);
         return mv;
     }
     //查看出勤及分数
     @RequestMapping("lookTeaAttend")
-    public ModelAndView lookTeaAttend() {
-        List<Attendance> attendance=adminService.getAttendance();
-
-        for(Attendance a:attendance) {
-            System.out.println(a.getAtten_id()+" "+a.getAtten_times()+a.getAtten_unit()+""+a.getUser_id());
-        }
+    public ModelAndView lookTeaAttend(HttpServletRequest request) {
+        HttpSession session=request.getSession();
+        User u=(User) session.getAttribute("user");
+        Integer currentUerId=u.getUser_id();
+        List<Attendance> attendance=adminService.getCurrentAttendanceByUserId(currentUerId);
         ModelAndView mv=new ModelAndView("teacher/lookTeaAttend");
         mv.addObject("attendance", attendance);
         return mv;
     }
     //查看出勤明细
     @RequestMapping("lookDetail")
-    public ModelAndView lookAttendDetail() {
-        List<AttendanceDetail> attendanceDetail=adminService.getAttendanceDetail();
-        for(AttendanceDetail a:attendanceDetail) {
-            System.out.println(a.getDetail_id()+" "+a.getStart_date()+a.getEnd_date()+" "+a.getUser_id());
-        }
+    public ModelAndView lookAttendDetail(HttpServletRequest request) {
+        HttpSession session=request.getSession();
+        User u=(User) session.getAttribute("user");
+        Integer currentUerId=u.getUser_id();
+        List<AttendanceDetail> attendanceDetail=adminService.getAttendanceDetailByUserId(currentUerId);
         ModelAndView mv=new ModelAndView("teacher/lookDetail");
         mv.addObject("attendanceDetail", attendanceDetail);
         return mv;
     }
     //查看绩效页面
     @RequestMapping("lookTeaAchieve")
-    public ModelAndView lookAchievement(){
-        List<Achievement> achievement=adminService.getAchievement();
+    public ModelAndView lookAchievement(HttpServletRequest request){
+        HttpSession session=request.getSession();
+        User u=(User) session.getAttribute("user");
+        Integer currentUerId=u.getUser_id();
+        List<Achievement> achievement=adminService.getAchievementByUserId(currentUerId);
         ModelAndView mv =new ModelAndView("teacher/lookTeaAchieve");
         mv.addObject("achievement",achievement);
         return mv;
     }
     //查看留言
     @RequestMapping("lookMsg")
-    public ModelAndView LookMessage(){
-        List<Message> messages=adminService.getMsg();
+    public ModelAndView LookMessage(HttpServletRequest request){
+        HttpSession session=request.getSession();
+        User u=(User) session.getAttribute("user");
+        Integer currentUerId=u.getUser_id();
+        List<Message> messages=adminService.getMsgByUserId(currentUerId);
         ModelAndView mv=new ModelAndView("teacher/lookMsg");
         mv.addObject("message",messages);
         return mv;
     }
     //查看回复留言
     @RequestMapping("replyMsg")
-    public ModelAndView replyMsg(){
-        List<ReplyMsg> replyMsg=teacherService.getReplyMsg();
+    public ModelAndView replyMsg(HttpServletRequest request){
+        HttpSession session=request.getSession();
+        User u=(User) session.getAttribute("user");
+        Integer currentUerId=u.getUser_id();
+        List<ReplyMsg> replyMsg=teacherService.getReplyMsgByUserId(currentUerId);
         ModelAndView mv=new ModelAndView("teacher/replyMsg");
         mv.addObject("replyMsg",replyMsg);
         return mv;
@@ -122,15 +130,20 @@ public class TeacherController {
         mv.addObject("teacher",teacher);
         return mv;
     }
+
+
     //回复留言
     @RequestMapping("addReplyMsgSubmit")
     @ResponseBody
-    public ResultMsg addMsgSubmit(Integer repmsg_id,String repmsg_content,Integer msg_id,Integer teacher_id) {
+    public ResultMsg addMsgSubmit(Integer repmsg_id,String repmsg_content,Integer msg_id,HttpServletRequest request) {
+        HttpSession session=request.getSession();
+        User u=(User) session.getAttribute("user");
+        Integer currentUerId=u.getUser_id();
         ReplyMsg r=new ReplyMsg();
         r.setRepmsg_id(repmsg_id);
         r.setRepmsg_content(repmsg_content);
         r.setMsg_id(msg_id);
-        r.setTeacher_id(teacher_id);
+        r.setTeacher_id(currentUerId);
         int i=teacherService.addReplyMsg(r);
         ResultMsg rs=null;
         if(i>0) {
@@ -156,8 +169,11 @@ public class TeacherController {
 
     //查看学生班级页面
     @RequestMapping("lookStudentClass2")
-    public ModelAndView lookStudentClass(){
-        List<StudentCourse> studentCourse=teacherService.getStudentCourseByStatus();
+    public ModelAndView lookStudentClass(HttpServletRequest request){
+        HttpSession session=request.getSession();
+        User u=(User) session.getAttribute("user");
+        Integer currentUerId=u.getUser_id();
+        List<StudentCourse> studentCourse=teacherService.getStudentCourseByStatus(currentUerId);
         ModelAndView mv =new ModelAndView("teacher/lookStudentClass2");
         mv.addObject("studentCourse",studentCourse);
         return mv;

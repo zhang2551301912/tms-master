@@ -50,7 +50,7 @@
                      					<tr>
 <%--                     						<td> <input type="checkbox" value="${attendance.atten_id}" lay-filter="check" name="" lay-skin="primary"></td>--%>
                                             <td>${attendance.atten_id}</td>
-                                            <td>${attendance.atten_times}${attendance.atten_unit}</td>
+                                            <td>${attendance.atten_times}</td>
                                             <td>${attendance.user_id}</td>
 	                     					<td>${attendance.user.name}</td>
                                             <td>${attendance.score}</td>

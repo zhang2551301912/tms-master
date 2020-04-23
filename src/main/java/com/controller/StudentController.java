@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -45,8 +47,11 @@ public class StudentController {
 
     //选择课程教师页面
     @RequestMapping("chooseCourseAndTeacher")
-    public ModelAndView chooseCourseAndTeacher(){
-        List<StudentCourse> studentCourse=studentService.getStudentCourseByStatus();
+    public ModelAndView chooseCourseAndTeacher(HttpServletRequest request){
+        HttpSession session=request.getSession();
+        User u=(User) session.getAttribute("user");
+        Integer currentUerId=u.getUser_id();
+        List<StudentCourse> studentCourse=studentService.getStudentCourseByStudentId(currentUerId);
         ModelAndView mv=new ModelAndView("student/chooseCourseAndTeacher");
         mv.addObject("studentCourse",studentCourse);
         return mv;
@@ -66,11 +71,14 @@ public class StudentController {
     //选课报名
     @RequestMapping("/addStudentCourseSubmit")
     @ResponseBody
-    public ResultMsg addCourseSubmit(Integer course_id,Integer teacher_id,Integer student_id) {
+    public ResultMsg addCourseSubmit(Integer course_id,Integer teacher_id,HttpServletRequest request) {
+        HttpSession session=request.getSession();
+        User u=(User) session.getAttribute("user");
+        Integer currentUerId=u.getUser_id();
         StudentCourse studentCourse=new StudentCourse();
         studentCourse.setCourse_id(course_id);
         studentCourse.setTeacher_id(teacher_id);
-        studentCourse.setStudent_id(student_id);
+        studentCourse.setStudent_id(currentUerId);
         int i=studentService.addStudentCourse(studentCourse);
         ResultMsg rs=null;
         if(i>0) {

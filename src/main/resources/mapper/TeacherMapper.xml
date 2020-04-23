@@ -16,18 +16,28 @@
         </association>
         <association property="message" javaType="com.po.Message">
             <id column="msg_id" jdbcType="INTEGER" property="msg_id" />
-            <id column="msg_content" jdbcType="VARCHAR" property="msg_content" />
+            <result column="msg_content" jdbcType="VARCHAR" property="msg_content"/>
             <result column="parent_id" jdbcType="INTEGER" property="parent_id"/>
             <result column="teacher_id" jdbcType="INTEGER" property="teacher_id"/>
         </association>
     </resultMap>
 
+    <select id="getReplyMsgByUserId" parameterType="java.lang.Integer" resultMap="ReplyMsg">
+        SELECT * from reply_msg r,message m,`user` u WHERE r.msg_id=m.msg_id AND m.parent_id=u.user_id and r.teacher_id=#{user_id}
+    </select>
+
+    <select id="getReplyMsgByMsgId" parameterType="java.lang.Integer" resultMap="ReplyMsg">
+        SELECT * from reply_msg r,message m,`user` u WHERE r.msg_id=m.msg_id AND r.teacher_id=u.user_id and m.parent_id=#{user_id}
+    </select>
+
     <select id="getReplyMsg" resultMap="ReplyMsg">
         SELECT * from reply_msg r,message m,`user` u WHERE r.msg_id=m.msg_id AND r.teacher_id=u.user_id
     </select>
+
     <insert id="addReplyMsg" parameterType="com.po.ReplyMsg" useGeneratedKeys="true" keyProperty="repmsg_id">
         insert into reply_msg(repmsg_id,repmsg_content,msg_id,teacher_id) values (#{repmsg_id},#{repmsg_content},#{msg_id},#{teacher_id})
     </insert>
+
     <delete id="deleteReplyMsg" parameterType="int">
         delete from reply_msg where repmsg_id=#{repmsg_id}
     </delete>
@@ -61,8 +71,8 @@
     </resultMap>
 
     <!--根据学生状态获取报名记录-->
-    <select id="getStudentCourseByStatus" resultMap="StudentCourse">
-        select * from student_course s,`user` u,course cc where s.teacher_id=u.user_id and s.course_id=cc.course_id and (s.status='0' or s.status='1')
+    <select id="getStudentCourseByStatus" parameterType="java.lang.Integer" resultMap="StudentCourse">
+        select * from student_course s,`user` u,course cc where s.teacher_id=u.user_id and s.course_id=cc.course_id and (s.status='0' or s.status='1') and s.teacher_id=#{user_id}
     </select>
 
     <!--审核报名状态-->

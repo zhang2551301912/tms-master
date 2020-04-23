@@ -31,12 +31,22 @@ public class TeacherServiceImpl implements TeacherService {
 
     //根据学生状态获取报名记录
     @Override
-    public List<StudentCourse> getStudentCourseByStatus() {
-        return teacherMapper.getStudentCourseByStatus();
+    public List<StudentCourse> getStudentCourseByStatus(Integer userId) {
+        return teacherMapper.getStudentCourseByStatus(userId);
     }
     //审核报名状态
     @Override
     public int updateStudentCourseStatus(StudentCourse studentCourse) {
         return teacherMapper.updateStudentCourseStatus(studentCourse);
+    }
+
+    @Override
+    public List<ReplyMsg> getReplyMsgByUserId(Integer userId) {
+        return teacherMapper.getReplyMsgByUserId(userId);
+    }
+
+    @Override
+    public List<ReplyMsg> getReplyMsgByMsgId(Integer userId) {
+        return teacherMapper.getReplyMsgByMsgId(userId);
     }
 }

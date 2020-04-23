@@ -41,8 +41,7 @@
                                     <th>留言ID</th>
                                     <th>留言内容</th>
                                     <th>留言人ID</th>
-                                    <th>回复教师ID</th>
-                                    <th>回复教师</th>
+                                    <th>留言人姓名</th>
                                     <th>回复ID</th>
                                     <th>回复内容</th>
                                     <th>操作</th>
@@ -55,8 +54,7 @@
                                             <td>${r.msg_id}</td>
                                             <td>${r.message.msg_content}</td>
 	                     					<td>${r.message.parent_id}</td>
-                                            <td>${r.teacher_id}</td>
-	                     					<td>${r.user.name}</td>
+                                            <td>${r.user.name}</td>
                                             <td>${r.repmsg_id}</td>
                                             <td>${r.repmsg_content}</td>
                                             <td class="td-manage">

@@ -3,7 +3,6 @@ package com.po;
 public class Attendance {
     private Integer atten_id;
     private Integer atten_times;
-    private String atten_unit;
     private Integer user_id;
     private double score;
 
@@ -31,14 +30,6 @@ public class Attendance {
 
     public void setAtten_times(Integer atten_times) {
         this.atten_times = atten_times;
-    }
-
-    public String getAtten_unit() {
-        return atten_unit;
-    }
-
-    public void setAtten_unit(String atten_unit) {
-        this.atten_unit = atten_unit;
     }
 
     public Integer getUser_id() {

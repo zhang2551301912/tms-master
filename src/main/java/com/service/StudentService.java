@@ -11,4 +11,7 @@ public interface StudentService {
     List<StudentCourse> getStudentCourseByStatus();
     //报名查重
     StudentCourse getStudentCourse(Integer course_id,Integer teacher_id,Integer student_id);
+
+    //根据学生账号获取报名记录
+    List<StudentCourse> getStudentCourseByStudentId(Integer userId);
 }

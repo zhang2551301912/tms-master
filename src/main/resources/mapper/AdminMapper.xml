@@ -118,10 +118,18 @@
             <result column="role_id" jdbcType="INTEGER" property="role_id"/>
         </association>
     </resultMap>
+
+    <!-- 查询当前用户的绩效-->
+    <select id="getAchievementByUserId" parameterType="java.lang.Integer" resultMap="UserAchievement">
+		select a.achi_id,a.achi_content,a.achi_grade,u.user_id,u.name,u.phone_no from user u,achievement a where a.user_id=u.user_id and u.role_id=2 and a.user_id=#{user_id}
+	</select>
+
     <!-- 查询绩效-->
     <select id="getAchievement" resultMap="UserAchievement">
 		select a.achi_id,a.achi_content,a.achi_grade,u.user_id,u.name,u.phone_no from user u,achievement a where a.user_id=u.user_id and u.role_id=2;
 	</select>
+
+
     <!-- 添加绩效-->
     <insert id="addAchievement" parameterType="com.po.Achievement" useGeneratedKeys="true" keyProperty="Achievement.achi_id">
         insert into achievement(achi_id,achi_content,achi_grade,user_id) values(#{achi_id},#{achi_content},#{achi_grade},#{user_id})
@@ -141,7 +149,6 @@
     <resultMap id="UserAttendance" type="com.po.Attendance">
         <id column="atten_id" jdbcType="INTEGER" property="atten_id" />
         <result column="atten_times" jdbcType="INTEGER" property="atten_times"/>
-        <result column="atten_unit" jdbcType="VARCHAR" property="atten_unit"/>
         <result column="user_id" jdbcType="INTEGER" property="user_id"/>
         <result column="score" jdbcType="DOUBLE" property="score"/>
         <association property="user" javaType="com.po.User">
@@ -153,23 +160,33 @@
             <result column="role_id" jdbcType="INTEGER" property="role_id"/>
         </association>
     </resultMap>
+
+    <!-- 查询当前用户的出勤打分记录-->
+    <select id="getCurrentAttendanceByUserId" parameterType="java.lang.Integer" resultMap="UserAttendance">
+        SELECT a.atten_id,a.atten_times,a.score,u.user_id,u.`name` from attendance a,`user` u WHERE a.user_id=u.user_id AND u.role_id=2 and u.user_id=#{user_id}
+    </select>
+
     <!-- 查询出勤-->
     <select id="getAttendance" resultMap="UserAttendance">
-		SELECT a.atten_id,a.atten_times,a.atten_unit,a.score,u.user_id,u.`name` from attendance a,`user` u WHERE a.user_id=u.user_id AND u.role_id=2
+		SELECT a.atten_id,a.atten_times,a.score,u.user_id,u.`name` from attendance a,`user` u WHERE a.user_id=u.user_id AND u.role_id=2
 	</select>
+
     <!-- 添加出勤-->
-    <insert id="addAttendance" parameterType="com.po.Attendance" useGeneratedKeys="true" keyProperty="Attendance.atten_id">
-        insert into attendance(atten_id,atten_times,atten_unit,user_id,score) values(#{atten_id},#{atten_times},'天',#{user_id},#{score})
+    <insert id="addAttendance" parameterType="com.po.Attendance" useGeneratedKeys="true" keyProperty="atten_id">
+        insert into attendance(atten_id,atten_times,user_id,score) values(#{atten_id},#{atten_times},#{user_id},#{score})
     </insert>
+
     <!-- 删除出勤-->
     <delete id="deleteAttendance" parameterType="int">
 		delete from attendance where atten_id=#{atten_id}
 	</delete>
+
     <!-- 更新出勤-->
     <update id="updateAttendance" parameterType="com.po.Attendance">
         update attendance set atten_times=#{atten_times},score=#{score}
         where atten_id=#{atten_id}
     </update>
+
     <!-- 用户出勤明细联合-->
     <resultMap id="UserAttendanceDetail" type="com.po.AttendanceDetail">
         <id column="detail_id" jdbcType="INTEGER" property="detail_id" />
@@ -185,6 +202,12 @@
             <result column="role_id" jdbcType="INTEGER" property="role_id"/>
         </association>
     </resultMap>
+
+    <!-- 查询当前用户出勤明细-->
+    <select id="getAttendanceDetailByUserId" parameterType="java.lang.Integer" resultMap="UserAttendanceDetail">
+		SELECT a.detail_id,a.start_date,a.end_date,u.user_id,u.`name` from attendance_detail a,`user` u WHERE a.user_id=u.user_id and u.role_id=2 and a.user_id=#{user_id}
+	</select>
+
     <!-- 查询出勤明细-->
     <select id="getAttendanceDetail" resultMap="UserAttendanceDetail">
 		SELECT a.detail_id,a.start_date,a.end_date,u.user_id,u.`name` from attendance_detail a,`user` u WHERE a.user_id=u.user_id and u.role_id=2;
@@ -271,6 +294,13 @@
             <result column="sort" jdbcType="INTEGER" property="sort"/>
         </association>
     </resultMap>
+
+    <!-- 查询当前教师的课程及费用-->
+    <select id="getCurrentCourseByUserId" parameterType="java.lang.Integer" resultMap="UserAndCourse">
+        select * from course_user a,course b,`user` u where a.course_id=b.course_id and a.user_id=u.user_id and a.user_id=#{user_id}
+    </select>
+
+
     <!-- 查询课程及教师-->
     <select id="getCourseTeacher" resultMap="UserAndCourse">
 		select cu.cu_id,c.course_id,c.name2,u.user_id,u.name from course c,`user` u,course_user cu where cu.user_id=u.user_id and cu.course_id=c.course_id and u.role_id=2 order by cu.cu_id
@@ -287,8 +317,8 @@
     <select id="getCourseID" resultType="com.po.Course">
 		select course_id from course where course_id=#{course_id}
 	</select>
+
     <!--留言用户关联-->
-    <!--课程教师关联-->
     <resultMap id="MessageUser" type="com.po.Message">
         <id column="msg_id" jdbcType="INTEGER" property="msg_id" />
         <result column="msg_content" jdbcType="VARCHAR" property="msg_content"/>
@@ -305,14 +335,22 @@
             <result column="status" jdbcType="VARCHAR" property="status"/>
         </association>
     </resultMap>
+
+    <!--查看当前用户留言-->
+    <select id="getMsgByUserId" parameterType="java.lang.Integer" resultMap="MessageUser">
+        select m.msg_id,m.msg_content,m.teacher_id,u.user_id,u.`name` from `user` u,message m WHERE m.parent_id=u.user_id and m.teacher_id=#{user_id} ORDER BY msg_id;
+    </select>
+
     <!--查看留言-->
     <select id="getMsg" resultMap="MessageUser">
         select m.msg_id,m.msg_content,m.teacher_id,u.user_id,u.`name` from `user` u,message m WHERE m.parent_id=u.user_id ORDER BY msg_id;
     </select>
+
     <!--添加留言-->
     <insert id="addMsg" parameterType="com.po.Message" useGeneratedKeys="true" keyProperty="msg_id">
         insert into message(msg_id,msg_content,parent_id,teacher_id) values (#{msg_id},#{msg_content},#{parent_id},#{teacher_id})
     </insert>
+
     <!--删除留言-->
     <delete id="deleteMsg" parameterType="int">
         delete from message where msg_id=#{msg_id}

@@ -27,4 +27,9 @@ public class StudentServiceImpl implements StudentService {
     public StudentCourse getStudentCourse(Integer course_id, Integer teacher_id, Integer student_id) {
         return studentMapper.getStudentCourse(course_id,teacher_id,student_id);
     }
+
+    @Override
+    public List<StudentCourse> getStudentCourseByStudentId(Integer userId) {
+        return studentMapper.getStudentCourseByStudentId(userId);
+    }
 }

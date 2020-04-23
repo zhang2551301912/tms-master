@@ -39,9 +39,14 @@
         )
     </insert>
 
+    <!--根据学生账号获取报名记录-->
+    <select id="getStudentCourseByStudentId" parameterType="java.lang.Integer" resultMap="StudentCourse">
+        select * from student_course s,`user` u,course cc where s.teacher_id=u.user_id and s.course_id=cc.course_id and (s.status='0' or s.status='1' or s.status='2') and s.student_id=#{user_id}
+    </select>
+
     <!--根据学生状态获取报名记录-->
     <select id="getStudentCourseByStatus" resultMap="StudentCourse">
-        select * from student_course s,`user` u,course cc where s.teacher_id=u.user_id and s.course_id=cc.course_id and (s.status='0' or s.status='2')
+        select * from student_course s,`user` u,course cc where s.teacher_id=u.user_id and s.course_id=cc.course_id and (s.status='0' or s.status='1' or s.status='2')
     </select>
 
     <!--报名查重-->

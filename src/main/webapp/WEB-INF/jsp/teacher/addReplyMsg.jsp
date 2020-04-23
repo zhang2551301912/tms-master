@@ -40,14 +40,6 @@
                     </div>
 
                     <div class="layui-form-item">
-                        <label for="L_username" class="layui-form-label">
-                            <span class="x-red">*</span>回复人</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="teacher_id" name="teacher_id" value="<%=u.getUser_id() %>" required="" lay-verify="teacher_id" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-
-                    <div class="layui-form-item">
                         <label for="L_repass" class="layui-form-label"></label>
                         <button class="layui-btn" type="button" lay-filter="add" lay-submit="" >增加</button>
                     </div>

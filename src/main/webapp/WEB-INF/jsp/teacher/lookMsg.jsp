@@ -31,10 +31,8 @@
                             <table class="layui-table layui-form">
                                 <thead>
                                   <tr>
-
                                     <th>留言ID</th>
                                     <th>留言内容</th>
-                                    <th>被留言教师ID</th>
                                     <th>留言家长ID</th>
                                     <th>留言家长姓名</th>
                                   </tr>
@@ -44,7 +42,6 @@
                      					<tr>
                                             <td>${m.msg_id}</td>
                                             <td>${m.msg_content}</td>
-                                            <td>${m.teacher_id}</td>
                                             <td>${m.user.user_id}</td>
                                             <td>${m.user.name}</td>
                                     	</tr>

@@ -710,9 +710,6 @@ public class AdminController {
     @RequestMapping("lookAttendScore")
     public ModelAndView lookAttendScore() {
         List<Attendance> attendance=adminService.getAttendance();
-        for(Attendance a:attendance) {
-            System.out.println(a.getAtten_id()+" "+a.getAtten_times()+a.getAtten_unit()+""+a.getUser_id());
-        }
         ModelAndView mv=new ModelAndView("admin/lookAttendScore");
         mv.addObject("attendance", attendance);
         return mv;
@@ -728,11 +725,10 @@ public class AdminController {
     //添加出勤及分数
     @RequestMapping("addAttendScoreSubmit")
     @ResponseBody
-    public ResultMsg addAttendScoreSubmit(Integer atten_id,Integer atten_times,String atten_unit,Integer user_id,Double score) {
+    public ResultMsg addAttendScoreSubmit(Integer atten_id,Integer atten_times,Integer user_id,Double score) {
         Attendance attendance=new Attendance();
         attendance.setAtten_id(atten_id);
         attendance.setAtten_times(atten_times);
-        attendance.setAtten_unit(atten_unit);
         attendance.setUser_id(user_id);
         attendance.setScore(score);
         int i=adminService.addAttendance(attendance);

@@ -40,20 +40,22 @@
                                     </th>
                                     <th>留言ID</th>
                                     <th>留言内容</th>
-                                    <th>被留言教师ID</th>
-                                    <th>留言家长ID</th>
-                                    <th>留言家长姓名</th>
+                                    <th>回复ID</th>
+                                    <th>回复内容</th>
+                                    <th>回复人ID</th>
+                                    <th>回复人姓名</th>
                                   </tr>
                                 </thead>
                                 <tbody>
-                     				<c:forEach items="${message}" var="m">
+                     				<c:forEach items="${message}" var="repMsg">
                      					<tr>
-                     						<td><input type="checkbox" value="${m.msg_id}" lay-filter="check" name="id" lay-skin="primary"></td>
-                                            <td>${m.msg_id}</td>
-                                            <td>${m.msg_content}</td>
-                                            <td>${m.teacher_id}</td>
-                                            <td>${m.user.user_id}</td>
-                                            <td>${m.user.name}</td>
+                     						<td><input type="checkbox" value="${repMsg.repmsg_id}" lay-filter="check" name="id" lay-skin="primary"></td>
+                                            <td>${repMsg.msg_id}</td>
+                                            <td>${repMsg.message.msg_content}</td>
+                                            <td>${repMsg.repmsg_id}</td>
+                                            <td>${repMsg.repmsg_content}</td>
+                                            <td>${repMsg.teacher_id}</td>
+                                            <td>${repMsg.user.name}</td>
                                     	</tr>
                      				</c:forEach>	                                                                                     
                                 </tbody>

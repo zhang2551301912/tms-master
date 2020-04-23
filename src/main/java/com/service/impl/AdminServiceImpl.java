@@ -306,4 +306,35 @@ public class AdminServiceImpl implements AdminService {
         return adminMapper.updateStudentCourseStatus(studentCourse);
     }
 
+
+    //查询当前教师的课程及费用
+    @Override
+    public List<CourseUser> getCurrentCourseByUserId(Integer userId) {
+        return adminMapper.getCurrentCourseByUserId(userId);
+    }
+
+    //查询当前用户的出勤打分记录
+    @Override
+    public List<Attendance> getCurrentAttendanceByUserId(Integer userId) {
+        return adminMapper.getCurrentAttendanceByUserId(userId);
+    }
+
+    //查询当前用户出勤明细
+    @Override
+    public List<AttendanceDetail> getAttendanceDetailByUserId(Integer userId) {
+        return adminMapper.getAttendanceDetailByUserId(userId);
+    }
+
+    //查询当前用户的绩效
+    @Override
+    public List<Achievement> getAchievementByUserId(Integer userId) {
+        return adminMapper.getAchievementByUserId(userId);
+    }
+
+    //查看当前用户留言
+    @Override
+    public List<Message> getMsgByUserId(Integer userId) {
+        return adminMapper.getMsgByUserId(userId);
+    }
+
 }

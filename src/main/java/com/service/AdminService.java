@@ -126,4 +126,19 @@ public interface AdminService {
     List<StudentCourse> getStudentCourseByStatus();
     //审核报名状态
     int updateStudentCourseStatus(StudentCourse studentCourse);
+
+    //查询当前教师的课程及费用
+    List<CourseUser> getCurrentCourseByUserId(Integer userId);
+
+    //查询当前用户的出勤打分记录
+    List<Attendance> getCurrentAttendanceByUserId(Integer userId);
+
+    //查询当前用户出勤明细
+    List<AttendanceDetail> getAttendanceDetailByUserId(Integer userId);
+
+    //查询当前用户的绩效
+    List<Achievement> getAchievementByUserId(Integer userId);
+
+    //查看当前用户留言
+    List<Message> getMsgByUserId(Integer userId);
 }

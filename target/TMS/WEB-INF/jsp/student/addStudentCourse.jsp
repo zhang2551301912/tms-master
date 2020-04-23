@@ -46,14 +46,6 @@
                     </div>
 
                     <div class="layui-form-item">
-                        <label for="L_username" class="layui-form-label">
-                            <span class="x-red">*</span>学生编号</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="student_id" name="student_id" value="<%=u.getUser_id() %>" required="" lay-verify="student_id" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-
-                    <div class="layui-form-item">
                         <label for="L_repass" class="layui-form-label"></label>
                         <button class="layui-btn" type="button" lay-filter="add" lay-submit="" >报名</button></div>
                 </form>
