@@ -725,10 +725,8 @@ public class AdminController {
     //添加出勤及分数
     @RequestMapping("addAttendScoreSubmit")
     @ResponseBody
-    public ResultMsg addAttendScoreSubmit(Integer atten_id,Integer atten_times,Integer user_id,Double score) {
+    public ResultMsg addAttendScoreSubmit(Integer user_id,Double score) {
         Attendance attendance=new Attendance();
-        attendance.setAtten_id(atten_id);
-        attendance.setAtten_times(atten_times);
         attendance.setUser_id(user_id);
         attendance.setScore(score);
         int i=adminService.addAttendance(attendance);

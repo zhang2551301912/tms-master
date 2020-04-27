@@ -173,7 +173,9 @@
 
     <!-- 添加出勤-->
     <insert id="addAttendance" parameterType="com.po.Attendance" useGeneratedKeys="true" keyProperty="atten_id">
-        insert into attendance(atten_id,atten_times,user_id,score) values(#{atten_id},#{atten_times},#{user_id},#{score})
+        <bind name="user_id" value="user_id"/>
+        <bind name="score" value="score"/>
+        insert into attendance(atten_times,user_id,score) select count(user_id),#{user_id},#{score} from attendance_detail where user_id=#{user_id}
     </insert>
 
     <!-- 删除出勤-->

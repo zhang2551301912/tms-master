@@ -16,12 +16,12 @@
         <div class="layui-fluid">
             <div class="layui-row">
                 <form class="layui-form" id="form">
-                    <div class="layui-form-item">
-                        <label for="L_email" class="layui-form-label">
-                            <span class="x-red">*</span>出勤天数</label>
-                        <div class="layui-input-inline">
-                            <input type="text" id="atten_times" name="atten_times" required="" lay-verify="" autocomplete="off" class="layui-input"></div>
-                    </div>
+<%--                    <div class="layui-form-item">--%>
+<%--                        <label for="L_email" class="layui-form-label">--%>
+<%--                            <span class="x-red">*</span>出勤天数</label>--%>
+<%--                        <div class="layui-input-inline">--%>
+<%--                            <input type="text" id="atten_times" name="atten_times" required="" lay-verify="" autocomplete="off" class="layui-input"></div>--%>
+<%--                    </div>--%>
 
                     <div class="layui-form-item">
                         <label for="L_username" class="layui-form-label">

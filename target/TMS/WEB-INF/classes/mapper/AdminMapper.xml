@@ -173,9 +173,12 @@
 
     <!-- 添加出勤-->
     <insert id="addAttendance" parameterType="com.po.Attendance" useGeneratedKeys="true" keyProperty="atten_id">
-        insert into attendance(atten_id,atten_times,user_id,score) values(#{atten_id},#{atten_times},#{user_id},#{score})
+        <bind name="user_id" value="user_id"/>
+        <bind name="score" value="score"/>
+        insert into attendance(atten_times,user_id,score) select count(user_id),#{user_id},#{score} from attendance_detail where user_id=#{user_id}
     </insert>
-
+<!--    values(#{atten_id},#{atten_times},#{user_id},#{score})-->
+<!--    insert into attendance(atten_times,user_id,score) select count(user_id),#{user_id,jdbcType=INTEGER},#{score,jdbcType=DOUBLE} from attendance_detail user_id=#{user_id}-->
     <!-- 删除出勤-->
     <delete id="deleteAttendance" parameterType="int">
 		delete from attendance where atten_id=#{atten_id}
