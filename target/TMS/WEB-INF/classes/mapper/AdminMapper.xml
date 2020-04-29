@@ -27,8 +27,8 @@
     </select>
     <!-- 添加用户-->
     <insert id="addUserSubmit" parameterType="com.po.User" useGeneratedKeys="true" keyProperty="User.id">
-        insert into user(id,user_id,name,pwd,phone_no,role_id,status)
-        values(#{id},#{user_id},#{name},#{pwd},#{phone_no},#{role_id},'1')
+        insert into user(id,user_id,name,pwd,phone_no,role_id,class_id,status)
+        values(#{id},#{user_id},#{name},#{pwd},#{phone_no},#{role_id},#{class_id},'1')
     </insert>
     <!-- 修改用户-->
     <update id="updateUser" parameterType="com.po.User">
@@ -177,8 +177,7 @@
         <bind name="score" value="score"/>
         insert into attendance(atten_times,user_id,score) select count(user_id),#{user_id},#{score} from attendance_detail where user_id=#{user_id}
     </insert>
-<!--    values(#{atten_id},#{atten_times},#{user_id},#{score})-->
-<!--    insert into attendance(atten_times,user_id,score) select count(user_id),#{user_id,jdbcType=INTEGER},#{score,jdbcType=DOUBLE} from attendance_detail user_id=#{user_id}-->
+
     <!-- 删除出勤-->
     <delete id="deleteAttendance" parameterType="int">
 		delete from attendance where atten_id=#{atten_id}

@@ -4,6 +4,7 @@ import com.po.Flag;
 import com.po.ResultMsg;
 import com.po.User;
 import com.service.LoginService;
+import com.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,9 +31,10 @@ public class LoginController {
     @ResponseBody
     public ResultMsg LoginSubmit(Integer user_id,String pwd,Integer role_id, HttpSession session){
         System.out.println(user_id+" "+pwd+" "+role_id);
+        String Md5password= MD5Util.MD5Encode(pwd, "UTF-8");
         User user=new User();
         user.setUser_id(user_id);
-        user.setPwd(pwd);
+        user.setPwd(Md5password);
         user.setRole_id(role_id);
         ResultMsg rs=null;
         boolean isLogin=loginService.Login(user);//是否登录成功验证

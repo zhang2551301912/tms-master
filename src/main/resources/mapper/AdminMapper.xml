@@ -27,8 +27,8 @@
     </select>
     <!-- 添加用户-->
     <insert id="addUserSubmit" parameterType="com.po.User" useGeneratedKeys="true" keyProperty="User.id">
-        insert into user(id,user_id,name,pwd,phone_no,role_id,status)
-        values(#{id},#{user_id},#{name},#{pwd},#{phone_no},#{role_id},'1')
+        insert into user(id,user_id,name,pwd,phone_no,role_id,class_id,status)
+        values(#{id},#{user_id},#{name},#{pwd},#{phone_no},#{role_id},#{class_id},'1')
     </insert>
     <!-- 修改用户-->
     <update id="updateUser" parameterType="com.po.User">

@@ -4,6 +4,7 @@ import com.service.AdminService;
 import com.service.LoginService;
 
 
+import com.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -97,11 +98,13 @@ public class AdminController {
     @RequestMapping("addUserSubmit")
     @ResponseBody
     public ResultMsg addUserSubmit(Integer id,Integer user_id, String name,String pwd,String phone_no,Integer role_id,String status) {
+        String Md5PassWord= MD5Util.MD5Encode(pwd,"UTF-8");
+        System.out.println(Md5PassWord);
         User u=new User();
         u.setId(id);
         u.setUser_id(user_id);
         u.setName(name);
-        u.setPwd(pwd);
+        u.setPwd(Md5PassWord);
         u.setPhone_no(phone_no);
         u.setRole_id(role_id);
         u.setStatus(status);
