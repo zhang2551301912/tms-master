@@ -164,9 +164,10 @@ public class AdminController {
     @RequestMapping(value="updateUserSubmit",method= RequestMethod.POST)
     @ResponseBody
     public ResultMsg updateUserSubmit(Integer id,String pwd,String phone_no,Integer role_id){
+        String MD5PassWord=MD5Util.MD5Encode(pwd,"UTF-8");
         User u=new User();
         u.setId(id);
-        u.setPwd(pwd);
+        u.setPwd(MD5PassWord);
         u.setPhone_no(phone_no);
         u.setRole_id(role_id);
         System.out.println(pwd+" "+phone_no+" "+role_id);

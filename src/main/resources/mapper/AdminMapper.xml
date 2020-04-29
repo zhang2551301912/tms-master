@@ -44,7 +44,7 @@
     </delete>
     <!--重置密码-->
     <update id="updatePwd" parameterType="com.po.User">
-        update user set pwd=123 where id=#{id}
+        update user set pwd='202cb962ac59075b964b07152d234b70' where id=#{id}
     </update>
     <!-- 查询出所有的父级菜单 -->
     <select id="getMenusParent" resultType="com.po.Menu">
